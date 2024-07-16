@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BonVoyage.DAL\BonVoyage.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
