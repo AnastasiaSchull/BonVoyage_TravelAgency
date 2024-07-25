@@ -1,15 +1,13 @@
-﻿using BonVoyage.DAL.Entities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using BonVoyage.BLL.DTOs;
 
 namespace BonVoyage.BLL.Interfaces
 {
     public interface IHotelService
     {
-        Task<IEnumerable<Hotel>> GetAllHotelsAsync();
-        Task<Hotel> GetHotelByIdAsync(int id);
-        Task CreateHotelAsync(Hotel hotel);
-        Task UpdateHotelAsync(Hotel hotel);
+        Task<IQueryable<HotelDTO>> GetAllHotelsAsync();
+        Task<HotelDTO> GetHotelByIdAsync(int id);
+        Task CreateHotelAsync(HotelDTO hotelDTO);
+        Task UpdateHotelAsync(HotelDTO hotelDTO);
         Task DeleteHotelAsync(int id);
     }
 }
