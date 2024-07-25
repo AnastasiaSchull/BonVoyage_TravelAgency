@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using BonVoyage.BLL.Interfaces;
+using BonVoyage.BLL.Services;
+using BonVoyage.BLL.Infrastructure;
+
 namespace BonVoyage_TravelAgency
 {
 	public class Program
@@ -5,9 +10,18 @@ namespace BonVoyage_TravelAgency
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
+            string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddBonVoyageContext(connection);
+            builder.Services.AddUnitOfWorkService();
+            builder.Services.AddTransient<IBookingService, BookingService>();
+            builder.Services.AddTransient<ICustomerPreferenceService, CustomerPreferenceService>();
+            builder.Services.AddTransient<IHotelPhotoService, HotelPhotoService>();
+            builder.Services.AddTransient<IHotelService, HotelService>();
+            builder.Services.AddTransient<IFAQService, FAQService>();
+            builder.Services.AddTransient<IUserService, UserService>();
 
-			// Add services to the container.
-			builder.Services.AddControllersWithViews();
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
 
 			var app = builder.Build();
 
