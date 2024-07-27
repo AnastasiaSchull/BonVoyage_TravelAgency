@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BonVoyage.DAL.Entities;
+using System;
 
 namespace BonVoyage.BLL.DTOs
 {
@@ -13,5 +14,7 @@ namespace BonVoyage.BLL.DTOs
         public DateTime DepartureTime { get; set; }
         public DateTime ArrivalTime { get; set; }
         public TimeSpan Duration { get; set; }
-    }
+		public int TourId { get; set; }
+
+	}
 }
