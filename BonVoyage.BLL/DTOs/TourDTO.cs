@@ -18,5 +18,6 @@ namespace BonVoyage.BLL.DTOs
         public ICollection<BookingDTO> Bookings { get; set; }
         public ICollection<HotelDTO> Hotels { get; set; }
         public ICollection<TourPhotoDTO> TourPhotos { get; set; }
-    }
+		public ICollection<FlightDTO> Flights { get; set; }
+	}
 }
