@@ -23,6 +23,7 @@ namespace BonVoyage.DAL.Entities
 		public virtual ICollection<Booking>? Bookings { get; set; }
 		public virtual ICollection<Hotel>? Hotels { get; set; }
 		public virtual ICollection<TourPhoto>? TourPhotos { get; set; }
+		public virtual ICollection<Flight>? Flights { get; set; }
 
 
 	}

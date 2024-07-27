@@ -17,5 +17,7 @@ namespace BonVoyage.DAL.Entities
 		public DateTime DepartureTime { get; set; }  
 		public DateTime ArrivalTime { get; set; }
 		public TimeSpan Duration { get; set; }
+		public int TourId { get; set; }
+		public virtual Tour? Tour { get; set; }
 	}
 }
