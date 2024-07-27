@@ -1,15 +1,13 @@
-﻿using BonVoyage.DAL.Entities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using BonVoyage.BLL.DTOs;
 
 namespace BonVoyage.BLL.Interfaces
 {
     public interface IUserService
     {
-        Task<IEnumerable<User>> GetAllUsersAsync();
-        Task<User> GetUserByIdAsync(int id);
-        Task CreateUserAsync(User user);
-        Task UpdateUserAsync(User user);
+        Task<IQueryable<UserDTO>> GetAllUsersAsync();
+        Task<UserDTO> GetUserByIdAsync(int id);
+        Task CreateUserAsync(UserDTO userDTO);
+        Task UpdateUserAsync(UserDTO userDTO);
         Task DeleteUserAsync(int id);
     }
 }

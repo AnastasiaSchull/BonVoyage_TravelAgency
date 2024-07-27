@@ -1,44 +1,77 @@
 ﻿using BonVoyage.BLL.Interfaces;
-using BonVoyage.DAL.Entities;
 using BonVoyage.DAL.Interfaces;
+using BonVoyage.DAL.Entities;
+using BonVoyage.BLL.Infrastructure;
+using BonVoyage.BLL.DTOs;
+using AutoMapper;
 
 namespace BonVoyage.BLL.Services
 {
     public class BookingService : IBookingService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        IUnitOfWork Database { get; set; }
 
-        public BookingService(IUnitOfWork unitOfWork)
+        public BookingService(IUnitOfWork uow)
         {
-            _unitOfWork = unitOfWork;
+            Database = uow;
         }
 
-        public async Task<IEnumerable<Booking>> GetAllBookingsAsync()
+        public async Task CreateBookingAsync(BookingDTO bookingDTO)
         {
-            return await _unitOfWork.Bookings.GetAll();
+            var booking = new Booking
+            {
+                BookingId = bookingDTO.BookingId,
+                UserId = bookingDTO.UserId,
+                TourId = bookingDTO.TourId,
+                BookingDate = bookingDTO.BookingDate,
+                NumberOfPeople = bookingDTO.NumberOfPeople,
+                Status = bookingDTO.Status
+            };
+            await Database.Bookings.Create(booking);
+            await Database.Save();
         }
-
-        public async Task<Booking> GetBookingByIdAsync(int id)
+        public async Task UpdateBookingAsync(BookingDTO bookingDTO)
         {
-            return await _unitOfWork.Bookings.Get(id);
+            var booking = new Booking
+            {
+                BookingId = bookingDTO.BookingId,
+                UserId = bookingDTO.UserId,
+                TourId = bookingDTO.TourId,
+                BookingDate = bookingDTO.BookingDate,
+                NumberOfPeople = bookingDTO.NumberOfPeople,
+                Status = bookingDTO.Status
+            };
+            Database.Bookings.Update(booking);
+            await Database.Save();
         }
-
-        public async Task CreateBookingAsync(Booking booking)
-        {
-            await _unitOfWork.Bookings.Create(booking);
-            await _unitOfWork.Save();
-        }
-
-        public async Task UpdateBookingAsync(Booking booking)
-        {
-            _unitOfWork.Bookings.Update(booking);
-            await _unitOfWork.Save();
-        }
-
         public async Task DeleteBookingAsync(int id)
         {
-            await _unitOfWork.Bookings.Delete(id);
-            await _unitOfWork.Save();
+            await Database.Bookings.Delete(id);
+            await Database.Save();
+        }
+
+        public async Task<BookingDTO> GetBookingByIdAsync(int id)
+        {
+            var booking = await Database.Bookings.Get(id);
+            if (booking == null)
+                throw new ValidationException("Wrong booking!", "");
+            return new BookingDTO
+            {
+                BookingId = booking.BookingId,
+                UserId = booking.UserId,
+                TourId = booking.TourId,
+                BookingDate = booking.BookingDate,
+                NumberOfPeople = booking.NumberOfPeople,
+                Status = booking.Status
+            };
+        }
+        // Automapper 
+        public async Task<IQueryable<BookingDTO>> GetAllBookingsAsync()
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Booking, BookingDTO>()
+            .ForMember("Tour", opt => opt.MapFrom(c => c.Tour.Title)));
+            var mapper = new Mapper(config);
+            return mapper.Map<IQueryable<Booking>, IQueryable<BookingDTO>>(await Database.Bookings.GetAll());
         }
     }
 }
