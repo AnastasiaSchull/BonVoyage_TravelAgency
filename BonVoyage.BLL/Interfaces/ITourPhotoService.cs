@@ -1,15 +1,13 @@
-﻿using BonVoyage.DAL.Entities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using BonVoyage.BLL.DTOs;
 
 namespace BonVoyage.BLL.Interfaces
 {
     public interface ITourPhotoService
     {
-        Task<IEnumerable<TourPhoto>> GetAllTourPhotosAsync();
-        Task<TourPhoto> GetTourPhotoByIdAsync(int id);
-        Task CreateTourPhotoAsync(TourPhoto tourPhoto);
-        Task UpdateTourPhotoAsync(TourPhoto tourPhoto);
+        Task<IQueryable<TourPhotoDTO>> GetAllTourPhotosAsync();
+        Task<TourPhotoDTO> GetTourPhotoByIdAsync(int id);
+        Task CreateTourPhotoAsync(TourPhotoDTO tourPhotoDTO);
+        Task UpdateTourPhotoAsync(TourPhotoDTO tourPhotoDTO);
         Task DeleteTourPhotoAsync(int id);
     }
 }
