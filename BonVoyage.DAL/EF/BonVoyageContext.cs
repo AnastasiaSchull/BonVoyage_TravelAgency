@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using BonVoyage.DAL.Entities;
 using System.Numerics;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace BonVoyage.DAL.EF
 {
@@ -27,7 +29,26 @@ namespace BonVoyage.DAL.EF
         public BonVoyageContext(DbContextOptions<BonVoyageContext> options)
                    : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
+        }
+        // Класс необходим исключительно для миграций
+        public class SampleContextFactory : IDesignTimeDbContextFactory<BonVoyageContext>
+        {
+            public BonVoyageContext CreateDbContext(string[] args)
+            {
+                var optionsBuilder = new DbContextOptionsBuilder<BonVoyageContext>();
+
+                // получаем конфигурацию из файла appsettings.json
+                ConfigurationBuilder builder = new ConfigurationBuilder();
+                builder.SetBasePath(Directory.GetCurrentDirectory());
+                builder.AddJsonFile("appsettings.json");
+                IConfigurationRoot config = builder.Build();
+
+                // получаем строку подключения из файла appsettings.json
+                string connectionString = config.GetConnectionString("DefaultConnection");
+                optionsBuilder.UseSqlServer(connectionString);
+                return new BonVoyageContext(optionsBuilder.Options);
+            }
         }
     }
 }
