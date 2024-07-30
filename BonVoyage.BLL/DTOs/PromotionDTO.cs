@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BonVoyage.BLL.DTOs
+﻿namespace BonVoyage.BLL.DTOs
 {
     public class PromotionDTO
     {
