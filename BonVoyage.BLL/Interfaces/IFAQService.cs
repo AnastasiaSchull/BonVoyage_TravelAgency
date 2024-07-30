@@ -1,15 +1,13 @@
-﻿using BonVoyage.DAL.Entities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using BonVoyage.BLL.DTOs;
 
 namespace BonVoyage.BLL.Interfaces
 {
     public interface IFAQService
-    {
-        Task<IEnumerable<FAQ>> GetAllFAQsAsync();
-        Task<FAQ> GetFAQByIdAsync(int id);
-        Task CreateFAQAsync(FAQ faq);
-        Task UpdateFAQAsync(FAQ faq);
+	{
+        Task<IQueryable<FAQDTO>> GetAllFAQsAsync();
+        Task<FAQDTO> GetFAQByIdAsync(int id);
+        Task CreateFAQAsync(FAQDTO faq);
+        Task UpdateFAQAsync(FAQDTO faq);
         Task DeleteFAQAsync(int id);
     }
 }
