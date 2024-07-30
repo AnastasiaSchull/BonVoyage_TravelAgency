@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BonVoyage.BLL.DTOs
+﻿namespace BonVoyage.BLL.DTOs
 {
     public class BookingDTO
     {
@@ -9,6 +7,6 @@ namespace BonVoyage.BLL.DTOs
         public int TourId { get; set; }
         public DateTime BookingDate { get; set; }
         public int NumberOfPeople { get; set; }
-        public string Status { get; set; }
+        public string? Status { get; set; }
     }
 }
