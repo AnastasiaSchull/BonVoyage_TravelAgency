@@ -23,7 +23,7 @@ namespace BonVoyage.BLL.Services
 				throw new ValidationException("Preference not found!", "");
 			return new CustomerPreferenceDTO
 			{
-				PreferenceId = preference.PreferenceId,
+				CustomerPreferenceId = preference.CustomerPreferenceId,
 				UserId = preference.UserId,
 				PreferencesDetails = preference.PreferencesDetails
 			};
@@ -33,7 +33,7 @@ namespace BonVoyage.BLL.Services
 		{
 			var preference = new CustomerPreference
 			{
-				PreferenceId = preferenceDTO.PreferenceId,
+				CustomerPreferenceId = preferenceDTO.CustomerPreferenceId,
 				UserId = preferenceDTO.UserId,
 				PreferencesDetails = preferenceDTO.PreferencesDetails
 			};
@@ -45,7 +45,7 @@ namespace BonVoyage.BLL.Services
 		{
 			var preference = new CustomerPreference
 			{
-				PreferenceId = preferenceDTO.PreferenceId,
+				CustomerPreferenceId = preferenceDTO.CustomerPreferenceId,
 				UserId = preferenceDTO.UserId,
 				PreferencesDetails = preferenceDTO.PreferencesDetails
 			};
