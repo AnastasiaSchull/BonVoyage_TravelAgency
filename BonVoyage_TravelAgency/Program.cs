@@ -19,9 +19,13 @@ namespace BonVoyage_TravelAgency
             builder.Services.AddTransient<IHotelService, HotelService>();
             builder.Services.AddTransient<IFAQService, FAQService>();
             builder.Services.AddTransient<IUserService, UserService>();
-
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
+			builder.Services.AddTransient<IReviewService, ReviewService>();
+			builder.Services.AddTransient<ITourPhotoService, TourPhotoService>();
+			builder.Services.AddTransient<ITourService, TourService>();
+			builder.Services.AddTransient<IPromotionService, PromotionService>();
+			builder.Services.AddTransient<IFlightService, FlightService>();
+			// Add services to the container.
+			builder.Services.AddControllersWithViews();
 
 			var app = builder.Build();
 
