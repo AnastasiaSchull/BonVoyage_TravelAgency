@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using BonVoyage.DAL.Entities;
-using System.Numerics;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
@@ -50,5 +44,30 @@ namespace BonVoyage.DAL.EF
                 return new BonVoyageContext(optionsBuilder.Options);
             }
         }
-    }
+
+		 /* OnModelCreating method is necessary for configuring the mapping of decimal properties using Fluent API.
+		 By default, SQL Server uses decimal(18,0) for decimal properties, which truncates the fractional part.
+		 Adding this configuration explicitly sets the precision and scale to ensure correct storage of decimal values,
+		 preventing loss of precision and eliminating warnings from Entity Framework Core.*/
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<Flight>()
+				.Property(f => f.Price)
+				.HasColumnType("decimal(10,2)");
+
+			modelBuilder.Entity<Hotel>()
+				.Property(h => h.PricePerNight)
+				.HasColumnType("decimal(10,2)");
+
+			modelBuilder.Entity<Promotion>()
+				.Property(p => p.Discount)
+				.HasColumnType("decimal(10,2)");
+
+			modelBuilder.Entity<Tour>()
+				.Property(t => t.Price)
+				.HasColumnType("decimal(10,2)");
+
+			base.OnModelCreating(modelBuilder);
+		}
+	}
 }
