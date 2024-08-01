@@ -4,6 +4,8 @@ using BonVoyage.DAL.Entities;
 using BonVoyage.BLL.Infrastructure;
 using BonVoyage.BLL.DTOs;
 using AutoMapper;
+using System.Collections.Generic;
+
 
 namespace BonVoyage.BLL.Services
 {
@@ -73,10 +75,17 @@ namespace BonVoyage.BLL.Services
             };
         }
         // Automapper 
-        public async Task<IQueryable<TourDTO>> GetAllToursAsync()
+
+        //public async Task<IQueryable<TourDTO>> GetAllToursAsync()
+        //{
+        //    var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Tour, TourDTO>()).CreateMapper();
+        //    return mapper.Map<IQueryable<Tour>, IQueryable<TourDTO>>(await Database.Tours.GetAll());
+        //}
+
+        public async Task<IEnumerable<TourDTO>> GetAllToursAsync()
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Tour, TourDTO>()).CreateMapper();
-            return mapper.Map<IQueryable<Tour>, IQueryable<TourDTO>>(await Database.Tours.GetAll());
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Tour, TourDTO>()).CreateMapper(); 
+            return mapper.Map< IQueryable < Tour > ,IEnumerable <TourDTO>>(await Database.Tours.GetAll());
         }
     }
 }

@@ -1,3 +1,4 @@
+using BonVoyage.BLL.Interfaces;
 using BonVoyage_TravelAgency.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -6,17 +7,18 @@ namespace BonVoyage_TravelAgency.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly ITourService _tourService;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(ITourService tourService)
 		{
-			_logger = logger;
+			_tourService = tourService;
 		}
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			return View();
-		}
+			var tours = await _tourService.GetAllToursAsync();
+            return View(tours);
+        }
 
 		public IActionResult Privacy()
 		{
