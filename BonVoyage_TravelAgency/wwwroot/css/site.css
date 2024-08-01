@@ -1,3 +1,5 @@
+﻿/* Existing styles in site.css */
+
 html {
   font-size: 14px;
 }
@@ -20,3 +22,87 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* New styles */
+@font-face {
+    font-family: 'Calypso';
+    src: url('/fonts/ofont.ru_Calypso.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-image: url('/images/airplane.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1, h3 {
+    font-family: 'Calypso', Arial, sans-serif;
+    color:blue;
+}
+
+p{
+    font-size:22px;
+    color:cadetblue;
+}
+
+
+.login-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+}
+  
+
+.login-form {
+    display: flex;
+    align-items: center;
+}
+
+
+.login-form input, .login-form button {
+    margin: 5px;
+    font-size: 22px;
+    border-radius: 10px;
+    border: 2px solid #258cfb;
+}
+
+
+.container {
+    padding: 20px;
+    border-radius: 10px;
+    background: transparent;
+}
+
+.containerPrivacy {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #0051ff !important;
+    font-size: 25px !important;
+    font-family: 'Calypso';
+}
+
+a:hover {
+    text-decoration: none;
+    color: #32afaf !important;
+    font-size: 25px !important;
+    font-family: 'Calypso';
+}
+
+.clickable-header {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
+
