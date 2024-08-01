@@ -1,8 +1,169 @@
-﻿@{
+﻿@model IEnumerable<BonVoyage.BLL.DTOs.TourDTO>
+
+@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tours = new List<BonVoyage.BLL.DTOs.TourDTO>
+    {
+        new BonVoyage.BLL.DTOs.TourDTO
+        {
+            Title = "Tour 1",
+            Description = "Description for Tour 1",
+            Duration = 7,
+            Price = 1000m,
+            Country = "Country 1",
+            Route = "Route 1",
+            StartDate = DateTime.Now,
+            EndDate = DateTime.Now.AddDays(7)
+        },
+        new BonVoyage.BLL.DTOs.TourDTO
+        {
+            Title = "Tour 2",
+            Description = "Description for Tour 2",
+            Duration = 10,
+            Price = 1500m,
+            Country = "Country 2",
+            Route = "Route 2",
+            StartDate = DateTime.Now,
+            EndDate = DateTime.Now.AddDays(10)
+        },
+         new BonVoyage.BLL.DTOs.TourDTO
+        {
+            Title = "Tour 3",
+            Description = "Description for Tour 3",
+            Duration = 10,
+            Price = 1500m,
+            Country = "Country 3",
+            Route = "Route 3",
+            StartDate = DateTime.Now,
+            EndDate = DateTime.Now.AddDays(10)
+        },
+         new BonVoyage.BLL.DTOs.TourDTO
+        {
+            Title = "Tour 4",
+            Description = "Description for Tour 4",
+            Duration = 10,
+            Price = 1500m,
+            Country = "Country 4",
+            Route = "Route 4",
+            StartDate = DateTime.Now,
+            EndDate = DateTime.Now.AddDays(10)
+        },
+         new BonVoyage.BLL.DTOs.TourDTO
+        {
+            Title = "Tour 5",
+            Description = "Description for Tour 5",
+            Duration = 10,
+            Price = 1500m,
+            Country = "Country 5",
+            Route = "Route 5",
+            StartDate = DateTime.Now,
+            EndDate = DateTime.Now.AddDays(10)
+        },
+         new BonVoyage.BLL.DTOs.TourDTO
+        {
+            Title = "Tour 6",
+            Description = "Description for Tour 6",
+            Duration = 10,
+            Price = 1500m,
+            Country = "Country 6",
+            Route = "Route 6",
+            StartDate = DateTime.Now,
+            EndDate = DateTime.Now.AddDays(10)
+        },
+        new BonVoyage.BLL.DTOs.TourDTO
+        {
+            Title = "Tour 7",
+            Description = "Description for Tour 7",
+            Duration = 5,
+            Price = 800m,
+            Country = "Country 7",
+            Route = "Route 7",
+            StartDate = DateTime.Now,
+            EndDate = DateTime.Now.AddDays(5)
+        }
+    };
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="login-container">
+    <a class="navbar-brand font" href="#" style="color:#a7a6be;">Registration</a>
+    <div class="login-form">
+
+    <form method="post" action="/Account/Login">
+        <input type="text" name="login" placeholder="Login" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+    </form>
 </div>
+</div>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to BonVoyage</h1>
+    <h3 id="toggleTours" class="clickable-header">Check out our tour packages below:</h3>
+</div>
+
+<div class="container" id="toursContainer" style="display: none;">
+    <div class="row">
+      
+        @foreach (var tour in tours) //  !!! временный список tours
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="/images/canarie.png" class="card-img-top" alt="Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@tour.Title</h5>
+                        <p class="card-text">@tour.Description</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Duration: @tour.Duration days</li>
+                            <li class="list-group-item">Price: $@tour.Price</li>
+                            <li class="list-group-item">Country: @tour.Country</li>
+                            <li class="list-group-item">Route: @tour.Route</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-muted">Start Date: @tour.StartDate.ToShortDateString()</small>
+                            <br />
+                            <small class="text-muted">End Date: @tour.EndDate.ToShortDateString()</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+           @foreach (var tour in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="tour.jpg" class="card-img-top" alt="Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@tour.Title</h5>
+                        <p class="card-text">@tour.Description</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Duration: @tour.Duration days</li>
+                            <li class="list-group-item">Price: $@tour.Price</li>
+                            <li class="list-group-item">Country: @tour.Country</li>
+                            <li class="list-group-item">Route: @tour.Route</li>
+                        </ul>
+                        <div class="card-footer">
+                            <small class="text-muted">Start Date: @tour.StartDate.ToShortDateString()</small>
+                            <br />
+                            <small class="text-muted">End Date: @tour.EndDate.ToShortDateString()</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        } 
+    </div>
+</div>
+
+<script>
+    document.getElementById('toggleTours').addEventListener('click', function () {
+        var toursContainer = document.getElementById('toursContainer');
+        if (toursContainer.style.display === 'none') {
+            toursContainer.style.display = 'block';
+        } else {
+            toursContainer.style.display = 'none';
+        }
+    });
+
+</script>
