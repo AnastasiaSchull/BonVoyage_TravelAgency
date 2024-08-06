@@ -1,12 +1,12 @@
 ﻿/* Existing styles in site.css */
 
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -44,7 +44,7 @@ h1, h3 {
 }
 
 p{
-    font-size:22px;
+    font-size:16px;
     color:cadetblue;
 }
 
@@ -67,14 +67,14 @@ p{
 
 .login-form input, .login-form button {
     margin: 5px;
-    font-size: 22px;
+    font-size: 16px;
     border-radius: 10px;
     border: 2px solid #258cfb;
 }
 
 
 .container {
-    padding: 20px;
+    padding: 18px;
     border-radius: 10px;
     background: transparent;
 }
@@ -87,15 +87,15 @@ p{
 
 a {
     text-decoration: none;
-    color: #0051ff !important;
-    font-size: 25px !important;
+    color: #2f00ff !important;
+    font-size: 18px !important;
     font-family: 'Calypso';
 }
 
 a:hover {
     text-decoration: none;
     color: #32afaf !important;
-    font-size: 25px !important;
+    font-size: 18px !important;
     font-family: 'Calypso';
 }
 
@@ -105,4 +105,33 @@ a:hover {
     text-decoration: underline;
 }
 
+.tooltip-inner {
+    background-color:gainsboro;
+    color: darkblue;
+    border: 1px solid gray;
+    font-size:18px;
+}
 
+.collapse p{
+    color:black;
+}
+
+.faq-actions a {
+    color: dimgray !important;
+}
+
+.faq-actions a:hover {
+    color: #2f00ff !important;
+}
+
+p a{
+    font-size:18px !important;
+}
+
+p a:hover {  
+    font-size: 18px !important;
+}
+
+.text-center a:hover {
+    color:#ff6a00 !important;
+}
