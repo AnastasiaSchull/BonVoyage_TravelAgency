@@ -1,0 +1,101 @@
+﻿@model IEnumerable<BonVoyage.BLL.DTOs.FAQDTO>
+
+@{
+    ViewData["Title"] = "FAQ List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center" style="color:#ff6a00;">Frequently Asked Questions</h1>
+
+<p class="text-center">
+    <a asp-action="Upsert">Create New FAQ</a>
+</p>
+
+<div class="faq-container">
+    <ul class="list-group">
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item">
+                <a href="#" data-bs-toggle="collapse" data-bs-target="#faq-@item.FAQId" class="faq-question" title="Click to toggle the answer">@Html.DisplayFor(modelItem => item.Question) </a>
+                <div id="faq-@item.FAQId" class="collapse">
+                    <p>@Html.DisplayFor(modelItem => item.Answer)</p>
+                </div>
+                <div class="faq-actions">
+                    <a asp-action="Upsert" asp-route-id="@item.FAQId">Edit</a> |
+                    <a href="#" onclick="confirmDelete(@item.FAQId)">Delete</a>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function () {
+            var errorMessage = '@TempData["ErrorMessage"]';
+            if (errorMessage) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: errorMessage
+                });
+            }
+
+            // Enabling tooltips for all elements with the .faq-question class
+            $('.faq-question').tooltip({
+                title: "Click to toggle the answer",
+                placement: "top"             
+            });
+        });
+
+            function confirmDelete(id) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '@Url.Action("DeleteConfirmed", "FAQ")',
+                            type: 'POST',
+                            data: { id: id },
+                            success: function (response) {
+                                if (response.success) {
+                                    Swal.fire(
+                                        'Deleted!',
+                                        response.message,
+                                        'success'
+                                    ).then(() => {
+                                        location.reload();
+                                    });
+                                } else {
+                                    Swal.fire(
+                                        'Error!',
+                                        response.message,
+                                        'error'
+                                    );
+                                }
+                            },
+                        error: function (xhr, status, error) {
+                                Swal.fire(
+                                    'Error!',
+                                    'An error occurred while deleting the FAQ.',
+                                    'error'
+                                );
+                            }
+                        });
+                    }
+                });
+            }
+       
+    </script>
+   
+}
