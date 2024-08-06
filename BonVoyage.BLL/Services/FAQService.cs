@@ -64,11 +64,12 @@ namespace BonVoyage.BLL.Services
 		}
 
 		// Automapper 		
-		public async Task<IQueryable<FAQDTO>> GetAllFAQsAsync()
+		public async Task<IEnumerable<FAQDTO>> GetAllFAQsAsync()
 		{
 			var config = new MapperConfiguration(cfg => cfg.CreateMap<FAQ, FAQDTO>());
 			var mapper = new Mapper(config);
-			return mapper.Map<IQueryable<FAQ>, IQueryable<FAQDTO>>(await Database.FAQs.GetAll());
+			return mapper.Map<IQueryable<FAQ>, IEnumerable<FAQDTO>>(await Database.FAQs.GetAll());
 		}
-	}
+      
+    }
 }
