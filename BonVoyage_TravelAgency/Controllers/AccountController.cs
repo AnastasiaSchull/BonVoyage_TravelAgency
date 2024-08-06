@@ -4,21 +4,23 @@ using BonVoyage_TravelAgency.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 using System.Text;
+using BonVoyage.BLL.Interfaces;
+using BonVoyage.BLL.DTOs;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly BonVoyageContext _context;
+        private readonly IUserService _userService;
 
-        public AccountController(BonVoyageContext context)
+        public AccountController(IUserService userService)
         {
-            _context = context;
+            _userService = userService;
         }
 
         public IActionResult Index()
         {
-            var users = _context.Users.ToList();
+            var users = _userService.GetAllUsersAsync();
             return View(users);
         }
 
@@ -28,11 +30,12 @@ namespace BonVoyage_TravelAgency.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(RegisterModel reg)
+        public async Task<IActionResult> Register(RegisterModel reg)
         {
             if (ModelState.IsValid)
             {
-                var existingUser = _context.Users.FirstOrDefault(u => u.Email == reg.Email);
+                var existingUsers = await _userService.GetAllUsersAsync();
+                var existingUser = existingUsers.FirstOrDefault(u => u.Email == reg.Email);
 
                 if (existingUser != null)
                 {
@@ -40,7 +43,7 @@ namespace BonVoyage_TravelAgency.Controllers
                     return View(reg);
                 }
 
-                User user = new User();
+                UserDTO user = new UserDTO();
                 user.UserName = reg.UserName;
                 user.UserSurname = reg.UserSurname;
                 user.Email = reg.Email;
@@ -66,8 +69,7 @@ namespace BonVoyage_TravelAgency.Controllers
                 user.Password = hash.ToString();
                 user.Salt = salt;
 
-                _context.Users.Add(user);
-                _context.SaveChanges();
+                await _userService.CreateUserAsync(user);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -81,22 +83,25 @@ namespace BonVoyage_TravelAgency.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginModel logon)
+        public async Task<IActionResult> Login(LoginModel logon)
         {
             if (ModelState.IsValid)
             {
-                if (_context.Users.ToList().Count == 0)
+                var users = await _userService.GetAllUsersAsync();
+                if (!users.Any())
                 {
                     ModelState.AddModelError("", "Incorrect email or password!");
                     return View(logon);
                 }
-                var users = _context.Users.Where(a => a.Email == logon.Email);
-                if (users.ToList().Count == 0)
+
+                var user = users.FirstOrDefault(u => u.Email == logon.Email);
+                if (user == null)
                 {
                     ModelState.AddModelError("", "Incorrect email or password!");
                     return View(logon);
                 }
-                var user = users.First();
+
+                user = users.First();
                 string? salt = user.Salt;
 
                 byte[] password = Encoding.Unicode.GetBytes(salt + logon.Password);
