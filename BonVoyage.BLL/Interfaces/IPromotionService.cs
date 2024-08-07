@@ -4,7 +4,7 @@ namespace BonVoyage.BLL.Interfaces
 {
     public interface IPromotionService
     {
-        Task<IQueryable<PromotionDTO>> GetAllPromotionsAsync();
+        Task<IEnumerable<PromotionDTO>> GetAllPromotionsAsync();
         Task<PromotionDTO> GetPromotionByIdAsync(int id);
         Task CreatePromotionAsync(PromotionDTO promotionDTO);
         Task UpdatePromotionAsync(PromotionDTO promotionDTO);

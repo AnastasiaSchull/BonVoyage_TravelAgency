@@ -4,7 +4,7 @@ namespace BonVoyage.BLL.Interfaces
 {
     public interface IFlightService
     {
-        Task<IQueryable<FlightDTO>> GetAllFlightsAsync();
+        Task<IEnumerable<FlightDTO>> GetAllFlightsAsync();
         Task<FlightDTO> GetFlightByIdAsync(int id);
         Task CreateFlightAsync(FlightDTO flightDTO);
         Task UpdateFlightAsync(FlightDTO flightDTO);

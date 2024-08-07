@@ -72,12 +72,12 @@ namespace BonVoyage.BLL.Services
         }
 
         // Automapper 
-        public async Task<IQueryable<UserDTO>> GetAllUsersAsync()
+        public async Task<IEnumerable<UserDTO>> GetAllUsersAsync()
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>()
             .ForMember("UserName", opt => opt.MapFrom(c => c.UserName)));
             var mapper = new Mapper(config);
-            return mapper.Map<IQueryable<User>, IQueryable<UserDTO>>(await Database.Users.GetAll());
+            return mapper.Map<IQueryable<User>, IEnumerable<UserDTO>>(await Database.Users.GetAll());
         }
     }
 }

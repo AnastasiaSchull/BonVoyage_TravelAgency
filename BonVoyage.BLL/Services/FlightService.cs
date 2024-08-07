@@ -77,12 +77,12 @@ namespace BonVoyage.BLL.Services
             };
         }
         // Automapper 
-        public async Task<IQueryable<FlightDTO>> GetAllFlightsAsync()
+        public async Task<IEnumerable<FlightDTO>> GetAllFlightsAsync()
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Flight, FlightDTO>()
             .ForMember("Tour", opt => opt.MapFrom(c => c.Tour.Title)));
             var mapper = new Mapper(config);
-            return mapper.Map<IQueryable<Flight>, IQueryable<FlightDTO>>(await Database.Flights.GetAll());
+            return mapper.Map<IQueryable<Flight>, IEnumerable<FlightDTO>>(await Database.Flights.GetAll());
         }
     }
 }
