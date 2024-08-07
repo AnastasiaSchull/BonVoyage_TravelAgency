@@ -3,24 +3,35 @@ using BonVoyage_TravelAgency.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
+
 namespace BonVoyage_TravelAgency.Controllers
 {
-	public class HomeController : Controller
+	public class HomeController : BaseController
 	{
-		private readonly ITourService _tourService;
+        private readonly ITourService _tourService;
+        private readonly ITourPhotoService _tourPhotoService;
 
-		public HomeController(ITourService tourService)
-		{
-			_tourService = tourService;
-		}
+        public HomeController(ITourService tourService, ITourPhotoService tourPhotoService)
+        {
+            _tourService = tourService;
+            _tourPhotoService = tourPhotoService;
+        }
+     
+        public async Task<IActionResult> Index()
+        {
+            var tours = await _tourService.GetAllToursAsync();
+            var tourPhotos = await _tourPhotoService.GetAllTourPhotosAsync();
 
-		public async Task<IActionResult> Index()
-		{
-			var tours = await _tourService.GetAllToursAsync();
-            return View(tours);
+            var viewModel = new ToursPhotosViewModel
+            {
+                Tours = tours,
+                TourPhotos = tourPhotos
+            };
+
+            return View(viewModel);
         }
 
-		public IActionResult Privacy()
+        public IActionResult Privacy()
 		{
 			return View();
 		}
