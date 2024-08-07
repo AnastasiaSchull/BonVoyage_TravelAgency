@@ -4,7 +4,7 @@ namespace BonVoyage.BLL.Interfaces
 {
     public interface IReviewService
 	{
-        Task<IQueryable<ReviewDTO>> GetAllReviewsAsync();
+        Task<IEnumerable<ReviewDTO>> GetAllReviewsAsync();
         Task<ReviewDTO> GetReviewByIdAsync(int id);
         Task CreateReviewAsync(ReviewDTO review);
         Task UpdateReviewAsync(ReviewDTO review);

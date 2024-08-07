@@ -58,12 +58,13 @@ namespace BonVoyage.BLL.Services
             };
         }
         // Automapper 
-        public async Task<IQueryable<TourPhotoDTO>> GetAllTourPhotosAsync()
+        public async Task<IEnumerable<TourPhotoDTO>> GetAllTourPhotosAsync()
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<TourPhoto, TourPhotoDTO>()
             .ForMember("Tour", opt => opt.MapFrom(c => c.Tour.Title)));
             var mapper = new Mapper(config);
-            return mapper.Map<IQueryable<TourPhoto>, IQueryable<TourPhotoDTO>>(await Database.TourPhotos.GetAll());
+            return mapper.Map<IQueryable<TourPhoto>, IEnumerable<TourPhotoDTO>>(await Database.TourPhotos.GetAll());
         }
+      
     }
 }

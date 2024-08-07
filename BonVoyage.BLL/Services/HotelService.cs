@@ -24,6 +24,8 @@ namespace BonVoyage.BLL.Services
                HotelId = hotelDTO.HotelId,
                Name = hotelDTO.Name,
                Location = hotelDTO.Location,
+               Country = hotelDTO.Country,
+               City = hotelDTO.City,
                PricePerNight = hotelDTO.PricePerNight,
                StarRating = hotelDTO.StarRating,
                HasSwimmingPool = hotelDTO.HasSwimmingPool,
@@ -39,6 +41,8 @@ namespace BonVoyage.BLL.Services
                 HotelId = hotelDTO.HotelId,
                 Name = hotelDTO.Name,
                 Location = hotelDTO.Location,
+                Country = hotelDTO.Country,
+                City = hotelDTO.City,
                 PricePerNight = hotelDTO.PricePerNight,
                 StarRating = hotelDTO.StarRating,
                 HasSwimmingPool = hotelDTO.HasSwimmingPool,
@@ -63,6 +67,8 @@ namespace BonVoyage.BLL.Services
                 HotelId = hotel.HotelId,
                 Name = hotel.Name,
                 Location = hotel.Location,
+                Country = hotel.Country,
+                City = hotel.City,
                 PricePerNight = hotel.PricePerNight,
                 StarRating = hotel.StarRating,
                 HasSwimmingPool = hotel.HasSwimmingPool,
@@ -71,12 +77,12 @@ namespace BonVoyage.BLL.Services
             };
         }
         // Automapper 
-        public async Task<IQueryable<HotelDTO>> GetAllHotelsAsync()
+        public async Task<IEnumerable<HotelDTO>> GetAllHotelsAsync()
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Hotel, HotelDTO>()
             .ForMember("Tour", opt => opt.MapFrom(c => c.Tour.Title)));
             var mapper = new Mapper(config);
-            return mapper.Map<IQueryable<Hotel>, IQueryable<HotelDTO>>(await Database.Hotels.GetAll());
+            return mapper.Map<IQueryable<Hotel>, IEnumerable<HotelDTO>>(await Database.Hotels.GetAll());
         }
     }
 }
