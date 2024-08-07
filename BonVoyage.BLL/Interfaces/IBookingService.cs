@@ -4,7 +4,7 @@ namespace BonVoyage.BLL.Interfaces
 {
     public interface IBookingService
     {
-        Task<IQueryable<BookingDTO>> GetAllBookingsAsync();
+        Task<IEnumerable<BookingDTO>> GetAllBookingsAsync();
         Task<BookingDTO> GetBookingByIdAsync(int id);
         Task CreateBookingAsync(BookingDTO bookingDTO);
         Task UpdateBookingAsync(BookingDTO bookingDTO);

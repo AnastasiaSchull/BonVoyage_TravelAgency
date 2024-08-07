@@ -4,7 +4,7 @@ namespace BonVoyage.BLL.Interfaces
 {
     public interface ITourPhotoService
     {
-        Task<IQueryable<TourPhotoDTO>> GetAllTourPhotosAsync();
+        Task<IEnumerable<TourPhotoDTO>> GetAllTourPhotosAsync();
         Task<TourPhotoDTO> GetTourPhotoByIdAsync(int id);
         Task CreateTourPhotoAsync(TourPhotoDTO tourPhotoDTO);
         Task UpdateTourPhotoAsync(TourPhotoDTO tourPhotoDTO);

@@ -58,12 +58,12 @@ namespace BonVoyage.BLL.Services
             };
         }
         // Automapper 
-        public async Task<IQueryable<HotelPhotoDTO>> GetAllHotelPhotosAsync()
+        public async Task<IEnumerable<HotelPhotoDTO>> GetAllHotelPhotosAsync()
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<HotelPhoto, HotelPhotoDTO>()
             .ForMember("Hotel", opt => opt.MapFrom(c => c.Hotel.Name)));
             var mapper = new Mapper(config);
-            return mapper.Map<IQueryable<HotelPhoto>, IQueryable<HotelPhotoDTO>>(await Database.HotelPhotos.GetAll());
+            return mapper.Map<IQueryable<HotelPhoto>, IEnumerable<HotelPhotoDTO>>(await Database.HotelPhotos.GetAll());
         }
     }
 }

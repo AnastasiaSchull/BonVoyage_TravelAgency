@@ -4,7 +4,7 @@ namespace BonVoyage.BLL.Interfaces
 {
     public interface IHotelService
     {
-        Task<IQueryable<HotelDTO>> GetAllHotelsAsync();
+        Task<IEnumerable<HotelDTO>> GetAllHotelsAsync();
         Task<HotelDTO> GetHotelByIdAsync(int id);
         Task CreateHotelAsync(HotelDTO hotelDTO);
         Task UpdateHotelAsync(HotelDTO hotelDTO);

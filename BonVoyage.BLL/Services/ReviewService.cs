@@ -68,11 +68,11 @@ namespace BonVoyage.BLL.Services
 			};
 		}
 
-		public async Task<IQueryable<ReviewDTO>> GetAllReviewsAsync()
+		public async Task<IEnumerable<ReviewDTO>> GetAllReviewsAsync()
 		{
 			var config = new MapperConfiguration(cfg => cfg.CreateMap<Review, ReviewDTO>());
 			var mapper = new Mapper(config);
-			return mapper.Map<IQueryable<Review>, IQueryable<ReviewDTO>>(await Database.Reviews.GetAll());
+			return mapper.Map<IQueryable<Review>, IEnumerable<ReviewDTO>>(await Database.Reviews.GetAll());
 		}
 	}
 }

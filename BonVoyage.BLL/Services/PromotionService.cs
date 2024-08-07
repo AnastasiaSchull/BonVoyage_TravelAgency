@@ -61,10 +61,10 @@ namespace BonVoyage.BLL.Services
             };
         }
         // Automapper 
-        public async Task<IQueryable<PromotionDTO>> GetAllPromotionsAsync()
+        public async Task<IEnumerable<PromotionDTO>> GetAllPromotionsAsync()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Promotion, PromotionDTO>()).CreateMapper();
-            return mapper.Map<IQueryable<Promotion>, IQueryable<PromotionDTO>>(await Database.Promotions.GetAll());
+            return mapper.Map<IQueryable<Promotion>, IEnumerable<PromotionDTO>>(await Database.Promotions.GetAll());
         }
     }
 }

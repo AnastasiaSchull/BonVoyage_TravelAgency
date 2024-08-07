@@ -60,11 +60,11 @@ namespace BonVoyage.BLL.Services
 		}
 
 		// Automapper 
-		public async Task<IQueryable<CustomerPreferenceDTO>> GetAllPreferencesAsync()
+		public async Task<IEnumerable<CustomerPreferenceDTO>> GetAllPreferencesAsync()
 		{
 			var config = new MapperConfiguration(cfg => cfg.CreateMap<CustomerPreference, CustomerPreferenceDTO>());
 			var mapper = new Mapper(config);
-			return mapper.Map<IQueryable<CustomerPreference>, IQueryable<CustomerPreferenceDTO>>(await Database.CustomerPreferences.GetAll());
+			return mapper.Map<IQueryable<CustomerPreference>, IEnumerable<CustomerPreferenceDTO>>(await Database.CustomerPreferences.GetAll());
 		}
 	}
 }
