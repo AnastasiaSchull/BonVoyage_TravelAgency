@@ -5,22 +5,22 @@ using BonVoyage.BLL.Infrastructure;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
-    public class HotelController : Controller
+    public class ReviewController : Controller
     {
-        private readonly IHotelService hotelService;
+        private readonly IReviewService reviewService;
 
-        public HotelController(IHotelService serv)
+        public ReviewController(IReviewService serv)
         {
-            hotelService = serv;
+            reviewService = serv;
         }
 
-        // GET: Hotels
+        // GET: Reviews
         public async Task<IActionResult> Index()
         {
-            return View(await hotelService.GetAllHotelsAsync());
+            return View(await reviewService.GetAllReviewsAsync());
         }
 
-        // GET: Hotels/Details/5
+        // GET: Reviews/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             try
@@ -29,8 +29,8 @@ namespace BonVoyage_TravelAgency.Controllers
                 {
                     return NotFound();
                 }
-                HotelDTO hotel = await hotelService.GetHotelByIdAsync((int)id);
-                return View(hotel);
+                ReviewDTO review = await reviewService.GetReviewByIdAsync((int)id);
+                return View(review);
             }
             catch (ValidationException ex)
             {
@@ -39,27 +39,27 @@ namespace BonVoyage_TravelAgency.Controllers
         }
 
         //
-        // GET: /Hotels/Create
+        // GET: /Reviews/Create
 
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Hotels/Create
+        // POST: Reviews/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(HotelDTO hotel)
+        public async Task<IActionResult> Create(ReviewDTO review)
         {
             if (ModelState.IsValid)
             {
-                await hotelService.CreateHotelAsync(hotel);
-                return View("~/Views/Hotels/Index.cshtml", await hotelService.GetAllHotelsAsync());
+                await reviewService.CreateReviewAsync(review);
+                return View("~/Views/Reviews/Index.cshtml", await reviewService.GetAllReviewsAsync());
             }
-            return View(hotel);
+            return View(review);
         }
 
-        // GET: Hotels/Edit
+        // GET: Reviews/Edit
         public async Task<IActionResult> Edit(int? id)
         {
             try
@@ -68,8 +68,8 @@ namespace BonVoyage_TravelAgency.Controllers
                 {
                     return NotFound();
                 }
-                HotelDTO hotel = await hotelService.GetHotelByIdAsync((int)id);
-                return View(hotel);
+                ReviewDTO review = await reviewService.GetReviewByIdAsync((int)id);
+                return View(review);
             }
             catch (ValidationException ex)
             {
@@ -77,20 +77,20 @@ namespace BonVoyage_TravelAgency.Controllers
             }
         }
 
-        // POST: Hotels/Edit/5
+        // POST: Reviews/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(HotelDTO hotel)
+        public async Task<IActionResult> Edit(ReviewDTO review)
         {
             if (ModelState.IsValid)
             {
-                await hotelService.UpdateHotelAsync(hotel);
-                return View("~/Views/Hotels/Index.cshtml", await hotelService.GetAllHotelsAsync());
+                await reviewService.UpdateReviewAsync(review);
+                return View("~/Views/Reviews/Index.cshtml", await reviewService.GetAllReviewsAsync());
             }
-            return View(hotel);
+            return View(review);
         }
 
-        // GET: Hotels/Delete/
+        // GET: Reviews/Delete/
         public async Task<IActionResult> Delete(int? id)
         {
             try
@@ -99,8 +99,8 @@ namespace BonVoyage_TravelAgency.Controllers
                 {
                     return NotFound();
                 }
-                HotelDTO hotel = await hotelService.GetHotelByIdAsync((int)id);
-                return View(hotel);
+                ReviewDTO review = await reviewService.GetReviewByIdAsync((int)id);
+                return View(review);
             }
             catch (ValidationException ex)
             {
@@ -112,13 +112,13 @@ namespace BonVoyage_TravelAgency.Controllers
             }
         }
 
-        // POST: Hotels/Delete/
+        // POST: Reviews/Delete/
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await hotelService.DeleteHotelAsync(id);
-            return View("~/Views/Hotels/Index.cshtml", await hotelService.GetAllHotelsAsync());
+            await reviewService.DeleteReviewAsync(id);
+            return View("~/Views/Reviews/Index.cshtml", await reviewService.GetAllReviewsAsync());
         }
 
     }
