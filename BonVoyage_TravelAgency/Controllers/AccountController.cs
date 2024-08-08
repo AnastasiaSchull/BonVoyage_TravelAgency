@@ -39,7 +39,7 @@ namespace BonVoyage_TravelAgency.Controllers
 
                 if (existingUser != null)
                 {
-                    ModelState.AddModelError("Email", "A user with this login already exists!");
+                    ModelState.AddModelError("Email", "A user with this email already exists!");
                     return View(reg);
                 }
 
