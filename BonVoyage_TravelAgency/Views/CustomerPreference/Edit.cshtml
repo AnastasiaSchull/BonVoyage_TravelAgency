@@ -1,0 +1,38 @@
+﻿@model BonVoyage.DAL.Entities.CustomerPreference
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Song</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CustomerPreferenceId" />
+                <div class="form-group">
+                    @Html.Label("Preferences:")
+                <input asp-for="PreferencesDetails" class="form-control" />
+                <span asp-validation-for="PreferencesDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.Label("User:")
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.ListUsers as SelectList"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
