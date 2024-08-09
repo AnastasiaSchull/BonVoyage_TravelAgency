@@ -2,16 +2,27 @@
 using BonVoyage.BLL.DTOs;
 using BonVoyage.BLL.Interfaces;
 using BonVoyage.BLL.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
     public class ReviewController : Controller
     {
         private readonly IReviewService reviewService;
+        private readonly IUserService userService;
+        private readonly ITourService tourService;
+        private readonly IHotelService hotelService;
+     
 
-        public ReviewController(IReviewService serv)
+        public ReviewController(IReviewService reviewServ, 
+            IUserService userServ, 
+            ITourService tourServ, 
+            IHotelService hotelServ)
         {
-            reviewService = serv;
+            reviewService = reviewServ;
+            userService = userServ;
+            tourService = tourServ;
+            hotelService = hotelServ;
         }
 
         // GET: Reviews
@@ -41,8 +52,11 @@ namespace BonVoyage_TravelAgency.Controllers
         //
         // GET: /Reviews/Create
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewBag.ListUsers = new SelectList(await  userService.GetAllUsersAsync(), "UserId", "Name");
+            ViewBag.ListArtists = new SelectList(await tourService.GetAllToursAsync(), "TourId", "Name");
+            ViewBag.ListVideos = new SelectList(await hotelService.GetAllHotelsAsync(), "HotelId", "Name");
             return View();
         }
 
@@ -56,6 +70,9 @@ namespace BonVoyage_TravelAgency.Controllers
                 await reviewService.CreateReviewAsync(review);
                 return View("~/Views/Reviews/Index.cshtml", await reviewService.GetAllReviewsAsync());
             }
+            ViewBag.ListUsers = new SelectList(await userService.GetAllUsersAsync(), "UserId", "Name", review.UserId);
+            ViewBag.ListArtists = new SelectList(await tourService.GetAllToursAsync(), "TourId", "Name", review.TourId);
+            ViewBag.ListVideos = new SelectList(await hotelService.GetAllHotelsAsync(), "HotelId", "Name", review.HotelId);
             return View(review);
         }
 
@@ -69,6 +86,9 @@ namespace BonVoyage_TravelAgency.Controllers
                     return NotFound();
                 }
                 ReviewDTO review = await reviewService.GetReviewByIdAsync((int)id);
+                ViewBag.ListUsers = new SelectList(await userService.GetAllUsersAsync(), "UserId", "Name", review.UserId);
+                ViewBag.ListArtists = new SelectList(await tourService.GetAllToursAsync(), "TourId", "Name", review.TourId);
+                ViewBag.ListVideos = new SelectList(await hotelService.GetAllHotelsAsync(), "HotelId", "Name", review.HotelId);
                 return View(review);
             }
             catch (ValidationException ex)
@@ -85,6 +105,9 @@ namespace BonVoyage_TravelAgency.Controllers
             if (ModelState.IsValid)
             {
                 await reviewService.UpdateReviewAsync(review);
+                ViewBag.ListUsers = new SelectList(await userService.GetAllUsersAsync(), "UserId", "Name", review.UserId);
+                ViewBag.ListArtists = new SelectList(await tourService.GetAllToursAsync(), "TourId", "Name", review.TourId);
+                ViewBag.ListVideos = new SelectList(await hotelService.GetAllHotelsAsync(), "HotelId", "Name", review.HotelId);
                 return View("~/Views/Reviews/Index.cshtml", await reviewService.GetAllReviewsAsync());
             }
             return View(review);
