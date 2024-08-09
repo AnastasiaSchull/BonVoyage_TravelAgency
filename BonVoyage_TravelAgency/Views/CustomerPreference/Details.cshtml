@@ -1,0 +1,29 @@
+﻿@model BonVoyage.DAL.Entities.CustomerPreference
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.Label("Preferences:")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PreferencesDetails)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.Label("User:")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User)
+        </dd>
+    </dl>    
+</div>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model?.CustomerPreferenceId">Edit</a>
+
+    <a asp-action="Index">Back</a>
+</p>
