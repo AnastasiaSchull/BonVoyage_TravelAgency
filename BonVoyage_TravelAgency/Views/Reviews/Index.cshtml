@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BonVoyage.DAL.Entities.Review>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Reviews</h2>
+
+<p>
+
+    <a asp-action="Create">Add a new Review</a>
+    
+</p>
+<table class="table-condensed" style="width:100%">
+    <tr>
+        <th>Text</th>
+        <th>User</th>
+        <th>Tour</th>
+        <th>Hotel</th>
+        <th>Rating</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hotel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            <a asp-action="Details"     asp-route-id="@item.ReviewId">Details</a> |
+            <a asp-action="Edit"        asp-route-id="@item.ReviewId">Edit</a> |
+            <a asp-action="Delete"      asp-route-id="@item.ReviewId">Delete</a>
+                
+        </td>
+    </tr>
+}
+</table>
