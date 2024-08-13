@@ -12,6 +12,7 @@
         public bool HasSwimmingPool { get; set; }
         public int TourId { get; set; }
         public string? Tour { get; set; }
+        public string? Description { get; set; }
 
     }
 }
