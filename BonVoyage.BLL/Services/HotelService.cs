@@ -29,8 +29,9 @@ namespace BonVoyage.BLL.Services
                PricePerNight = hotelDTO.PricePerNight,
                StarRating = hotelDTO.StarRating,
                HasSwimmingPool = hotelDTO.HasSwimmingPool,
-               TourId = hotelDTO.TourId
-               };
+               TourId = hotelDTO.TourId,
+               Description = hotelDTO.Description
+            };
            await Database.Hotels.Create(hotel);
            await Database.Save();
         }
@@ -46,7 +47,8 @@ namespace BonVoyage.BLL.Services
                 PricePerNight = hotelDTO.PricePerNight,
                 StarRating = hotelDTO.StarRating,
                 HasSwimmingPool = hotelDTO.HasSwimmingPool,
-                TourId = hotelDTO.TourId
+                TourId = hotelDTO.TourId,
+                Description = hotelDTO.Description
             };
             Database.Hotels.Update(hotel);
             await Database.Save();
@@ -73,7 +75,8 @@ namespace BonVoyage.BLL.Services
                 StarRating = hotel.StarRating,
                 HasSwimmingPool = hotel.HasSwimmingPool,
                 TourId = hotel.TourId,
-                Tour = hotel.Tour?.Title
+                Tour = hotel.Tour?.Title,
+                Description = hotel.Description
             };
         }
         // Automapper 

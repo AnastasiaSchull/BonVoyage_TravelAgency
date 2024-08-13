@@ -18,7 +18,8 @@ namespace BonVoyage.DAL.Entities
 		public bool HasSwimmingPool { get; set; }
 		public int TourId { get; set; }
 		public virtual Tour? Tour { get; set; }
-		public virtual ICollection<Review>? Reviews { get; set; }
+        public string? Description { get; set; }
+        public virtual ICollection<Review>? Reviews { get; set; }
 		public virtual ICollection<HotelPhoto>? HotelPhotos { get; set; }
 
 	}

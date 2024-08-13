@@ -18,7 +18,7 @@ namespace BonVoyage.DAL.EF
         public DbSet<Tour> Tours { get; set; }
         public DbSet<TourPhoto> TourPhotos { get; set; }
         public DbSet<User> Users { get; set; }
-
+        public DbSet<Message> Messages { get; set; }
 
         public BonVoyageContext(DbContextOptions<BonVoyageContext> options)
                    : base(options)
