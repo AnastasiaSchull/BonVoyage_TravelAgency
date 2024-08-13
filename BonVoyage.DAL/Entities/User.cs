@@ -15,10 +15,19 @@ namespace BonVoyage.DAL.Entities
 		public string? Password { get; set; }
 		public string? Salt { get; set; }
 		public string? Role { get; set; }
-
-		public virtual ICollection<Review>? Reviews { get; set; }
+        public string? ConnectionId { get; set; }// идентификатор соединения
+        public bool IsActive { get; set; }
+        public virtual ICollection<Review>? Reviews { get; set; }
 		public virtual ICollection<Booking>? Bookings { get; set; }
 		public virtual ICollection<CustomerPreference>? Preferences { get; set; }
-
-	}
+        public virtual ICollection<Message>? Messages { get; set; }
+        // Конструктор для инициализации коллекций
+        public User()
+        {
+            Reviews = new List<Review>();
+            Bookings = new List<Booking>();
+            Preferences = new List<CustomerPreference>();
+            Messages = new List<Message>();
+        }
+    }
 }
