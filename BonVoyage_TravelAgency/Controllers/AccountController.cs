@@ -118,10 +118,18 @@ namespace BonVoyage_TravelAgency.Controllers
                     return View(logon);
                 }
 
+                HttpContext.Session.SetString("UserName", user.UserName);
+
                 return RedirectToAction("Index", "Home");
             }
 
             return View(logon);
+        }
+
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
