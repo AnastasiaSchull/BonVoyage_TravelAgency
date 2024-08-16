@@ -2,6 +2,7 @@
 using BonVoyage.BLL.DTOs;
 using BonVoyage.BLL.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using BonVoyage_WebAPI.Models;
 
 namespace BonVoyage_WebAPI.Controllers
 {
@@ -11,21 +12,46 @@ namespace BonVoyage_WebAPI.Controllers
     public class TourController: ControllerBase
     {
         private readonly ITourService tourService;
+        private readonly ITourPhotoService tourPhotoService;
 
-        public TourController(ITourService serv)
+        public TourController(ITourService serv, ITourPhotoService photoServ)
         {
             tourService = serv;
+            tourPhotoService = photoServ;
         }
         // GET: api/Tours
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TourDTO>>> GetAllTours()
+        public async Task<ActionResult<List<TourViewModel>>> GetAllTours()
         {
             var tours = await tourService.GetAllToursAsync();
             if (tours == null)
             {
                 return NotFound();
             }
-            return tours.ToList(); 
+            var toursPhotos = await tourPhotoService.GetAllTourPhotosAsync();
+
+            List<TourViewModel> toursList = new List<TourViewModel>();
+            foreach(var tour in tours)
+            {
+                TourViewModel tourViewModel = new TourViewModel();
+                tourViewModel.TourId = tour.TourId;
+                tourViewModel.Title = tour.Title;
+                tourViewModel.Description = tour.Description;
+                tourViewModel.Duration = tour.Duration;
+                tourViewModel.Price = tour.Price;
+                tourViewModel.Country = tour.Country;
+                tourViewModel.Route = tour.Route;
+                tourViewModel.StartDate = tour.StartDate;
+                tourViewModel.EndDate = tour.EndDate;
+                
+                foreach(var tourPhoto in toursPhotos)
+                {
+                    if(tourPhoto.TourId == tour.TourId)
+                        tourViewModel.PhotoUrl = tourPhoto.PhotoUrl;
+                }
+                toursList.Add(tourViewModel);
+            }
+            return toursList; 
         }
 
         // GET: api/Tours/5

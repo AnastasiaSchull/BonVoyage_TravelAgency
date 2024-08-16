@@ -3,24 +3,50 @@
 <head>
     <meta charset="utf-8" />
     <title>BonVoyage - Tours</title>
-</head>
-<body>
+    <link href="css/site.css" rel="stylesheet">
+    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="lib/bootstrap/dist/css/bootstrap.css.map" rel="stylesheet">   
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
-    
-    <div id="content"></div>
-    <script type="text/babel" src="Tours.jsx"></script>    
-    <script type="text/babel">
-        "use strict";
-        const rootNode1 = document.getElementById("content");
-        const root1 = ReactDOM.createRoot(rootNode1);
-        root1.render(
-            <React.StrictMode>
-                <Tours/>
-            </React.StrictMode>
-         );
-    </script>
+</head>
+<body>
+        <div class="container" id="app"></div>
+        <script type="text/babel" src="Tours.jsx"></script>
+        <script type="text/babel" src="ToursInfo.jsx"></script>
+        <script type="text/babel" src="ToursPhotos.jsx"></script>
+        <script type="text/babel">
+
+            function GetTours() {
+
+                    $.ajax({
+                        url: 'https://localhost:7299/api/tours',
+                        method: "GET",
+                        contentType: "application/json",
+                        success: function (tours) {
+                            let toursInfo = [];
+
+                            $.each(tours, function (index, tour) {
+                                toursInfo.push(tour);
+                            })
+                            console.log(toursInfo);
+                            const propsValues = {
+                                title: "All our tours",
+                                tours: toursInfo
+                            };
+                            ReactDOM.createRoot(document.getElementById("app")).render(
+                                    <React.StrictMode>
+                                        <Tours data={propsValues} />
+                                    </React.StrictMode>
+                                );
+                        },
+                        error: function (x, y, z) {
+                            alert(x + '\n' + y + '\n' + z);
+                        }
+                    });
+                }
+                GetTours();
+        </script>
 </body>
 </html>
