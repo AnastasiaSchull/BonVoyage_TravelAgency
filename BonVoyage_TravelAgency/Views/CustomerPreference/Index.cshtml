@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BonVoyage.DAL.Entities.CustomerPreference>
+﻿@model IEnumerable<BonVoyage.BLL.DTOs.CustomerPreferenceDTO>
 
 @{
     ViewBag.Title = "Index";
@@ -22,7 +22,7 @@
             @Html.DisplayFor(modelItem => item.PreferencesDetails)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.User)
+            @Html.DisplayFor(modelItem => item.UserId)
         </td>
         <td>
             <a asp-action="Details"     asp-route-id="@item.CustomerPreferenceId">Details</a> |
