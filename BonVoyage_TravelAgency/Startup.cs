@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using BonVoyage_TravelAgency.SignalR;
 using React.AspNet;
 
 namespace BonVoyage_TravelAgency
@@ -9,7 +9,10 @@ namespace BonVoyage_TravelAgency
         {
             services.AddMemoryCache();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddReact();            
+            services.AddReact();
+           
+            // Регистрация SignalR в сервисах приложения
+            services.AddSignalR();
         }
 
         public void Configure(IApplicationBuilder app)
@@ -19,6 +22,17 @@ namespace BonVoyage_TravelAgency
             app.UseReact(config => { });
             app.UseDefaultFiles();
             app.UseStaticFiles();
+
+            // Настройка маршрутов для SignalR хабов
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                // Настройка маршрута для SignalR хаба
+                endpoints.MapHub<ChatHub>("/chat");
+
+                endpoints.MapDefaultControllerRoute();
+            });
         }
     }
 }

@@ -15,8 +15,10 @@ namespace BonVoyage.DAL.Interfaces
         IRepository<Review> Reviews { get; }
         IRepository<Tour> Tours { get; }
         IRepository<TourPhoto> TourPhotos { get; }
-        IRepository<User> Users { get; }
 
+        //IRepository<User> Users { get; }
+        IUserRepository Users { get; }
+        IMessageRepository Messages { get; }
         Task Save();
     }
 }

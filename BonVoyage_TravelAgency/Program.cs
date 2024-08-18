@@ -1,7 +1,10 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using BonVoyage.BLL.Interfaces;
 using BonVoyage.BLL.Services;
 using BonVoyage.BLL.Infrastructure;
+using BonVoyage_TravelAgency.SignalR;
+using BonVoyage.DAL.Interfaces;
+using BonVoyage.DAL.Repositories;
 
 namespace BonVoyage_TravelAgency
 {
@@ -24,9 +27,18 @@ namespace BonVoyage_TravelAgency
 			builder.Services.AddTransient<ITourService, TourService>();
 			builder.Services.AddTransient<IPromotionService, PromotionService>();
 			builder.Services.AddTransient<IFlightService, FlightService>();
-			// Add services to the container.
-			builder.Services.AddControllersWithViews();
-            builder.Services.AddSession();
+            builder.Services.AddTransient<IChatService, ChatService>();
+
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+            builder.Services.AddScoped<IUnitOfWork, EFUnitOfWork>();
+
+            builder.Services.AddSignalR();
+
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();          
+
+			builder.Services.AddSession();
 
             var app = builder.Build();
 
@@ -50,7 +62,9 @@ namespace BonVoyage_TravelAgency
 				name: "default",
 				pattern: "{controller=Home}/{action=Index}/{id?}");
 
-			app.Run();
+            // маршрутизация для SignalR
+            app.MapHub<ChatHub>("/chat");
+            app.Run();
 		}
 	}
 }
