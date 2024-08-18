@@ -6,7 +6,7 @@ using BonVoyage.DAL.EF;
 
 namespace BonVoyage.DAL.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IUserRepository//IRepository<User>
     {
         private BonVoyageContext db;
         public UserRepository(BonVoyageContext context)
@@ -31,13 +31,29 @@ namespace BonVoyage.DAL.Repositories
         public void Update(User user)
         {
             db.Entry(user).State = EntityState.Modified;
-        }
+        }      
 
         public async Task Delete(int id)
         {
             User? user = await db.Users.FindAsync(id);
             if (user != null)
                 db.Users.Remove(user);
+        }
+
+        // методы для поиска по UserName и ConnectionId
+        public async Task<User?> GetUserByUsernameAsync(string username)
+        {
+            return await db.Users.FirstOrDefaultAsync(u => u.UserName == username);
+        }
+
+        public async Task<User?> GetUserByConnectionIdAsync(string connectionId)
+        {
+            return await db.Users.FirstOrDefaultAsync(u => u.ConnectionId == connectionId);
+        }
+
+        public async Task<List<User>> GetActiveUsersAsync()
+        {
+            return await db.Users.Where(u => u.IsActive).ToListAsync();
         }
     }
 }

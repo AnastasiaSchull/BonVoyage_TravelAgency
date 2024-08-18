@@ -19,7 +19,7 @@ namespace BonVoyage.DAL.Repositories
         private TourRepository tourRepository;
         private TourPhotoRepository tourPhotoRepository;
         private UserRepository userRepository;
-
+        private MessageRepository messageRepository;
 
         public EFUnitOfWork(BonVoyageContext context)
         {
@@ -117,16 +117,33 @@ namespace BonVoyage.DAL.Repositories
                 return tourPhotoRepository;
             }
         }
-        public IRepository<User> Users
+        //public IRepository<User> Users
+        //{
+        //    get
+        //    {
+        //        if (userRepository == null)
+        //           userRepository = new UserRepository(db);
+        //        return userRepository;
+        //    }
+        //}       
+        public IUserRepository Users
         {
             get
             {
                 if (userRepository == null)
-                   userRepository = new UserRepository(db);
+                    userRepository = new UserRepository(db);
                 return userRepository;
             }
         }
-
+        public IMessageRepository Messages
+        {
+            get
+            {
+                if (messageRepository == null)
+                    messageRepository = new MessageRepository(db);
+                return messageRepository;
+            }
+        }
         public async Task Save()
         {
             await db.SaveChangesAsync();
