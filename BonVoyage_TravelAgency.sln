@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BonVoyage.DAL", "BonVoyage.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BonVoyage.BLL", "BonVoyage.BLL\BonVoyage.BLL.csproj", "{CD68C435-08E6-4E9F-8B68-8F500506CE1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BonVoyage_WebAPI", "BonVoyage_WebAPI\BonVoyage_WebAPI.csproj", "{7B64A741-047F-4230-B715-D1B687262F4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BonVoyage_WebAPI", "BonVoyage_WebAPI\BonVoyage_WebAPI.csproj", "{7B64A741-047F-4230-B715-D1B687262F4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
