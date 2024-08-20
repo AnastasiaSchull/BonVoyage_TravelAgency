@@ -2,22 +2,31 @@
 using BonVoyage.BLL.DTOs;
 using BonVoyage.BLL.Interfaces;
 using BonVoyage.BLL.Infrastructure;
+using BonVoyage.BLL.Services;
+using BonVoyage_TravelAgency.Models;
+using BonVoyage.DAL.Entities;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
     public class BookingController : Controller
     {
         private readonly IBookingService bookingService;
-
-        public BookingController(IBookingService serv)
+        private readonly ITourService _tourService;
+        private readonly ITourPhotoService _tourPhotoService;
+        private readonly IUserService _userService;
+        public BookingController(IBookingService serv, IUserService userService, ITourService tourService, ITourPhotoService tourPhotoService)
         {
             bookingService = serv;
+            _userService = userService;
+            _tourService = tourService;
+            _tourPhotoService = tourPhotoService;
         }
 
         // GET: Booking
         public async Task<IActionResult> Index()
         {
-            return View(await bookingService.GetAllBookingsAsync());
+            //var bookings = await bookingService.GetAllBookingsAsync();
+            return View(/*bookings*/);
         }
         
         // GET: Booking/Details/5
@@ -39,9 +48,20 @@ namespace BonVoyage_TravelAgency.Controllers
         }
         // GET: Booking/Create
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create(int id)
         {
-            return View();
+            var users = await _userService.GetAllUsersAsync();
+            var tour = await _tourService.GetTourByIdAsync(id);
+            var tourPhoto = await _tourPhotoService.GetTourPhotoByIdAsync(tour.TourId);
+            
+            var viewModel = new BookingViewModel
+            {
+                Tour = tour,
+                Users = users,
+                TourPhoto = tourPhoto
+            };
+
+            return View(viewModel);
         }
 
         // POST: Booking/Create
@@ -51,9 +71,10 @@ namespace BonVoyage_TravelAgency.Controllers
         {
             if (ModelState.IsValid)
             {
+                booking.BookingDate = DateTime.Now;
+                booking.Status = "Under consideration";
                 await bookingService.CreateBookingAsync(booking);
-                TempData["msg"] = "successful booking";
-                return View("~/Views/Home/Index.cshtml");
+                return RedirectToAction(nameof(Index));
             }
             return View(booking);
         }
