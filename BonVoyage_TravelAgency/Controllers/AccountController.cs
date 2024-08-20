@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using BonVoyage.BLL.Interfaces;
 using BonVoyage.BLL.DTOs;
+using Microsoft.AspNetCore.Http;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
@@ -119,6 +120,8 @@ namespace BonVoyage_TravelAgency.Controllers
                 }
 
                 HttpContext.Session.SetString("UserName", user.UserName);
+                HttpContext.Session.SetInt32("UserId", user.UserId);
+
 
                 return RedirectToAction("Index", "Home");
             }

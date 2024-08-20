@@ -1,0 +1,102 @@
+﻿@model BonVoyage_TravelAgency.Models.BookingViewModel
+
+@{
+    ViewData["Title"] = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    p {
+        color: black;
+    }
+</style>
+<h3>Tour booking</h3>
+<div>
+            <div class="col-md-4" style="float: right">
+        @{
+            var tour = Model.Tour; 
+            var tourPhoto = Model.TourPhoto;
+        }
+            <div class="card mb-4 shadow-sm">
+            @if (tourPhoto != null)
+            {
+                <img src="@tourPhoto.PhotoUrl" class="card-img-top" alt="Image">
+            }
+            <div class="card-body">
+                    <h5 class="card-title">@tour.Title</h5>
+                    <p class="card-text">@tour.Description</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Duration: @tour.Duration days</li>
+                        <li class="list-group-item">Price: $@tour.Price</li>
+                        <li class="list-group-item">Country: @tour.Country</li>
+                        <li class="list-group-item">Route: @tour.Route</li>
+                    </ul>
+                    <div class="card-footer">
+                        <small class="text-muted">Start Date: @tour.StartDate.ToShortDateString()</small>
+                        <br />
+                        <small class="text-muted">End Date: @tour.EndDate.ToShortDateString()</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+ <h4>My contacts</h4>
+    @{
+        var userId = Context.Session.GetInt32("UserId");
+        var user = Model.Users.FirstOrDefault(u => u.UserId == userId); 
+    }
+<form asp-action="Create" method="post" class="form-horizontal">
+    <div class="form-group col-md-8">
+             <label asp-for="@user.UserName" class="control-label col-md-2">Name:</label>
+            <div class="col-md-8">
+                <input asp-for="@user.UserName" class="form-control" value="@user.UserName" />
+                <span asp-validation-for="@user.UserName" class="text-danger"></span>
+            </div>
+            <label asp-for="@user.UserSurname" class="control-label col-md-2">Surname:</label>
+            <div class="col-md-8">
+                <input asp-for="@user.UserSurname" class="form-control" value="@user.UserSurname" />
+                <span asp-validation-for="@user.UserSurname" class="text-danger"></span>
+            </div>
+            <label asp-for="@user.Email" class="control-label col-md-2">Email:</label>
+            <div class="col-md-8">
+                <input asp-for="@user.Email" class="form-control" value="@user.Email" />
+                <span asp-validation-for="@user.Email" class="text-danger"></span>
+            </div>
+            <br/>
+             <input type="hidden" asp-for="TourId" value="@tour.TourId"/>
+             <input type="hidden" asp-for="UserId" value="@user.UserId"/>
+            <label asp-for="NumberOfPeople" class="control-label col-md-2">Number of persons:</label>
+        <div class="col-md-8">
+                <input asp-for="NumberOfPeople" class="form-control" min="1" value="1" />
+                <span asp-validation-for="NumberOfPeople" id ="numberOfPeople" class="text-danger"></span>
+        </div> </div>
+
+        <br />
+     <div style="background-color:white" class="col-md-6">
+     <h4>Stages of booking a tour:</h4>
+     <ol>
+        <li>Entering customer and tourist data (passports can be entered later)</>
+        <li>Choosing the payment method and the amount of payment</li>
+        <li>Payment and confirmation of the tour</li>
+        <li>Receipt of documents in electronic form (air ticket, voucher, insurance, memo)</li>
+     </ol>
+     </div>
+        <br />
+        <div style="background-color:white" class="col-md-6">
+        <h4>Payment:</h4>
+            <ol>
+                <li>By bank card online</li>
+                <li>Payment for bank details</li>
+                <li>In the office</li>
+            </ol>
+        </div>
+        <br />
+        <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Book</button>
+        </div>
+    </div>
+        <p>
+            By clicking on the “Book” button, I accept the terms of the Public Agreement (offer), agree to the Online Order Rules, Terms of Use, <a href="https://localhost:7079/Home/Privacy">Privacy Policy</a>
+            and Cookies Policy
+        </p>
+    </form>
+</div>

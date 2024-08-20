@@ -38,6 +38,12 @@
                             <br />
                             <small class="text-muted">End Date: @tour.EndDate.ToShortDateString()</small>
                         </div>
+                        @if (Context.Session.GetString("UserId") != null)
+                        {
+                            <div>
+                                <a asp-action="Create" asp-controller="Booking" class=" link" asp-route-id="@tour.TourId">Book</a>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -55,4 +61,4 @@
         }
     });
 
-</script>
+ </script>

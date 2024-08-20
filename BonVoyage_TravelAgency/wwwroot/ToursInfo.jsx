@@ -18,6 +18,9 @@
                         <br />
                         <small class="text-muted">End Date: {this.props.tour.endDate}</small>
                     </div>
+                    <div>
+                        <a href="#"/*"https://localhost:7079/Booking/Create" */ className="nav-link d-inline" target="_blank" rel="noopener noreferrer">Book</a>
+                    </div>
                </div>
             </div>
         </div>
