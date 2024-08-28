@@ -38,7 +38,7 @@ body {
     background-attachment: fixed;
 }
 
-h1, h3 {
+h1,h2, h3 {
     font-family: 'Calypso', Arial, sans-serif;
     color:blue;
 }
@@ -47,7 +47,6 @@ p{
     font-size:16px;
     color:cadetblue;
 }
-
 
 .login-container {
     display: flex;
@@ -58,12 +57,10 @@ p{
     color: white;
 }
   
-
 .login-form {
     display: flex;
     align-items: center;
 }
-
 
 .login-form input, .login-form button {
     margin: 5px;
@@ -71,7 +68,6 @@ p{
     border-radius: 10px;
     border: 2px solid #258cfb;
 }
-
 
 .container {
     padding: 18px;
@@ -81,7 +77,6 @@ p{
 
 .containerPrivacy {
     background: rgba(255, 255, 255, 0.3);
-    /* padding: 20px;*/
     padding:  0;   
     border-radius: 10px;
 }
@@ -116,7 +111,7 @@ a:hover {
 .collapse p{
     color:black;
 }
-
+  
 .faq-actions a {
     color: dimgray !important;
 }
@@ -135,4 +130,20 @@ p a:hover {
 
 .text-center a:hover {
     color:#ff6a00 !important;
+}
+
+label {
+    color: #32afaf !important;
+    font-size: 18px !important;
+}
+
+.btn.btn-default {
+    background-color: #007bff !important;
+    color: white !important;
+    font-family: 'Calypso';
+}
+
+span {
+    font-family: 'Calypso';
+    color: #32afaf !important;
 }
