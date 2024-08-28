@@ -38,8 +38,9 @@
                     <a class="navbar-brand" asp-area="" asp-controller="CustomerPreference" asp-action="Index">Preference</a>
                     <span class="navbar-brand">Hello, @Context.Session.GetString("UserName")</span>
                     <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                    <a href="/Chat/Index" class="btn ">Go to Chat Room</a>
                 }
-                <a href="/Chat/Index" class="btn ">Go to Chat Room</a>
+            
 
             </div>
         </nav>
