@@ -1,4 +1,4 @@
-using BonVoyage.BLL.Interfaces;
+﻿using BonVoyage.BLL.Interfaces;
 using BonVoyage_TravelAgency.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -16,16 +16,34 @@ namespace BonVoyage_TravelAgency.Controllers
             _tourService = tourService;
             _tourPhotoService = tourPhotoService;
         }
-     
-        public async Task<IActionResult> Index()
+
+        //public async Task<IActionResult> Index()
+        //{
+        //    var tours = await _tourService.GetAllToursAsync();
+        //    var tourPhotos = await _tourPhotoService.GetAllTourPhotosAsync();
+
+        //    var viewModel = new ToursPhotosViewModel
+        //    {
+        //        Tours = tours,
+        //        TourPhotos = tourPhotos
+        //    };
+
+        //    return View(viewModel);
+        //}
+       
+   
+        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 3)
         {
-            var tours = await _tourService.GetAllToursAsync();
-            var tourPhotos = await _tourPhotoService.GetAllTourPhotosAsync();
+            var totalItemCount = await _tourService.GetTotalToursCount(); 
+            var tours = await _tourService.GetAllToursAsync(pageNumber, pageSize); // получение туров для текущей страницы
+
+            var tourPhotos = await _tourPhotoService.GetAllTourPhotosAsync(); 
 
             var viewModel = new ToursPhotosViewModel
             {
                 Tours = tours,
-                TourPhotos = tourPhotos
+                TourPhotos = tourPhotos,
+                PageViewModel = new PageViewModel(totalItemCount, pageNumber, pageSize) // подключение модели пагинации
             };
 
             return View(viewModel);

@@ -84,8 +84,25 @@ namespace BonVoyage.BLL.Services
 
         public async Task<IEnumerable<TourDTO>> GetAllToursAsync()
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Tour, TourDTO>()).CreateMapper(); 
-            return mapper.Map< IQueryable < Tour > ,IEnumerable <TourDTO>>(await Database.Tours.GetAll());
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Tour, TourDTO>()).CreateMapper();
+            return mapper.Map<IQueryable<Tour>, IEnumerable<TourDTO>>(await Database.Tours.GetAll());
+        }
+
+        public async Task<IEnumerable<TourDTO>> GetAllToursAsync(int pageNumber = 1, int pageSize = 10)
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Tour, TourDTO>()).CreateMapper();
+
+            var toursQuery = await Database.Tours.GetAll();
+
+            // применяем пагинацию
+            var tours = toursQuery.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+
+            return mapper.Map<IEnumerable<TourDTO>>(tours);
+        }
+
+        public async Task<int> GetTotalToursCount()
+        {
+            return await Database.Tours.CountAsync();
         }
     }
 }
