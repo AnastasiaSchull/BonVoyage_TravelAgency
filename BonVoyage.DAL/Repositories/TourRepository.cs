@@ -39,5 +39,10 @@ namespace BonVoyage.DAL.Repositories
             if (tour != null)
                 db.Tours.Remove(tour);
         }
+
+        public async Task<int> CountAsync()
+        {
+            return await db.Tours.CountAsync();
+        }
     }
 }

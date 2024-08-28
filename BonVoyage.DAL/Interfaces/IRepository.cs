@@ -7,5 +7,11 @@
         Task Create(T item);
         void Update(T item);
         Task Delete(int id);
+
+        //дефолтный метод
+        Task<int> CountAsync()
+        {
+            return Task.FromResult(0);
+        }
     }
 }
