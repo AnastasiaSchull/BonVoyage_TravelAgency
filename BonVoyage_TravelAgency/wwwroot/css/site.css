@@ -81,7 +81,6 @@ p{
 
 .containerPrivacy {
     background: rgba(255, 255, 255, 0.3);
-    /* padding: 20px;*/
     padding:  0;   
     border-radius: 10px;
 }
@@ -136,3 +135,5 @@ p a:hover {
 .text-center a:hover {
     color:#ff6a00 !important;
 }
+
+
