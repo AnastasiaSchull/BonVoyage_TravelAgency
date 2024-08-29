@@ -10,6 +10,8 @@ namespace BonVoyage.DAL.Entities
 		public string? Email { get; set; }
 		public string? Password { get; set; }
 		public string? Salt { get; set; }
+        public string? Address { get; set; }
+        public string? Country { get; set; }
 		public string? Role { get; set; }
         public string? ConnectionId { get; set; }// connection identifier
         public bool IsActive { get; set; }

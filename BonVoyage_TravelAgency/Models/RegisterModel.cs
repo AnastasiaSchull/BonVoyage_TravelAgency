@@ -14,6 +14,12 @@ namespace BonVoyage_TravelAgency.Models
         public string Email { get; set; }
 
         [Required]
+        public string Address { get; set; }
+
+        [Required]
+        public string Country { get; set; }
+
+        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

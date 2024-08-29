@@ -26,6 +26,8 @@ namespace BonVoyage.BLL.Services
                 Email = userDTO.Email,
                 Password = userDTO.Password,
                 Salt = userDTO.Salt,
+                Address = userDTO.Address,
+                Country = userDTO.Country,
                 Role = userDTO.Role
             };
             await Database.Users.Create(user);
@@ -42,6 +44,8 @@ namespace BonVoyage.BLL.Services
                 Email = userDTO.Email,
                 Password = userDTO.Password,
                 Salt = userDTO.Salt,
+                Address = userDTO.Address,
+                Country = userDTO.Country,
                 Role = userDTO.Role
             };
             Database.Users.Update(user);
@@ -67,6 +71,8 @@ namespace BonVoyage.BLL.Services
                 Email = user.Email,
                 Password = user.Password,
                 Salt = user.Salt,
+                Address = user.Address,
+                Country = user.Country,
                 Role = user.Role
             };
         }
