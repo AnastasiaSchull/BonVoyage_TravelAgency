@@ -48,6 +48,8 @@ namespace BonVoyage_TravelAgency.Controllers
                 user.UserName = reg.UserName;
                 user.UserSurname = reg.UserSurname;
                 user.Email = reg.Email;
+                user.Address = reg.Address;
+                user.Country = reg.Country;
 
                 byte[] saltbuf = new byte[16];
 
@@ -102,7 +104,6 @@ namespace BonVoyage_TravelAgency.Controllers
                     return View(logon);
                 }
 
-                user = users.First();
                 string? salt = user.Salt;
 
                 byte[] password = Encoding.Unicode.GetBytes(salt + logon.Password);
@@ -121,7 +122,6 @@ namespace BonVoyage_TravelAgency.Controllers
 
                 HttpContext.Session.SetString("UserName", user.UserName);
                 HttpContext.Session.SetInt32("UserId", user.UserId);
-
 
                 return RedirectToAction("Index", "Home");
             }
