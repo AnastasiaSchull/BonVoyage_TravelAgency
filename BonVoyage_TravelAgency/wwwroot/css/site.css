@@ -83,15 +83,36 @@ p{
 
 a {
     text-decoration: none;
-    color: #2f00ff !important;
-    font-size: 18px !important;
+    /*color: #2f00ff !important;
+    font-size: 18px !important;*/
     font-family: 'Calypso';
+}
+
+.colorBlue {
+    color: #2f00ff !important;
+}
+.colorWhite {
+    color: #ffffff !important;
+}
+.colorOrange {
+    /*color: #ff6800 !important;*/
+    color: #ffa726!important;
+}
+.size30 {
+    font-size: 30px; 
+    font-weight:bold;
+}
+.size20 {
+    font-size: 20px;
+}
+.size18 {
+    font-size: 18px;
 }
 
 a:hover {
     text-decoration: none;
     color: #32afaf !important;
-    font-size: 18px !important;
+    /*font-size: 18px !important;*/
     font-family: 'Calypso';
 }
 
@@ -145,5 +166,6 @@ label {
 
 span {
     font-family: 'Calypso';
-    color: #32afaf !important;
+    /*color: #32afaf !important;*/
+    color: #ffa726 !important;    
 }

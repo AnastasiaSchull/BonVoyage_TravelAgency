@@ -6,43 +6,121 @@
     <title>@ViewData["Title"] - BonVoyage_TravelAgency</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BonVoyage_TravelAgency.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BonVoyage_TravelAgency.styles.css" asp-append-version="true" />    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header>        
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom" style="background-color: #158af0">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BonVoyage TravelAgency</a>
+                <a class="navbar-brand size30 colorOrange" asp-area="" asp-controller="Home" asp-action="Index">BonVoyage TravelAgency</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
-              @*   <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div> *@
+                </button>              
 
                 @if (Context.Session.GetString("UserName") == null)
                 {
-                    <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Register">Registration</a>
-                    <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                    <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Register">Registration</a>
+                    <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                 }
                 else
                 {
-                    <a class="navbar-brand" asp-area="" asp-controller="CustomerPreference" asp-action="Index">Preference</a>
-                    <span class="navbar-brand">Hello, @Context.Session.GetString("UserName")</span>
-                    <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-                    <a href="/Chat/Index" class="btn ">Go to Chat Room</a>
-                }
-            
+                    <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="CustomerPreference" asp-action="Index">Preference</a>
+                    <span class="navbar-brand size20">Hello, @Context.Session.GetString("UserName")</span>
+                    <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                    <a href="/Chat/Index" class="btn size20 colorWhite">Go to Chat Room</a>
+                }          
 
             </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="display:flex; justify-content:space-evenly">
+                <ul class="navbar-nav mr-auto">                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle colorBlue size20" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Countries
+                        </a>
+                        <div class="dropdown-menu size18" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item colorBlue" href="#">Tours to Turkey</a>
+                            <a class="dropdown-item colorBlue" href="#">Tours to Egypt</a>
+                            <a class="dropdown-item colorBlue" href="#">Tours to Greece</a>
+                            <a class="dropdown-item colorBlue" href="#">Tours to Spain</a>
+                            <a class="dropdown-item colorBlue" href="#">Tours to Croitia</a>
+                            <a class="dropdown-item colorBlue" href="~/Index.html">All countries of the world</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle colorBlue size20" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Search tours
+                        </a>
+                        <div class="dropdown-menu size18" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item colorBlue" href="#">Package tours</a>
+                            <a class="dropdown-item colorBlue" href="#">Summer tours</a>
+                            <a class="dropdown-item colorBlue" href="#">Autumn tours</a>
+                            <a class="dropdown-item colorBlue" href="#">Winter tours</a>
+                            <a class="dropdown-item colorBlue" href="#">Spring tours</a>
+                            <a class="dropdown-item colorBlue" href="#">New year tours</a>
+                            <a class="dropdown-item colorBlue" href="#">Ski tours</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle colorBlue size20" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Charters
+                        </a>
+                        <div class="dropdown-menu size18" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item colorBlue" href="#"> Charters to Turkey</a>
+                            <a class="dropdown-item colorBlue" href="#"> Charters to Egypt</a>
+                            <a class="dropdown-item colorBlue" href="#"> Charters to Greece</a>
+                            <a class="dropdown-item colorBlue" href="#"> Charters to Montenegro</a>
+                            <a class="dropdown-item colorBlue" href="#"> Charters ot Bulgaria</a>
+                            <a class="dropdown-item colorBlue" href="#">All charter flights</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle colorBlue size20" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Guide
+                        </a>
+                        <div class="dropdown-menu size18" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item colorBlue" href="#">Where to go for a tourist</a>
+                            <a class="dropdown-item colorBlue" href="#">Travel insurance</a>
+                            <a class="dropdown-item colorBlue" href="#">Travel news</a>
+                            <a class="dropdown-item colorBlue" href="#">Tips for tourists</a>
+                            <a class="dropdown-item colorBlue" href="#">Coronavirus tests</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle colorBlue size20" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            About Bon Voyage
+                        </a>
+                        <div class="dropdown-menu size18" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item colorBlue" href="https://localhost:7079/Home/AboutUs">About Bon Voyage Company</a>
+                            <a class="dropdown-item colorBlue" href="#">Reviews from tourists</a>
+                            <a class="dropdown-item colorBlue" href="https://localhost:7079/FAQ">FAQ</a>
+                            <a class="dropdown-item colorBlue" href="#">Why do people trust us?</a>
+                            <a class="dropdown-item colorBlue" href="#">How to book a tour</a>
+                            <a class="dropdown-item colorBlue" href="#">How to pay for the tour</a>
+                            <a class="dropdown-item colorBlue" href="#">Refund</a>
+                            <a class="dropdown-item colorBlue" href="#">Legal information</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle colorBlue size20" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Where to buy
+                        </a>
+                        <div class="dropdown-menu size18" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item colorBlue" href="#">Office addresses</a>
+                            <a class="dropdown-item colorBlue" href="#">Travel agencies in Paris</a>
+                            <a class="dropdown-item colorBlue" href="#">Travel agencies in Lyon</a>
+                            <a class="dropdown-item colorBlue" href="#">Travel agencies in Nice</a>
+                            <a class="dropdown-item colorBlue" href="#">Travel agencies in Bordeaux</a>
+                            <a class="dropdown-item colorBlue" href="#">Travel agencies in Marseilles</a>
+                        </div>
+                    </li>                    
+                </ul>               
+            </div>           
         </nav>
     </header>
     <div class="container">
@@ -52,11 +130,11 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="containerPrivacy">
+        <div class="containerPrivacy size18">
             &copy; 2024 - BonVoyage_TravelAgency - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy </a> |
-            <a asp-area="" asp-controller="FAQ" asp-action="Index"> FAQ</a> |
-            <a asp-area="" asp-controller="Home" asp-action="Contacts"> Contacts</a> |
-            <a asp-area="" asp-controller="Home" asp-action="AboutUs"> About Us</a>
+            <a class="size18" asp-area="" asp-controller="FAQ" asp-action="Index"> FAQ</a> |
+            <a class="size18" asp-area="" asp-controller="Home" asp-action="Contacts"> Contacts</a> |
+            <a class="size18" asp-area="" asp-controller="Home" asp-action="AboutUs"> About Us</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
