@@ -23,19 +23,7 @@
                         <img src="@tourPhoto.PhotoUrl" class="card-img-top" alt="Image">
                     }
                     <div class="card-body">
-                        <h5 class="card-title">@tour.Title</h5>
-                       @*  <p class="card-text">@tour.Description</p>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Duration: @tour.Duration days</li>
-                            <li class="list-group-item">Price: $@tour.Price</li>
-                            <li class="list-group-item">Country: @tour.Country</li>
-                            <li class="list-group-item">Route: @tour.Route</li>
-                        </ul>
-                        <div class="card-footer">
-                            <small class="text-muted">Start Date: @tour.StartDate.ToShortDateString()</small>
-                            <br />
-                            <small class="text-muted">End Date: @tour.EndDate.ToShortDateString()</small>
-                        </div> *@
+                        <h5 class="card-title">@tour.Title</h5>            
                         @if (Context.Session.GetString("UserId") != null)
                         {
                             <div>
