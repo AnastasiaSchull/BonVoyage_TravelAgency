@@ -24,7 +24,7 @@
                     }
                     <div class="card-body">
                         <h5 class="card-title">@tour.Title</h5>
-                        <p class="card-text">@tour.Description</p>
+                       @*  <p class="card-text">@tour.Description</p>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Duration: @tour.Duration days</li>
                             <li class="list-group-item">Price: $@tour.Price</li>
@@ -35,11 +35,11 @@
                             <small class="text-muted">Start Date: @tour.StartDate.ToShortDateString()</small>
                             <br />
                             <small class="text-muted">End Date: @tour.EndDate.ToShortDateString()</small>
-                        </div>
+                        </div> *@
                         @if (Context.Session.GetString("UserId") != null)
                         {
                             <div>
-                                <a asp-action="Create" asp-controller="Booking" class=" link" asp-route-id="@tour.TourId">Book</a>
+                                <a asp-action="Create" asp-controller="Booking" class=" link" asp-route-id="@tour.TourId">View Details</a>
                             </div>
                         }
                     </div>
