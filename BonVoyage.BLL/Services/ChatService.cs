@@ -30,9 +30,29 @@ public class ChatService : IChatService
 
     public async Task ConnectUserAsync(string userName, string connectionId)
     {
-        var user = new User { ConnectionId = connectionId, UserName = userName, IsActive = true };
-        await _userRepository.Create(user);
-        await _unitOfWork.Save();
+        var user = await _userRepository.GetUserByUsernameAsync(userName);
+        if (user != null)
+        {
+            var existingConnection = await _userRepository.GetUserByConnectionIdAsync(connectionId);
+            if (existingConnection == null)
+            {
+                var userConnection = new UserConnection
+                {
+                    UserId = user.UserId,
+                    ConnectionId = connectionId,
+                    IsActive = true,
+                    ConnectedAt = DateTime.Now
+                };
+                await _userRepository.CreateUserConnection(userConnection);
+                await _unitOfWork.Save();
+            }
+            else
+            {
+                existingConnection.IsActive = true;
+                _userRepository.UpdateUserConnection(existingConnection);
+                await _unitOfWork.Save();
+            }
+        }
     }
 
     public async Task<List<MessageDTO>> GetAllMessagesAsync()
@@ -49,23 +69,24 @@ public class ChatService : IChatService
 
     public async Task DisconnectUserAsync(string connectionId)
     {
-        var user = await _userRepository.GetUserByConnectionIdAsync(connectionId);
-        if (user != null)
+        var userConnection = await _userRepository.GetUserByConnectionIdAsync(connectionId);
+        if (userConnection != null)
         {
-            user.IsActive = false;
-             _userRepository.Update(user);
+            userConnection.IsActive = false;
+            userConnection.DisconnectedAt = DateTime.Now;
+            _userRepository.UpdateUserConnection(userConnection);
             await _unitOfWork.Save();
         }
     }
 
     public async Task<List<UserDTO>> GetActiveUsersAsync()
     {
-        var users = await _userRepository.GetActiveUsersAsync();
-        return users.Select(u => new UserDTO
+        var userActivePairs = await _userRepository.GetActiveUsersAsync();
+        return userActivePairs.Select(ua => new UserDTO
         {
-            UserId = u.UserId,
-            UserName = u.UserName,
-            IsActive = u.IsActive
+            UserId = ua.User.UserId,
+            UserName = ua.User.UserName,
+            IsActive = ua.IsActive 
         }).ToList();
     }
 

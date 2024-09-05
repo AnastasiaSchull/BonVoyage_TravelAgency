@@ -19,7 +19,7 @@ namespace BonVoyage.DAL.EF
         public DbSet<TourPhoto> TourPhotos { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Message> Messages { get; set; }
-
+        public DbSet<UserConnection> UserConnections { get; set; }
         public BonVoyageContext(DbContextOptions<BonVoyageContext> options)
                    : base(options)
         {
@@ -40,7 +40,7 @@ namespace BonVoyage.DAL.EF
 
                 // получаем строку подключения из файла appsettings.json
                 string connectionString = config.GetConnectionString("DefaultConnection");
-                optionsBuilder.UseSqlServer(connectionString);
+                optionsBuilder.UseSqlServer(connectionString).UseLazyLoadingProxies(); 
                 return new BonVoyageContext(optionsBuilder.Options);
             }
         }*/
@@ -65,9 +65,10 @@ namespace BonVoyage.DAL.EF
 
 			modelBuilder.Entity<Tour>()
 				.Property(t => t.Price)
-				.HasColumnType("decimal(10,2)");
+				.HasColumnType("decimal(10,2)");			
 
-			base.OnModelCreating(modelBuilder);
-		}
-	}
+            base.OnModelCreating(modelBuilder);
+
+        }
+    }	
 }
