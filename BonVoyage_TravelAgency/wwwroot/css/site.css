@@ -169,3 +169,15 @@ span {
     /*color: #32afaf !important;*/
     color: #ffa726 !important;    
 }
+.card-img-top {
+    transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+    transform: scale(1.1);
+}
+
+.logo img {
+    height: 60px;
+    margin-bottom: 10px;
+}
