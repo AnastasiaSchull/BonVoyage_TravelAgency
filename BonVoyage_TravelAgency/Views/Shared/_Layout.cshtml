@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Globalization
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -37,6 +39,24 @@
                     <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                     <a href="/Chat/Index" class="btn size20 colorWhite">Go to Chat Room</a>
                 }          
+               
+                
+                <div class="language-selector">
+                    <form action="@Url.Action("ChangeCulture", "Home")" method="post" id="language-form">
+                        <input type="hidden" name="lang" id="selected-lang">
+                        <button class="lang-btn">
+                            <span id="current-lang">@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToUpper()</span>
+                            <i class="arrow-down"></i> <!-- иконка стрелки -->
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><button type="submit" onclick="document.getElementById('selected-lang').value='en';">EN</button></li>
+                            <li><button type="submit" onclick="document.getElementById('selected-lang').value='fr';">FR</button></li>
+                            <li><button type="submit" onclick="document.getElementById('selected-lang').value='ru';">SK</button></li>
+                            <li><button type="submit" onclick="document.getElementById('selected-lang').value='uk';">UK</button></li>
+                        </ul>
+                    </form>
+                </div>
+
 
             </div>
         </nav>
