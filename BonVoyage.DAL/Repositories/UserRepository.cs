@@ -6,7 +6,7 @@ using BonVoyage.DAL.EF;
 
 namespace BonVoyage.DAL.Repositories
 {
-    public class UserRepository : IUserRepository//IRepository<User>
+    public class UserRepository : IUserRepository
     {
         private BonVoyageContext db;
         public UserRepository(BonVoyageContext context)
@@ -46,14 +46,32 @@ namespace BonVoyage.DAL.Repositories
             return await db.Users.FirstOrDefaultAsync(u => u.UserName == username);
         }
 
-        public async Task<User?> GetUserByConnectionIdAsync(string connectionId)
+        public async Task<UserConnection?> GetUserByConnectionIdAsync(string connectionId)
         {
-            return await db.Users.FirstOrDefaultAsync(u => u.ConnectionId == connectionId);
+            // получение объекта UserConnection по ConnectionId
+            return await db.UserConnections
+                           .Include(uc => uc.User) 
+                           .FirstOrDefaultAsync(uc => uc.ConnectionId == connectionId);
+        }
+  
+        public async Task<List<(User? User, bool IsActive)>> GetActiveUsersAsync()
+        {
+            return await db.UserConnections
+                           .Where(uc => uc.IsActive)
+                           .Select(uc => new { uc.User, uc.IsActive })
+                           .Distinct()
+                           .ToListAsync()
+                           .ContinueWith(task => task.Result.Select(x => (x.User, x.IsActive)).ToList());
+        }
+        public async Task CreateUserConnection(UserConnection userConnection)
+        {
+            await db.UserConnections.AddAsync(userConnection);
         }
 
-        public async Task<List<User>> GetActiveUsersAsync()
+        public void UpdateUserConnection(UserConnection userConnection)
         {
-            return await db.Users.Where(u => u.IsActive).ToListAsync();
+            db.Entry(userConnection).State = EntityState.Modified;
         }
+
     }
 }

@@ -9,8 +9,10 @@ namespace BonVoyage.DAL.Interfaces
         Task Create(User item);
         void Update(User item);
         Task Delete(int id);
-        Task<User?> GetUserByUsernameAsync(string username);
-        Task<User?> GetUserByConnectionIdAsync(string connectionId);
-        Task<List<User>> GetActiveUsersAsync();
+        Task<User?> GetUserByUsernameAsync(string username);       
+        Task<UserConnection?> GetUserByConnectionIdAsync(string connectionId);
+        Task<List<(User User, bool IsActive)>> GetActiveUsersAsync();
+        Task CreateUserConnection(UserConnection userConnection);
+        void UpdateUserConnection(UserConnection userConnection);
     }
 }
