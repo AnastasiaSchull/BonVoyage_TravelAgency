@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Globalization
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,12 +12,16 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="/images/favicon-removebg-preview.png">
 </head>
 <body>
     <header>        
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom" style="background-color: #158af0">
             <div class="container-fluid">
-                <a class="navbar-brand size30 colorOrange" asp-area="" asp-controller="Home" asp-action="Index">BonVoyage TravelAgency</a>
+                <div class="logo">
+                    <a href="#"><img src="~/images/BON_VOYAGE_Paris-removebg-preview.png" alt="Logo"></a>
+                    <a class="navbar-brand size30 colorOrange" asp-area="" asp-controller="Home" asp-action="Index">BonVoyage TravelAgency</a>
+                </div>                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -33,6 +39,24 @@
                     <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                     <a href="/Chat/Index" class="btn size20 colorWhite">Go to Chat Room</a>
                 }          
+               
+                
+                <div class="language-selector">
+                    <form action="@Url.Action("ChangeCulture", "Home")" method="post" id="language-form">
+                        <input type="hidden" name="lang" id="selected-lang">
+                        <button class="lang-btn">
+                            <span id="current-lang">@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToUpper()</span>
+                            <i class="arrow-down"></i> <!-- иконка стрелки -->
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><button type="submit" onclick="document.getElementById('selected-lang').value='en';">EN</button></li>
+                            <li><button type="submit" onclick="document.getElementById('selected-lang').value='fr';">FR</button></li>
+                            <li><button type="submit" onclick="document.getElementById('selected-lang').value='ru';">SK</button></li>
+                            <li><button type="submit" onclick="document.getElementById('selected-lang').value='uk';">UK</button></li>
+                        </ul>
+                    </form>
+                </div>
+
 
             </div>
         </nav>

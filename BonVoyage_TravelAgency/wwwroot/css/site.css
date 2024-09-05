@@ -83,8 +83,6 @@ p{
 
 a {
     text-decoration: none;
-    /*color: #2f00ff !important;
-    font-size: 18px !important;*/
     font-family: 'Calypso';
 }
 
@@ -95,7 +93,6 @@ a {
     color: #ffffff !important;
 }
 .colorOrange {
-    /*color: #ff6800 !important;*/
     color: #ffa726!important;
 }
 .size30 {
@@ -112,7 +109,6 @@ a {
 a:hover {
     text-decoration: none;
     color: #32afaf !important;
-    /*font-size: 18px !important;*/
     font-family: 'Calypso';
 }
 
@@ -166,6 +162,95 @@ label {
 
 span {
     font-family: 'Calypso';
-    /*color: #32afaf !important;*/
     color: #ffa726 !important;    
+}
+.card-img-top {
+    transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+    transform: scale(1.1);
+}
+
+.logo img {
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+
+/* мультиязычный селектор */
+.language-selector:hover .lang-dropdown,
+.language-selector:focus-within .lang-dropdown {
+    display: block;
+}
+
+.language-selector .lang-btn:focus .arrow-down,
+.language-selector:hover .arrow-down {
+    transform: rotate(-135deg); /* поворачивает стрелку вверх, когда список открыт */
+}
+
+.lang-dropdown {
+    list-style-type: none;
+    display: none;
+    position: absolute;
+    background-color: gainsboro;
+    min-width: 30px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px; /* скругляет углы выпадающего списка */
+    margin: 0;
+    padding: 0;
+}
+
+
+.lang-dropdown button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background: none;
+    border: none;
+    text-align: left;
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Calypso';
+}
+
+.lang-dropdown button:hover {
+    background-color: dodgerblue;
+    color: white;
+    cursor: pointer;
+           
+}
+
+.language-selector {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-btn {
+    background: transparent;
+    color: #a7a6be;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 18px;
+    outline: none; /* убирает контур при фокусе */
+}
+
+.arrow-down {
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    margin-left: 5px;
+    transition: transform 0.3s; /* добавляет анимацию для стрелки */
+}
+
+.card-title {
+    font-family: 'Calypso' !important;
 }
