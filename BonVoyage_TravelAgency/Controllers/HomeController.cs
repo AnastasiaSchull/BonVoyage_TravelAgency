@@ -16,20 +16,6 @@ namespace BonVoyage_TravelAgency.Controllers
             _tourService = tourService;
             _tourPhotoService = tourPhotoService;
         }
-
-        //public async Task<IActionResult> Index()
-        //{
-        //    var tours = await _tourService.GetAllToursAsync();
-        //    var tourPhotos = await _tourPhotoService.GetAllTourPhotosAsync();
-
-        //    var viewModel = new ToursPhotosViewModel
-        //    {
-        //        Tours = tours,
-        //        TourPhotos = tourPhotos
-        //    };
-
-        //    return View(viewModel);
-        //}
        
    
         public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 3)

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
-    public class ChatController : Controller
+    public class ChatController : BaseController
     {      
         public IActionResult Index()
         {

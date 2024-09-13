@@ -2,7 +2,7 @@
 
 namespace BonVoyage_TravelAgency.Controllers
 {
-    public class GuideController : Controller
+    public class GuideController : BaseController
     {
         public IActionResult WhereToGo()
         {
