@@ -117,8 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About Us" xml:space="preserve">
+  <data name="About_Us" xml:space="preserve">
     <value>Про нас</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Країна</value>
   </data>
   <data name="Contacts" xml:space="preserve">
     <value>Контакти</value>
@@ -135,10 +138,10 @@
   <data name="Home" xml:space="preserve">
     <value>Головна</value>
   </data>
-  <data name="Last Minute Tours" xml:space="preserve">
+  <data name="Last_Minute_Tours" xml:space="preserve">
     <value>Гарячі тури</value>
   </data>
-  <data name="Learn More" xml:space="preserve">
+  <data name="Learn_More" xml:space="preserve">
     <value>Дізнатися більше</value>
   </data>
   <data name="Reviews" xml:space="preserve">
@@ -152,5 +155,230 @@
   </data>
   <data name="Tours" xml:space="preserve">
     <value>Тури</value>
+  </data>
+  <data name="Charters" xml:space="preserve">
+    <value>Чартерні рейси</value>
+  </data>
+  <data name="Search_Tours" xml:space="preserve">
+    <value>Пошук турів</value>
+  </data>
+  <data name="Guide" xml:space="preserve">
+    <value>Путівник</value>
+  </data>
+  <data name="About_BonVoyage" xml:space="preserve">
+    <value>Про Bon Voyage</value>
+  </data>
+  <data name="Where_to_buy" xml:space="preserve">
+    <value>Де купити</value>
+  </data>
+  <data name="Tours_to_Turkey" xml:space="preserve">
+    <value>Тури до Туреччини</value>
+  </data>
+  <data name="Tours_to_Egypt" xml:space="preserve">
+    <value>Тури до Єгипту</value>
+  </data>
+  <data name="Tours_to_Greece" xml:space="preserve">
+    <value>Тури до Греції</value>
+  </data>
+  <data name="Tours_to_Spain" xml:space="preserve">
+    <value>Тури до Іспанії</value>
+  </data>
+  <data name="Tours_to_Montenegro" xml:space="preserve">
+    <value>Тури до Чорногорії</value>
+  </data>
+  <data name="Package_tours" xml:space="preserve">
+    <value>Пакетні тури</value>
+  </data>
+  <data name="Summer_tours" xml:space="preserve">
+    <value>Літні тури</value>
+  </data>
+  <data name="Autumn_tours" xml:space="preserve">
+    <value>Осінні тури</value>
+  </data>
+  <data name="Winter_tours" xml:space="preserve">
+    <value>Зимові тури</value>
+  </data>
+  <data name="Spring_tours" xml:space="preserve">
+    <value>Весняні тури</value>
+  </data>
+  <data name="Ski_tours" xml:space="preserve">
+    <value>Лижні тури</value>
+  </data>
+  <data name="Charters_to_Bulgaria" xml:space="preserve">
+    <value>Тури до Болгарії</value>
+  </data>
+  <data name="All_charter_flights" xml:space="preserve">
+    <value>Всі чартерні рейси</value>
+  </data>
+  <data name="Charters_to_Turkey" xml:space="preserve">
+    <value>Чартери до Туреччини</value>
+  </data>
+  <data name="Charters_to_Greece" xml:space="preserve">
+    <value>Чартери до Греції</value>
+  </data>
+  <data name="Charters_to_Montenegro" xml:space="preserve">
+    <value>Чартери до Чорногорії</value>
+  </data>
+  <data name="Charters_to_Egypt" xml:space="preserve">
+    <value>Чартери до Єгипту</value>
+  </data>
+  <data name="Where_to_go_for_a_tourist" xml:space="preserve">
+    <value>Куди поїхати туристу</value>
+  </data>
+  <data name="Travel_insurance" xml:space="preserve">
+    <value>Туристичне страхування</value>
+  </data>
+  <data name="Travel_news" xml:space="preserve">
+    <value>Новини подорожей</value>
+  </data>
+  <data name="Tips_for_tourists" xml:space="preserve">
+    <value>Поради для туристів</value>
+  </data>
+  <data name="Coronavirus_tests" xml:space="preserve">
+    <value>Тести на коронавірус</value>
+  </data>
+  <data name="About_Bon_Voyage_Company" xml:space="preserve">
+    <value>Про компанію Bon Voyage</value>
+  </data>
+  <data name="Reviews_from_tourists" xml:space="preserve">
+    <value>Відгуки туристів</value>
+  </data>
+  <data name="Why_do_people_trust_us" xml:space="preserve">
+    <value>Чому люди нам довіряють?</value>
+  </data>
+  <data name="How_to_book_a_tour" xml:space="preserve">
+    <value>Як забронювати тур</value>
+  </data>
+  <data name="Refund" xml:space="preserve">
+    <value>Повернення коштів</value>
+  </data>
+  <data name="Legal_information" xml:space="preserve">
+    <value>Юридична інформація</value>
+  </data>
+  <data name="Office_addresses" xml:space="preserve">
+    <value>Адреси офісів</value>
+  </data>
+  <data name="Travel_agencies_in_Lyon" xml:space="preserve">
+    <value>Туристичні агентства в Ліоні</value>
+  </data>
+  <data name="Travel_agencies_in_Paris" xml:space="preserve">
+    <value>Туристичні агентства в Парижі</value>
+  </data>
+  <data name="Travel_agencies_in_Nice" xml:space="preserve">
+    <value>Туристичні агентства в Ніцці</value>
+  </data>
+  <data name="Travel_agencies_in_Bordeaux" xml:space="preserve">
+    <value>Туристичні агентства в Бордо</value>
+  </data>
+  <data name="Travel_agencies_in_Marseilles" xml:space="preserve">
+    <value>Туристичні агентства в Марселі</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Реєстрація</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Вхід</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Вихід</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Електронна пошта</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Ім'я користувача</value>
+  </data>
+  <data name="UserSurname" xml:space="preserve">
+    <value>Прізвище користувача</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Адреса</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Зареєструватися</value>
+  </data>
+  <data name="Preference" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="Chat_room" xml:space="preserve">
+    <value>Чат</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Ласкаво просимо</value>
+  </data>
+  <data name="Send_your_message" xml:space="preserve">
+    <value>Надіслати повідомлення</value>
+  </data>
+  <data name="Go_to_Chat_Room" xml:space="preserve">
+    <value>Перейти до чату</value>
+  </data>
+  <data name="Discover_our_discounted_tours_and_best_deals" xml:space="preserve">
+    <value>Відкрийте для себе наші тури зі знижками та найкращі пропозиції</value>
+  </data>
+  <data name="WelcomeToBonVoyage" xml:space="preserve">
+    <value>Ласкаво просимо до BonVoyage</value>
+  </data>
+  <data name="View_Details" xml:space="preserve">
+    <value>Переглянути деталі</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Ім'я</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Забронювати</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Оплата</value>
+  </data>
+  <data name="Stages_of_booking_a_tour" xml:space="preserve">
+    <value>Етапи бронювання туру</value>
+  </data>
+  <data name="Number_of_persons" xml:space="preserve">
+    <value>Кількість осіб</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Прізвище</value>
+  </data>
+  <data name="My_contacts" xml:space="preserve">
+    <value>Мої контакти</value>
+  </data>
+  <data name="Tour_booking" xml:space="preserve">
+    <value>Бронювання туру</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Конфіденційність</value>
+  </data>
+  <data name="Privacy_Policy" xml:space="preserve">
+    <value>Політика конфіденційності</value>
+  </data>
+  <data name="How_to_pay_for_the_tour" xml:space="preserve">
+    <value>Як оплатити тур</value>
+  </data>
+  <data name="New_year_tours" xml:space="preserve">
+    <value>Новорічні тури</value>
+  </data>
+  <data name="All_countries_of_the_world" xml:space="preserve">
+    <value>Всі країни світу</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Попередній</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Наступний</value>
+  </data>
+  <data name="Tours_to_Croitia" xml:space="preserve">
+    <value>Тури в Хорватію</value>
+  </data>
+  <data name="All_users" xml:space="preserve">
+    <value>Всі користувачі</value>
+  </data>
+  <data name="Password_Confirm" xml:space="preserve">
+    <value>Підтвердіть пароль</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Повернутися</value>
   </data>
 </root>
