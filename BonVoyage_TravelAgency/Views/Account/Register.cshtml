@@ -1,57 +1,58 @@
 ﻿@model BonVoyage_TravelAgency.Models.RegisterModel
+@using static BonVoyage_TravelAgency.Resources.Resource
 
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Register</h2>
+<h2>@Register</h2>
 
 <form asp-action="Register" method="post" class="form-horizontal">
     <div class="form-group">
-        <label asp-for="UserName" class="control-label col-md-2">UserName</label>
+        <label asp-for="UserName" class="control-label col-md-2">@UserName</label>
         <div class="col-md-10">
             <input asp-for="UserName" class="form-control" />
             <span asp-validation-for="UserName" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="UserSurname" class="control-label col-md-2">UserSurname</label>
+        <label asp-for="UserSurname" class="control-label col-md-2">@UserSurname</label>
         <div class="col-md-10">
             <input asp-for="UserSurname" class="form-control" />
             <span asp-validation-for="UserSurname" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Email" class="control-label col-md-2">Email</label>
+        <label asp-for="Email" class="control-label col-md-2">@Email</label>
         <div class="col-md-10">
             <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Address" class="control-label col-md-2">Address</label>
+        <label asp-for="Address" class="control-label col-md-2">@Address</label>
         <div class="col-md-10">
             <input asp-for="Address" class="form-control" />
             <span asp-validation-for="Address" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Country" class="control-label col-md-2">Country</label>
+        <label asp-for="Country" class="control-label col-md-2">@Country</label>
         <div class="col-md-10">
             <input asp-for="Country" class="form-control" />
             <span asp-validation-for="Country" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Password" class="control-label col-md-2">Password</label>
+        <label asp-for="Password" class="control-label col-md-2">@Password</label>
         <div class="col-md-10">
             <input asp-for="Password" class="form-control" />
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="PasswordConfirm" class="control-label col-md-2">Password Confirm</label>
+        <label asp-for="PasswordConfirm" class="control-label col-md-2">@Password_Confirm</label>
         <div class="col-md-10">
             <input asp-for="PasswordConfirm" class="form-control" />
             <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
@@ -59,7 +60,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-default">Register</button>
+            <button type="submit" class="btn btn-default">@Register</button>
         </div>
     </div>
 </form>
