@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
-    public class ReviewController : Controller
+    public class ReviewController : BaseController
     {
         private readonly IReviewService reviewService;
         private readonly IUserService userService;

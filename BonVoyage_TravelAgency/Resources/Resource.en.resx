@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About Us" xml:space="preserve">
+  <data name="About_Us" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="Country" xml:space="preserve">
     <value>About Us</value>
   </data>
   <data name="Contacts" xml:space="preserve">
@@ -135,10 +138,10 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
-  <data name="Last Minute Tours" xml:space="preserve">
+  <data name="Last_Minute_Tours" xml:space="preserve">
     <value>Last Minute Tours</value>
   </data>
-  <data name="Learn More" xml:space="preserve">
+  <data name="Learn_More" xml:space="preserve">
     <value>Learn More</value>
   </data>
   <data name="Reviews" xml:space="preserve">
@@ -152,5 +155,230 @@
   </data>
   <data name="Tours" xml:space="preserve">
     <value>Tours</value>
+  </data>
+  <data name="Charters" xml:space="preserve">
+    <value>Charters</value>
+  </data>
+  <data name="Search_Tours" xml:space="preserve">
+    <value>Search Tours</value>
+  </data>
+  <data name="Guide" xml:space="preserve">
+    <value>Guide</value>
+  </data>
+  <data name="About_BonVoyage" xml:space="preserve">
+    <value>About Bon Voyage</value>
+  </data>
+  <data name="Where_to_buy" xml:space="preserve">
+    <value>Where to buy</value>
+  </data>
+  <data name="Tours_to_Turkey" xml:space="preserve">
+    <value>Tours to Turkey</value>
+  </data>
+  <data name="Tours_to_Egypt" xml:space="preserve">
+    <value>Tours to Egypt</value>
+  </data>
+  <data name="Tours_to_Greece" xml:space="preserve">
+    <value>Tours to Greece</value>
+  </data>
+  <data name="Tours_to_Spain" xml:space="preserve">
+    <value>Tours to Spain</value>
+  </data>
+  <data name="Tours_to_Montenegro" xml:space="preserve">
+    <value>Tours to Montenegro</value>
+  </data>
+  <data name="Package_tours" xml:space="preserve">
+    <value>Package tours</value>
+  </data>
+  <data name="Summer_tours" xml:space="preserve">
+    <value>Summer tours</value>
+  </data>
+  <data name="Autumn_tours" xml:space="preserve">
+    <value>Autumn tours</value>
+  </data>
+  <data name="Winter_tours" xml:space="preserve">
+    <value>Winter tours</value>
+  </data>
+  <data name="Spring_tours" xml:space="preserve">
+    <value>Spring tours</value>
+  </data>
+  <data name="Ski_tours" xml:space="preserve">
+    <value>Ski tours</value>
+  </data>
+  <data name="Charters_to_Bulgaria" xml:space="preserve">
+    <value>Charters to Bulgaria</value>
+  </data>
+  <data name="All_charter_flights" xml:space="preserve">
+    <value>All charter flights</value>
+  </data>
+  <data name="Charters_to_Turkey" xml:space="preserve">
+    <value>Charters to Turkey</value>
+  </data>
+  <data name="Charters_to_Greece" xml:space="preserve">
+    <value>Charters to Greece</value>
+  </data>
+  <data name="Charters_to_Montenegro" xml:space="preserve">
+    <value>Charters to Montenegro</value>
+  </data>
+  <data name="Charters_to_Egypt" xml:space="preserve">
+    <value>Charters to Egypt</value>
+  </data>
+  <data name="Where_to_go_for_a_tourist" xml:space="preserve">
+    <value>Where to go for a tourist</value>
+  </data>
+  <data name="Travel_insurance" xml:space="preserve">
+    <value>Travel insurance</value>
+  </data>
+  <data name="Travel_news" xml:space="preserve">
+    <value>Travel news</value>
+  </data>
+  <data name="Tips_for_tourists" xml:space="preserve">
+    <value>Tips for tourists</value>
+  </data>
+  <data name="Coronavirus_tests" xml:space="preserve">
+    <value>Coronavirus tests</value>
+  </data>
+  <data name="About_Bon_Voyage_Company" xml:space="preserve">
+    <value>About Bon Voyage Company</value>
+  </data>
+  <data name="Reviews_from_tourists" xml:space="preserve">
+    <value>Reviews from tourists</value>
+  </data>
+  <data name="Why_do_people_trust_us" xml:space="preserve">
+    <value>Why do people trust us? </value>
+  </data>
+  <data name="How_to_book_a_tour" xml:space="preserve">
+    <value>How to book a tour</value>
+  </data>
+  <data name="Refund" xml:space="preserve">
+    <value>Refund</value>
+  </data>
+  <data name="Legal_information" xml:space="preserve">
+    <value>Legal information</value>
+  </data>
+  <data name="Office_addresses" xml:space="preserve">
+    <value>Office addresses</value>
+  </data>
+  <data name="Travel_agencies_in_Lyon" xml:space="preserve">
+    <value>Travel agencies in Lyon</value>
+  </data>
+  <data name="Travel_agencies_in_Paris" xml:space="preserve">
+    <value>Travel agencies in Paris</value>
+  </data>
+  <data name="Travel_agencies_in_Nice" xml:space="preserve">
+    <value>Travel agencies in Nice</value>
+  </data>
+  <data name="Travel_agencies_in_Bordeaux" xml:space="preserve">
+    <value>Travel agencies in Bordeaux</value>
+  </data>
+  <data name="Travel_agencies_in_Marseilles" xml:space="preserve">
+    <value>Travel agencies in Marseilles</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+  <data name="UserSurname" xml:space="preserve">
+    <value>UserSurname</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Preference" xml:space="preserve">
+    <value>Preference</value>
+  </data>
+  <data name="Chat_room" xml:space="preserve">
+    <value>Chat room</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="Send_your_message" xml:space="preserve">
+    <value>Send your message</value>
+  </data>
+  <data name="Go_to_Chat_Room" xml:space="preserve">
+    <value>Go to Chat Room</value>
+  </data>
+  <data name="Discover_our_discounted_tours_and_best_deals" xml:space="preserve">
+    <value>Discover our discounted tours and best deals</value>
+  </data>
+  <data name="WelcomeToBonVoyage" xml:space="preserve">
+    <value>WelcomeToBonVoyage</value>
+  </data>
+  <data name="View_Details" xml:space="preserve">
+    <value>View Details</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Book</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="Stages_of_booking_a_tour" xml:space="preserve">
+    <value>Stages of booking a tour</value>
+  </data>
+  <data name="Number_of_persons" xml:space="preserve">
+    <value>Number of persons</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="My_contacts" xml:space="preserve">
+    <value>My contacts</value>
+  </data>
+  <data name="Tour_booking" xml:space="preserve">
+    <value>Tour booking</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Privacy_Policy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="How_to_pay_for_the_tour" xml:space="preserve">
+    <value>How to pay for the tour</value>
+  </data>
+  <data name="New_year_tours" xml:space="preserve">
+    <value>New year tours</value>
+  </data>
+  <data name="All_countries_of_the_world" xml:space="preserve">
+    <value>All countries of the world</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Tours_to_Croitia" xml:space="preserve">
+    <value>Tours to Croitia</value>
+  </data>
+  <data name="All_users" xml:space="preserve">
+    <value>All users</value>
+  </data>
+  <data name="Password_Confirm" xml:space="preserve">
+    <value>Password Confirm</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
   </data>
 </root>

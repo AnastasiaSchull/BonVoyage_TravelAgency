@@ -117,8 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About Us" xml:space="preserve">
+  <data name="About_Us" xml:space="preserve">
     <value>À propos de nous</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Pays</value>
   </data>
   <data name="Contacts" xml:space="preserve">
     <value>Contacts</value>
@@ -135,10 +138,10 @@
   <data name="Home" xml:space="preserve">
     <value>Accueil</value>
   </data>
-  <data name="Last Minute Tours" xml:space="preserve">
+  <data name="Last_Minute_Tours" xml:space="preserve">
     <value>Offres de dernière minute</value>
   </data>
-  <data name="Learn More" xml:space="preserve">
+  <data name="Learn_More" xml:space="preserve">
     <value>En savoir plus</value>
   </data>
   <data name="Reviews" xml:space="preserve">
@@ -152,5 +155,230 @@
   </data>
   <data name="Tours" xml:space="preserve">
     <value>Circuits</value>
+  </data>
+  <data name="Charters" xml:space="preserve">
+    <value>Charters</value>
+  </data>
+  <data name="Search_Tours" xml:space="preserve">
+    <value>Rechercher des circuits</value>
+  </data>
+  <data name="Guide" xml:space="preserve">
+    <value>Guide</value>
+  </data>
+  <data name="About_BonVoyage" xml:space="preserve">
+    <value>À propos de Bon Voyage</value>
+  </data>
+  <data name="Where_to_buy" xml:space="preserve">
+    <value>Où acheter</value>
+  </data>
+  <data name="Tours_to_Turkey" xml:space="preserve">
+    <value>Tours en Turquie</value>
+  </data>
+  <data name="Tours_to_Egypt" xml:space="preserve">
+    <value>Tours en Égypte</value>
+  </data>
+  <data name="Tours_to_Greece" xml:space="preserve">
+    <value>Tours en Grèce</value>
+  </data>
+  <data name="Tours_to_Spain" xml:space="preserve">
+    <value>Tours en Espagne</value>
+  </data>
+  <data name="Tours_to_Montenegro" xml:space="preserve">
+    <value>Tours en Monténégro</value>
+  </data>
+  <data name="Package_tours" xml:space="preserve">
+    <value>Circuits organisés</value>
+  </data>
+  <data name="Summer_tours" xml:space="preserve">
+    <value>Circuits d'été</value>
+  </data>
+  <data name="Autumn_tours" xml:space="preserve">
+    <value>Circuits d'automne</value>
+  </data>
+  <data name="Winter_tours" xml:space="preserve">
+    <value>Circuits d'hiver</value>
+  </data>
+  <data name="Spring_tours" xml:space="preserve">
+    <value>Circuits de printemps</value>
+  </data>
+  <data name="Ski_tours" xml:space="preserve">
+    <value>Circuits de ski</value>
+  </data>
+  <data name="Charters_to_Bulgaria" xml:space="preserve">
+    <value>Vols charters pour la Bulgarie</value>
+  </data>
+  <data name="All_charter_flights" xml:space="preserve">
+    <value>Tous les vols charters</value>
+  </data>
+  <data name="Charters_to_Turkey" xml:space="preserve">
+    <value>Vols charters pour la Turquie</value>
+  </data>
+  <data name="Charters_to_Greece" xml:space="preserve">
+    <value>Vols charters pour la Grèce</value>
+  </data>
+  <data name="Charters_to_Montenegro" xml:space="preserve">
+    <value>Vols charters pour le Monténégro</value>
+  </data>
+  <data name="Charters_to_Egypt" xml:space="preserve">
+    <value>Vols charters pour l'Égypte</value>
+  </data>
+  <data name="Where_to_go_for_a_tourist" xml:space="preserve">
+    <value>Où aller pour un touriste</value>
+  </data>
+  <data name="Travel_insurance" xml:space="preserve">
+    <value>Assurance voyage</value>
+  </data>
+  <data name="Travel_news" xml:space="preserve">
+    <value>Actualités de voyage</value>
+  </data>
+  <data name="Tips_for_tourists" xml:space="preserve">
+    <value>Conseils pour les touristes</value>
+  </data>
+  <data name="Coronavirus_tests" xml:space="preserve">
+    <value>Tests de coronavirus</value>
+  </data>
+  <data name="About_Bon_Voyage_Company" xml:space="preserve">
+    <value>À propos de la société Bon Voyage</value>
+  </data>
+  <data name="Reviews_from_tourists" xml:space="preserve">
+    <value>Avis des touristes</value>
+  </data>
+  <data name="Why_do_people_trust_us" xml:space="preserve">
+    <value>Pourquoi les gens nous font-ils confiance?</value>
+  </data>
+  <data name="How_to_book_a_tour" xml:space="preserve">
+    <value>Comment réserver le tour</value>
+  </data>
+  <data name="Refund" xml:space="preserve">
+    <value>Remboursement</value>
+  </data>
+  <data name="Legal_information" xml:space="preserve">
+    <value>Informations légales</value>
+  </data>
+  <data name="Office_addresses" xml:space="preserve">
+    <value>Adresses des bureaux</value>
+  </data>
+  <data name="Travel_agencies_in_Lyon" xml:space="preserve">
+    <value>Agences de voyages à Lyon</value>
+  </data>
+  <data name="Travel_agencies_in_Paris" xml:space="preserve">
+    <value>Agences de voyages à Paris</value>
+  </data>
+  <data name="Travel_agencies_in_Nice" xml:space="preserve">
+    <value>Agences de voyages à Nice</value>
+  </data>
+  <data name="Travel_agencies_in_Bordeaux" xml:space="preserve">
+    <value>Agences de voyages à Bordeaux</value>
+  </data>
+  <data name="Travel_agencies_in_Marseilles" xml:space="preserve">
+    <value>Agences de voyages à Marseille</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Inscription</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Déconnexion</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Courriel</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Nom d'utilisateur</value>
+  </data>
+  <data name="UserSurname" xml:space="preserve">
+    <value>Nom de famille</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>S'inscrire</value>
+  </data>
+  <data name="Preference" xml:space="preserve">
+    <value>Préférences</value>
+  </data>
+  <data name="Chat_room" xml:space="preserve">
+    <value>Salle de chat</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Bienvenue</value>
+  </data>
+  <data name="Send_your_message" xml:space="preserve">
+    <value>Envoyez votre message</value>
+  </data>
+  <data name="Go_to_Chat_Room" xml:space="preserve">
+    <value>Aller à la salle de chat</value>
+  </data>
+  <data name="Discover_our_discounted_tours_and_best_deals" xml:space="preserve">
+    <value>Découvrez nos circuits à prix réduits et nos meilleures offres</value>
+  </data>
+  <data name="WelcomeToBonVoyage" xml:space="preserve">
+    <value>BienvenueChezBonVoyage</value>
+  </data>
+  <data name="View_Details" xml:space="preserve">
+    <value>Voir les détails</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Réserver</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Paiement</value>
+  </data>
+  <data name="Stages_of_booking_a_tour" xml:space="preserve">
+    <value>Étapes de réservation du tour</value>
+  </data>
+  <data name="Number_of_persons" xml:space="preserve">
+    <value>Nombre de personnes</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Nom de famille</value>
+  </data>
+  <data name="My_contacts" xml:space="preserve">
+    <value>Mes contacts</value>
+  </data>
+  <data name="Tour_booking" xml:space="preserve">
+    <value>Réservation de tour</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Confidentialité</value>
+  </data>
+  <data name="Privacy_Policy" xml:space="preserve">
+    <value>Politique de confidentialité</value>
+  </data>
+  <data name="How_to_pay_for_the_tour" xml:space="preserve">
+    <value>Comment payer pour le tour</value>
+  </data>
+  <data name="New_year_tours" xml:space="preserve">
+    <value>Tours du Nouvel An</value>
+  </data>
+  <data name="All_countries_of_the_world" xml:space="preserve">
+    <value>Tous les pays du monde</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédente</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="Tours_to_Croitia" xml:space="preserve">
+    <value>Tours en Croatie</value>
+  </data>
+  <data name="All_users" xml:space="preserve">
+    <value>Tous les utilisateurs</value>
+  </data>
+  <data name="Password_Confirm" xml:space="preserve">
+    <value>Mot de passe Confirmer</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Retour</value>
   </data>
 </root>

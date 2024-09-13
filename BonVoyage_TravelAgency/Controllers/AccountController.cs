@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly IUserService _userService;
 

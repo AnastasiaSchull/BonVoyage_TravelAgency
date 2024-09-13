@@ -1,4 +1,6 @@
 ﻿@model BonVoyage_TravelAgency.Models.ToursPhotosViewModel
+@using BonVoyage_TravelAgency.Resources
+@using static BonVoyage_TravelAgency.Resources.Resource
 
 @{
     ViewData["Title"] = "Home Page";
@@ -6,8 +8,8 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to BonVoyage</h1>
-    <h3 id="toggleTours" class="clickable-header">Discover our discounted tours and best deals:</h3>
+    <h1 class="display-4">@Resource.WelcomeToBonVoyage</h1>
+    <h3 id="toggleTours" class="clickable-header">@Discover_our_discounted_tours_and_best_deals:</h3>
 </div>
 
 <div class="container" id="toursContainer" style="display: none;">
@@ -27,7 +29,7 @@
                         @if (Context.Session.GetString("UserId") != null)
                         {
                             <div>
-                                <a asp-action="Create" asp-controller="Booking" class=" link" asp-route-id="@tour.TourId">View Details</a>
+                                <a asp-action="Create" asp-controller="Booking" class=" link" asp-route-id="@tour.TourId">@View_Details</a>
                             </div>
                         }
                     </div>
@@ -38,7 +40,7 @@
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li class="page-item @(Model.PageViewModel.HasPreviousPage ? "" : "disabled")">
-                    <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageViewModel.PageNumber - 1 })">Previous</a>
+                    <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageViewModel.PageNumber - 1 })">@Previous</a>
                 </li>
                 @for (int i = 1; i <= Model.PageViewModel.TotalPages; i++)
                 {
@@ -47,7 +49,7 @@
                     </li>
                 }
                 <li class="page-item @(Model.PageViewModel.HasNextPage ? "" : "disabled")">
-                    <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageViewModel.PageNumber + 1 })">Next</a>
+                    <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageViewModel.PageNumber + 1 })">@Next</a>
                 </li>
             </ul>
         </nav>

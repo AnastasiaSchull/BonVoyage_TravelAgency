@@ -5,7 +5,7 @@ using BonVoyage.BLL.Infrastructure;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly IUserService userService;
 

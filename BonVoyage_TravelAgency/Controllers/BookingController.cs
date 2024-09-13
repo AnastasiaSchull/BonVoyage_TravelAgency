@@ -8,7 +8,7 @@ using BonVoyage.DAL.Entities;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
-    public class BookingController : Controller
+    public class BookingController : BaseController
     {
         private readonly IBookingService bookingService;
         private readonly ITourService _tourService;

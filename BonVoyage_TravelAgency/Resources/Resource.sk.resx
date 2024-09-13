@@ -117,8 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About Us" xml:space="preserve">
+  <data name="About_Us" xml:space="preserve">
     <value>O nás</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Krajina</value>
   </data>
   <data name="Contacts" xml:space="preserve">
     <value>Kontakty</value>
@@ -132,13 +135,13 @@
   <data name="Filters" xml:space="preserve">
     <value>Filtre</value>
   </data>
-  <data name="Filtres" xml:space="preserve">
+  <data name="Home" xml:space="preserve">
     <value>Domov</value>
   </data>
-  <data name="Last Minute Tours" xml:space="preserve">
+  <data name="Last_Minute_Tours" xml:space="preserve">
     <value>Last Minute zájazdy</value>
   </data>
-  <data name="Learn More" xml:space="preserve">
+  <data name="Learn_More" xml:space="preserve">
     <value>Dozvedieť sa viac</value>
   </data>
   <data name="Reviews" xml:space="preserve">
@@ -152,5 +155,230 @@
   </data>
   <data name="Tours" xml:space="preserve">
     <value>Zájazdy</value>
+  </data>
+  <data name="Charters" xml:space="preserve">
+    <value>Letové charterové lety</value>
+  </data>
+  <data name="Search_Tours" xml:space="preserve">
+    <value>Vyhľadávanie zájazdov</value>
+  </data>
+  <data name="Guide" xml:space="preserve">
+    <value>Sprievodca</value>
+  </data>
+  <data name="About_BonVoyage" xml:space="preserve">
+    <value>O spoločnosti Bon Voyage</value>
+  </data>
+  <data name="Where_to_buy" xml:space="preserve">
+    <value>Kde kúpiť</value>
+  </data>
+  <data name="Tours_to_Turkey" xml:space="preserve">
+    <value>Zájazdy do Turecka</value>
+  </data>
+  <data name="Tours_to_Egypt" xml:space="preserve">
+    <value>Zájazdy do Egypta</value>
+  </data>
+  <data name="Tours_to_Greece" xml:space="preserve">
+    <value>Zájazdy do Grécka</value>
+  </data>
+  <data name="Tours_to_Spain" xml:space="preserve">
+    <value>Zájazdy do Španielska</value>
+  </data>
+  <data name="Tours_to_Montenegro" xml:space="preserve">
+    <value>Zájazdy do Čiernej Hory</value>
+  </data>
+  <data name="Package_tours" xml:space="preserve">
+    <value>Balíkové zájazdy</value>
+  </data>
+  <data name="Summer_tours" xml:space="preserve">
+    <value>Letné zájazdy</value>
+  </data>
+  <data name="Autumn_tours" xml:space="preserve">
+    <value>Jesenné zájazdy</value>
+  </data>
+  <data name="Winter_tours" xml:space="preserve">
+    <value>Zimné zájazdy</value>
+  </data>
+  <data name="Spring_tours" xml:space="preserve">
+    <value>Jarné zájazdy</value>
+  </data>
+  <data name="Ski_tours" xml:space="preserve">
+    <value>Lyžiarske zájazdy</value>
+  </data>
+  <data name="Charters_to_Bulgaria" xml:space="preserve">
+    <value>Lety do Bulharska</value>
+  </data>
+  <data name="All_charter_flights" xml:space="preserve">
+    <value>Všetky charterové lety</value>
+  </data>
+  <data name="Charters_to_Turkey" xml:space="preserve">
+    <value>Lety do Turecka</value>
+  </data>
+  <data name="Charters_to_Greece" xml:space="preserve">
+    <value>Lety do Grécka</value>
+  </data>
+  <data name="Charters_to_Montenegro" xml:space="preserve">
+    <value>Lety do Čiernej Hory</value>
+  </data>
+  <data name="Charters_to_Egypt" xml:space="preserve">
+    <value>Lety do Egypta</value>
+  </data>
+  <data name="Where_to_go_for_a_tourist" xml:space="preserve">
+    <value>Kam ísť pre turistu</value>
+  </data>
+  <data name="Travel_insurance" xml:space="preserve">
+    <value>Cestovné poistenie</value>
+  </data>
+  <data name="Travel_news" xml:space="preserve">
+    <value>Cestovné novinky</value>
+  </data>
+  <data name="Tips_for_tourists" xml:space="preserve">
+    <value>Tipy pre turistov</value>
+  </data>
+  <data name="Coronavirus_tests" xml:space="preserve">
+    <value>Testy na koronavírus</value>
+  </data>
+  <data name="About_Bon_Voyage_Company" xml:space="preserve">
+    <value>O spoločnosti Bon Voyage</value>
+  </data>
+  <data name="Reviews_from_tourists" xml:space="preserve">
+    <value>Recenzie turistov</value>
+  </data>
+  <data name="Why_do_people_trust_us" xml:space="preserve">
+    <value>Prečo nám ľudia dôverujú?</value>
+  </data>
+  <data name="How_to_book_a_tour" xml:space="preserve">
+    <value>Ako rezervovať zájazd</value>
+  </data>
+  <data name="Refund" xml:space="preserve">
+    <value>Vrátenie peňazí</value>
+  </data>
+  <data name="Legal_information" xml:space="preserve">
+    <value>Právne informácie</value>
+  </data>
+  <data name="Office_addresses" xml:space="preserve">
+    <value>Adresa kancelárie</value>
+  </data>
+  <data name="Travel_agencies_in_Lyon" xml:space="preserve">
+    <value>Cestovné agentúry v Lyone</value>
+  </data>
+  <data name="Travel_agencies_in_Paris" xml:space="preserve">
+    <value>Cestovné agentúry v Paríži</value>
+  </data>
+  <data name="Travel_agencies_in_Nice" xml:space="preserve">
+    <value>Cestovné agentúry v Nice</value>
+  </data>
+  <data name="Travel_agencies_in_Bordeaux" xml:space="preserve">
+    <value>Cestovné agentúry v Bordeaux</value>
+  </data>
+  <data name="Travel_agencies_in_Marseilles" xml:space="preserve">
+    <value>Cestovné agentúry v Marseille</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registrácia</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Prihlásenie</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Odhlásenie</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Heslo</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Používateľské meno</value>
+  </data>
+  <data name="UserSurname" xml:space="preserve">
+    <value>Priezvisko používateľa</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresa</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registrovať sa</value>
+  </data>
+  <data name="Preference" xml:space="preserve">
+    <value>Preferencie</value>
+  </data>
+  <data name="Chat_room" xml:space="preserve">
+    <value>Miestnosť na chat</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Vitajte</value>
+  </data>
+  <data name="Send_your_message" xml:space="preserve">
+    <value>Pošlite svoju správu</value>
+  </data>
+  <data name="Go_to_Chat_Room" xml:space="preserve">
+    <value>Ísť do miestnosti na chat</value>
+  </data>
+  <data name="Discover_our_discounted_tours_and_best_deals" xml:space="preserve">
+    <value>Objavte naše zľavnené zájazdy a najlepšie ponuky</value>
+  </data>
+  <data name="WelcomeToBonVoyage" xml:space="preserve">
+    <value>Vitajte v BonVoyage</value>
+  </data>
+  <data name="View_Details" xml:space="preserve">
+    <value>Zobraziť podrobnosti</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Meno</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Rezervovať</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Platba</value>
+  </data>
+  <data name="Stages_of_booking_a_tour" xml:space="preserve">
+    <value>Kroky rezervácie zájazdu</value>
+  </data>
+  <data name="Number_of_persons" xml:space="preserve">
+    <value>Počet osôb</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Priezvisko</value>
+  </data>
+  <data name="My_contacts" xml:space="preserve">
+    <value>Moje kontakty</value>
+  </data>
+  <data name="Tour_booking" xml:space="preserve">
+    <value>Rezervácia zájazdu</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Súkromie</value>
+  </data>
+  <data name="Privacy_Policy" xml:space="preserve">
+    <value>Zásady ochrany osobných údajov</value>
+  </data>
+  <data name="How_to_pay_for_the_tour" xml:space="preserve">
+    <value>Ako zaplatiť za zájazd</value>
+  </data>
+  <data name="New_year_tours" xml:space="preserve">
+    <value>Novoročné zájazdy</value>
+  </data>
+  <data name="All_countries_of_the_world" xml:space="preserve">
+    <value>Všetky krajiny sveta</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Predchádzajúci</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Dalšie</value>
+  </data>
+  <data name="Tours_to_Croitia" xml:space="preserve">
+    <value>Zájazdy do Chorvátska</value>
+  </data>
+  <data name="All_users" xml:space="preserve">
+    <value>Všetci používatelia</value>
+  </data>
+  <data name="Password_Confirm" xml:space="preserve">
+    <value>Potvrdenie hesla</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Chrbát</value>
   </data>
 </root>

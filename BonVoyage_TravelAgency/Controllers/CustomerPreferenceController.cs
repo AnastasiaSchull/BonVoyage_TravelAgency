@@ -7,7 +7,7 @@ using BonVoyage.DAL.Entities;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
-    public class CustomerPreferenceController : Controller
+    public class CustomerPreferenceController : BaseController
     {
         private readonly ICustomerPreferenceService preferenceService;
         private readonly IUserService userService;

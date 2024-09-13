@@ -5,7 +5,7 @@ using BonVoyage.BLL.Infrastructure;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
-    public class HotelController : Controller
+    public class HotelController : BaseController
     {
         private readonly IHotelService hotelService;
 
