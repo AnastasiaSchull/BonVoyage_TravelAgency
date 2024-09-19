@@ -86,18 +86,7 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("About_Us", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to All_users.
-        /// </summary>
-        public static string All_users
-        {
-            get
-            {
-                return ResourceManager.GetString("All_users", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
@@ -115,18 +104,25 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("All_charter_flights", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to All_countries_of_the_world.
+        ///   Looks up a localized string similar to All countries of the world.
         /// </summary>
-        public static string All_countries_of_the_world
-        {
-            get
-            {
+        public static string All_countries_of_the_world {
+            get {
                 return ResourceManager.GetString("All_countries_of_the_world", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All users.
+        /// </summary>
+        public static string All_users {
+            get {
+                return ResourceManager.GetString("All_users", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Autumn tours.
         /// </summary>
@@ -135,18 +131,16 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("Autumn_tours", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
-        public static string Back 
-        {
-            get
-            {
+        public static string Back {
+            get {
                 return ResourceManager.GetString("Back", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Book.
         /// </summary>
@@ -166,11 +160,11 @@ namespace BonVoyage_TravelAgency.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Charters ot Bulgaria.
+        ///   Looks up a localized string similar to Charters to Bulgaria.
         /// </summary>
-        public static string Charters_ot_Bulgaria {
+        public static string Charters_to_Bulgaria {
             get {
-                return ResourceManager.GetString("Charters_ot_Bulgaria", resourceCulture);
+                return ResourceManager.GetString("Charters_to_Bulgaria", resourceCulture);
             }
         }
         
@@ -245,9 +239,9 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("Countries", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Country.
+        ///   Looks up a localized string similar to About Us.
         /// </summary>
         public static string Country {
             get {
@@ -317,18 +311,7 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("Home", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Hello.
-        /// </summary>
-        public static string Hello
-        {
-            get
-            {
-                return ResourceManager.GetString("Hello", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to How to book a tour.
         /// </summary>
@@ -337,17 +320,16 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("How_to_book_a_tour", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to How to pay for the tour.
         /// </summary>
-        public static string How_to_pay_for_the_tour
-        {
-            get
-            {
+        public static string How_to_pay_for_the_tour {
+            get {
                 return ResourceManager.GetString("How_to_pay_for_the_tour", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Last Minute Tours.
         /// </summary>
@@ -409,8 +391,26 @@ namespace BonVoyage_TravelAgency.Resources {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
             }
-        }        
-
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New year tours.
+        /// </summary>
+        public static string New_year_tours {
+            get {
+                return ResourceManager.GetString("New_year_tours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string Next {
+            get {
+                return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Number of persons.
         /// </summary>
@@ -419,29 +419,7 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("Number_of_persons", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to New_year_tours.
-        /// </summary>
-        public static string New_year_tours
-        {
-            get
-            {
-                return ResourceManager.GetString("New_year_tours", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Next.
-        /// </summary>
-        public static string Next
-        {
-            get
-            {
-                return ResourceManager.GetString("Next", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Office addresses.
         /// </summary>
@@ -468,18 +446,16 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("Password", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Password_Confirm.
+        ///   Looks up a localized string similar to Password Confirm.
         /// </summary>
-        public static string Password_Confirm
-        {
-            get
-            {
+        public static string Password_Confirm {
+            get {
                 return ResourceManager.GetString("Password_Confirm", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Payment.
         /// </summary>
@@ -495,6 +471,15 @@ namespace BonVoyage_TravelAgency.Resources {
         public static string Preference {
             get {
                 return ResourceManager.GetString("Preference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous.
+        /// </summary>
+        public static string Previous {
+            get {
+                return ResourceManager.GetString("Previous", resourceCulture);
             }
         }
         
@@ -515,18 +500,7 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("Privacy_Policy", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Previous.
-        /// </summary>
-        public static string Previous
-        {
-            get
-            {
-                return ResourceManager.GetString("Previous", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Refund.
         /// </summary>
@@ -679,18 +653,16 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("Tours", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Tours to Egypt.
+        ///   Looks up a localized string similar to Tours to Croitia.
         /// </summary>
-        public static string Tours_to_Croitia
-        {
-            get
-            {
+        public static string Tours_to_Croitia {
+            get {
                 return ResourceManager.GetString("Tours_to_Croitia", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Tours to Egypt.
         /// </summary>
