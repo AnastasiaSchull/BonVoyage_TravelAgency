@@ -1,0 +1,60 @@
+﻿@model BonVoyage.BLL.DTOs.UserDTO
+
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your Profile</h2>
+<hr />
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Message
+    </div>
+}
+
+<form asp-action="Profile" method="post" class="form-horizontal">
+    <input type="hidden" asp-for="UserId" />
+    <div class="form-group">
+        <label asp-for="UserName" class="control-label col-md-2">Name</label>
+        <div class="col-md-10">
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserSurname" class="control-label col-md-2">Surname</label>
+        <div class="col-md-10">
+            <input asp-for="UserSurname" class="form-control" />
+            <span asp-validation-for="UserSurname" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label col-md-2">Email</label>
+        <div class="col-md-10">
+            <input asp-for="Email" class="form-control" readonly />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address" class="control-label col-md-2">Address</label>
+        <div class="col-md-10">
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Country" class="control-label col-md-2">Country</label>
+        <div class="col-md-10">
+            <input asp-for="Country" class="form-control" />
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary">Update Profile</button>
+        </div>
+    </div>
+</form>

@@ -36,7 +36,8 @@
                 else
                 {
                     <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="CustomerPreference" asp-action="Index">@Preference</a>
-                    <span class="navbar-brand size20">@Hello, @Context.Session.GetString("UserName")</span>
+                    <span class="navbar-brand size20">Hello, @Context.Session.GetString("UserName")</span>
+                    <a class="navbar-brand size20 colorWhite" href="@Url.Action("Profile", "Account")">Profile</a>
                     <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Logout">@Logout</a>
                     <a href="/Chat/Index" class="btn size20 colorWhite">@Go_to_Chat_Room</a>
                 }          
@@ -99,7 +100,7 @@
                             <a class="dropdown-item colorBlue" href="#"> @Charters_to_Egypt</a>
                             <a class="dropdown-item colorBlue" href="#"> @Charters_to_Greece</a>
                             <a class="dropdown-item colorBlue" href="#"> @Charters_to_Montenegro</a>
-                            <a class="dropdown-item colorBlue" href="#"> @Charters_ot_Bulgaria</a>
+                            <a class="dropdown-item colorBlue" href="#"> @Charters_to_Bulgaria</a>
                             <a class="dropdown-item colorBlue" href="#">@All_charter_flights</a>
                         </div>
                     </li>

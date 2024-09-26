@@ -36,19 +36,20 @@ namespace BonVoyage.BLL.Services
 
         public async Task UpdateUserAsync(UserDTO userDTO)
         {
-            var user = new User
+            var existingUser = await Database.Users.Get(userDTO.UserId);
+
+            if (existingUser == null)
             {
-                UserId = userDTO.UserId,
-                UserName = userDTO.UserName,
-                UserSurname = userDTO.UserSurname,
-                Email = userDTO.Email,
-                Password = userDTO.Password,
-                Salt = userDTO.Salt,
-                Address = userDTO.Address,
-                Country = userDTO.Country,
-                Role = userDTO.Role
-            };
-            Database.Users.Update(user);
+                throw new ValidationException("User not found!", "");
+            }
+
+            existingUser.UserName = userDTO.UserName;
+            existingUser.UserSurname = userDTO.UserSurname;
+            existingUser.Email = userDTO.Email;
+            existingUser.Address = userDTO.Address;
+            existingUser.Country = userDTO.Country;
+            existingUser.Role = userDTO.Role;
+
             await Database.Save();
         }
 

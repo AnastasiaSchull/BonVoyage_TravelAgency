@@ -7,6 +7,9 @@ using System.Text;
 using BonVoyage.BLL.Interfaces;
 using BonVoyage.BLL.DTOs;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using BonVoyage.BLL.Services;
+using BonVoyage.BLL.Infrastructure;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
@@ -133,6 +136,57 @@ namespace BonVoyage_TravelAgency.Controllers
         {
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> Profile(int? id)
+        {
+            if (id == null)
+            {
+                var sessionId = HttpContext.Session.GetInt32("UserId");
+                if (sessionId == null)
+                {
+                    return RedirectToAction("Login");
+                }
+                id = sessionId;
+            }
+
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                UserDTO user = await _userService.GetUserByIdAsync((int)id);
+                return View(user);
+            }
+            catch (ValidationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Profile(UserDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.UserId == 0)
+                {
+                    ModelState.AddModelError("", "User ID is required.");
+                    return View(model);
+                }
+
+                var existingUser = await _userService.GetUserByIdAsync(model.UserId);
+                if (existingUser == null)
+                {
+                    return NotFound();
+                }
+
+                await _userService.UpdateUserAsync(model);
+                return RedirectToAction("Profile", new { id = model.UserId });
+            }
+
+            return View(model);
         }
     }
 }
