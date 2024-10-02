@@ -37,7 +37,7 @@ namespace BonVoyage_WebAPI.Controllers
             {
                 return NotFound();
             }
-            var tourPhoto = await tourPhotoService.GetTourPhotoByIdAsync(id); 
+            var tourPhoto = await tourPhotoService.GetTourPhotoByTourIdAsync(id); 
             if (tourPhoto == null)
             {
                 return NotFound();
@@ -102,7 +102,7 @@ namespace BonVoyage_WebAPI.Controllers
             {
                 return NotFound();
             }
-            var tourPhoto = await tourPhotoService.GetTourPhotoByIdAsync(id);
+            var tourPhoto = await tourPhotoService.GetTourPhotoByTourIdAsync(id);
             if (tourPhoto == null)
             {
                 return NotFound();
@@ -113,7 +113,7 @@ namespace BonVoyage_WebAPI.Controllers
         }
         private bool TourPhotoExists(int id)
         {
-            var tourPhoto = tourPhotoService.GetTourPhotoByIdAsync(id);
+            var tourPhoto = tourPhotoService.GetTourPhotoByTourIdAsync(id);
 
             if (tourPhoto == null)
                 return false;
