@@ -4,6 +4,7 @@ using BonVoyage.BLL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using BonVoyage_WebAPI.Models;
 
+
 namespace BonVoyage_WebAPI.Controllers
 {
     [ApiController]
@@ -70,6 +71,8 @@ namespace BonVoyage_WebAPI.Controllers
             }
             return tour;
         }
+
+
         // PUT: api/Tours/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -103,21 +106,70 @@ namespace BonVoyage_WebAPI.Controllers
 
             return NoContent();
         }
+     
 
-        // POST: api/Tours
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<TourDTO>> PostTour(TourDTO tour)
+        [HttpPost, DisableRequestSizeLimit]
+        public async Task<IActionResult> PostTour([FromForm] CreateTourRequest request)
         {
             if (!ModelState.IsValid)
             {
-               return BadRequest(ModelState);
+                return BadRequest(ModelState);
             }
 
-            await tourService.CreateTourAsync(tour);
+            var tour = new TourDTO
+            {
+                Title = request.Title,
+                Description = request.Description,
+                Duration = request.Duration,
+                Price = request.Price,
+                Country = request.Country,
+                Route = request.Route,
+                StartDate = request.StartDate,
+                EndDate = request.EndDate
+            };
 
-            return CreatedAtAction("GetTour", new { id = tour.TourId }, tour);
+            var createdTour = await tourService.CreateTourAsync(tour);  
+            if (request.Photo != null)
+            {
+                var photoPath = await SaveFileAsync(request.Photo);  
+                var tourPhoto = new TourPhotoDTO
+                {
+                    TourId = createdTour.TourId,
+                    PhotoUrl = photoPath
+                };
+
+                await tourPhotoService.CreateTourPhotoAsync(tourPhoto);  
+            }
+
+            return CreatedAtAction("GetTour", new { id = createdTour.TourId }, createdTour);
         }
+
+        private async Task<string> SaveFileAsync(IFormFile photo)
+        {
+            //путь к wwwroot проекта BonVoyage_TravelAgency
+            var uploadPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, "BonVoyage_TravelAgency/BonVoyage_TravelAgency/wwwroot/images/tours");                  
+
+            // генерация уникального имени файла
+            var fileName = Path.GetFileNameWithoutExtension(photo.FileName) + "_" + DateTime.Now.Ticks + Path.GetExtension(photo.FileName);
+            var filePath = Path.Combine(uploadPath, fileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                try
+                {
+                    await photo.CopyToAsync(fileStream);
+                    Console.WriteLine($"File saved: {filePath}"); 
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error saving file: {ex.Message}");
+                }
+            }
+
+            // путь для сохранения в базу данных
+            return $"/images/tours/{fileName}";
+        }
+
 
         // DELETE: api/Tours/5
         [HttpDelete("{id}")]

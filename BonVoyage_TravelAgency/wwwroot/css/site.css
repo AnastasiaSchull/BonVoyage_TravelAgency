@@ -1,26 +1,26 @@
 ﻿/* Existing styles in site.css */
 
 html {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 14px;
-  }
+    html {
+        font-size: 14px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 /* New styles */
@@ -38,14 +38,14 @@ body {
     background-attachment: fixed;
 }
 
-h1,h2, h3 {
+h1, h2, h3 {
     font-family: 'Calypso', Arial, sans-serif;
-    color:blue;
+    color: blue;
 }
 
-p{
-    font-size:16px;
-    color:cadetblue;
+p {
+    font-size: 16px;
+    color: cadetblue;
 }
 
 .login-container {
@@ -56,18 +56,18 @@ p{
     right: 10px;
     color: white;
 }
-  
+
 .login-form {
     display: flex;
     align-items: center;
 }
 
-.login-form input, .login-form button {
-    margin: 5px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: 2px solid #258cfb;
-}
+    .login-form input, .login-form button {
+        margin: 5px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: 2px solid #258cfb;
+    }
 
 .container {
     padding: 18px;
@@ -77,7 +77,7 @@ p{
 
 .containerPrivacy {
     background: rgba(255, 255, 255, 0.3);
-    padding:  0;   
+    padding: 0;
     border-radius: 10px;
 }
 
@@ -89,19 +89,24 @@ a {
 .colorBlue {
     color: #2f00ff !important;
 }
+
 .colorWhite {
     color: #ffffff !important;
 }
+
 .colorOrange {
-    color: #ffa726!important;
+    color: #ffa726 !important;
 }
+
 .size30 {
-    font-size: 30px; 
-    font-weight:bold;
+    font-size: 30px;
+    font-weight: bold;
 }
+
 .size20 {
     font-size: 20px;
 }
+
 .size18 {
     font-size: 18px;
 }
@@ -119,34 +124,34 @@ a:hover {
 }
 
 .tooltip-inner {
-    background-color:gainsboro;
+    background-color: gainsboro;
     color: darkblue;
     border: 1px solid gray;
-    font-size:18px;
+    font-size: 18px;
 }
 
-.collapse p{
-    color:black;
+.collapse p {
+    color: black;
 }
-  
+
 .faq-actions a {
     color: dimgray !important;
 }
 
-.faq-actions a:hover {
-    color: #2f00ff !important;
-}
+    .faq-actions a:hover {
+        color: #2f00ff !important;
+    }
 
-p a{
-    font-size:18px !important;
-}
-
-p a:hover {  
+p a {
     font-size: 18px !important;
 }
 
+    p a:hover {
+        font-size: 18px !important;
+    }
+
 .text-center a:hover {
-    color:#ff6a00 !important;
+    color: #ff6a00 !important;
 }
 
 label {
@@ -162,15 +167,16 @@ label {
 
 span {
     font-family: 'Calypso';
-    color: #ffa726 !important;    
+    color: #ffa726 !important;
 }
+
 .card-img-top {
     transition: transform 0.3s ease;
 }
 
-.card-img-top:hover {
-    transform: scale(1.1);
-}
+    .card-img-top:hover {
+        transform: scale(1.1);
+    }
 
 .logo img {
     height: 60px;
@@ -203,27 +209,26 @@ span {
 }
 
 
-.lang-dropdown button {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    background: none;
-    border: none;
-    text-align: left;
-    width: 100%;
-    font-size: 16px;
-    outline: none;
-    transition: background-color 0.3s, color 0.3s;
-    font-family: 'Calypso';
-}
+    .lang-dropdown button {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        background: none;
+        border: none;
+        text-align: left;
+        width: 100%;
+        font-size: 16px;
+        outline: none;
+        transition: background-color 0.3s, color 0.3s;
+        font-family: 'Calypso';
+    }
 
-.lang-dropdown button:hover {
-    background-color: dodgerblue;
-    color: white;
-    cursor: pointer;
-           
-}
+        .lang-dropdown button:hover {
+            background-color: dodgerblue;
+            color: white;
+            cursor: pointer;
+        }
 
 .language-selector {
     position: relative;
@@ -254,3 +259,41 @@ span {
 .card-title {
     font-family: 'Calypso' !important;
 }
+
+
+.form-container {
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+    width: 100vw;
+    padding-left: 20px;
+}
+
+.form-box {
+    width: 80%;
+    max-width: 900px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.45);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid cadetblue;
+    border-left: 15px solid cadetblue;
+    border-right: 15px solid cadetblue;
+    margin-left: -20px;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+    .form-label input,
+    .form-label textarea {
+        margin-left: auto;
+        width: calc(100% - 170px); /* ширина поля, с учетом отступа и текста лейбла */
+    }
+
+    .form-label span {
+        min-width: 60px;
+    }

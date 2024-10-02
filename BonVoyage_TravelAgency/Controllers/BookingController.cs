@@ -2,9 +2,7 @@
 using BonVoyage.BLL.DTOs;
 using BonVoyage.BLL.Interfaces;
 using BonVoyage.BLL.Infrastructure;
-using BonVoyage.BLL.Services;
 using BonVoyage_TravelAgency.Models;
-using BonVoyage.DAL.Entities;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
@@ -52,7 +50,7 @@ namespace BonVoyage_TravelAgency.Controllers
         {
             var users = await _userService.GetAllUsersAsync();
             var tour = await _tourService.GetTourByIdAsync(id);
-            var tourPhoto = await _tourPhotoService.GetTourPhotoByIdAsync(tour.TourId);
+            var tourPhoto = await _tourPhotoService.GetTourPhotoByTourIdAsync(tour.TourId);
             
             var viewModel = new BookingViewModel
             {

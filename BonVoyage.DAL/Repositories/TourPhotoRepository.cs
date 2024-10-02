@@ -18,9 +18,19 @@ namespace BonVoyage.DAL.Repositories
             return db.TourPhotos;
         }
 
-        public async Task<TourPhoto> Get(int id)
+        public async Task<TourPhoto> Get(int tourId)
         {
-            return await db.TourPhotos.FindAsync(id);
+            Console.WriteLine($"Fetching photo with ID: {tourId}");
+            var tourPhoto = await db.TourPhotos.FirstOrDefaultAsync(tp => tp.TourId == tourId);
+            if (tourPhoto == null)
+            {
+                Console.WriteLine("Photo not found");
+            }
+            else
+            {
+                Console.WriteLine($"Photo found: {tourPhoto.PhotoUrl}");
+            }
+            return tourPhoto;
         }
 
         public async Task Create(TourPhoto tourPhoto)

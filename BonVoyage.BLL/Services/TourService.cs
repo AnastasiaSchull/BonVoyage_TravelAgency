@@ -4,7 +4,6 @@ using BonVoyage.DAL.Entities;
 using BonVoyage.BLL.Infrastructure;
 using BonVoyage.BLL.DTOs;
 using AutoMapper;
-using System.Collections.Generic;
 
 
 namespace BonVoyage.BLL.Services
@@ -17,7 +16,7 @@ namespace BonVoyage.BLL.Services
         {
             Database = uow;
         }
-        public async Task CreateTourAsync(TourDTO tourDTO)
+        public async Task<TourDTO> CreateTourAsync(TourDTO tourDTO)
         {
             var tour = new Tour
             {
@@ -33,6 +32,10 @@ namespace BonVoyage.BLL.Services
             };
             await Database.Tours.Create(tour);
             await Database.Save();
+
+            // возвращаем TourDTO с заполненным TourId
+            tourDTO.TourId = tour.TourId;
+            return tourDTO;
         }
         public async Task UpdateTourAsync(TourDTO tourDTO)
         {

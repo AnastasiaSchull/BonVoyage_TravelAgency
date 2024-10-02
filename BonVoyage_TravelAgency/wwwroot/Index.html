@@ -6,17 +6,20 @@
     <link href="css/site.css" rel="stylesheet">
     <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="lib/bootstrap/dist/css/bootstrap.css.map" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.6/dist/sweetalert2.min.js"></script>
     <style>
         .visible {
-            display: block;            
+            display: block;
         }
 
         .nonVisible {
-            display: none;            
+            display: none;
         }
     </style>
 </head>
@@ -24,10 +27,13 @@
     <div class="container" id="app"></div>
     <script type="text/babel" src="Tours.jsx"></script>
     <script type="text/babel" src="ToursInfo.jsx"></script>
-    <script type="text/babel" src="ToursPhotos.jsx"></script>    
+    <script type="text/babel" src="ToursPhotos.jsx"></script>
     <script type="text/babel" src="HotelsInfo.jsx"></script>
     <script type="text/babel" src="HotelsPhotos.jsx"></script>
+    <script type="text/babel" src="CreateTour.jsx"></script>
+
     <script type="text/babel">
+
 
         function GetTours() {
 
@@ -57,7 +63,9 @@
                         title: "All our tours",
                         tours: toursInfo,
                         hotels: hotelsInfo
+
                     };
+                    console.log(document.getElementById("app"));
                     ReactDOM.createRoot(document.getElementById("app")).render(
                             <React.StrictMode>
                                 <Tours data={propsValues} />
