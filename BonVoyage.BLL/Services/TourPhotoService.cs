@@ -4,6 +4,7 @@ using BonVoyage.DAL.Entities;
 using BonVoyage.BLL.Infrastructure;
 using BonVoyage.BLL.DTOs;
 using AutoMapper;
+using BonVoyage.DAL.Repositories;
 
 namespace BonVoyage.BLL.Services
 {
@@ -43,11 +44,12 @@ namespace BonVoyage.BLL.Services
             await Database.TourPhotos.Delete(id);
             await Database.Save();
         }
+       
 
-        public async Task<TourPhotoDTO> GetTourPhotoByIdAsync(int id)
+        public async Task<TourPhotoDTO> GetTourPhotoByTourIdAsync(int tourId)
         {
-            var tourPhoto = await Database.TourPhotos.Get(id);
-            if (tourPhoto  == null)
+            var tourPhoto = await Database.TourPhotos.Get(tourId);
+            if (tourPhoto == null)
                 throw new ValidationException("Wrong tour photo!", "");
             return new TourPhotoDTO
             {
@@ -57,6 +59,7 @@ namespace BonVoyage.BLL.Services
                 Tour = tourPhoto.Tour?.Title
             };
         }
+
         // Automapper 
         public async Task<IEnumerable<TourPhotoDTO>> GetAllTourPhotosAsync()
         {
