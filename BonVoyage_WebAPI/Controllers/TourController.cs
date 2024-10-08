@@ -15,11 +15,15 @@ namespace BonVoyage_WebAPI.Controllers
         private readonly ITourService tourService;
         private readonly ITourPhotoService tourPhotoService;
 
-        public TourController(ITourService serv, ITourPhotoService photoServ)
+        private readonly IWebHostEnvironment _environment;
+
+        public TourController(IWebHostEnvironment environment, ITourService serv, ITourPhotoService photoServ)
         {
+            _environment = environment;
             tourService = serv;
             tourPhotoService = photoServ;
         }
+
         // GET: api/Tours
         [HttpGet]
         public async Task<ActionResult<List<TourViewModel>>> GetAllTours()
@@ -111,6 +115,8 @@ namespace BonVoyage_WebAPI.Controllers
         [HttpPost, DisableRequestSizeLimit]
         public async Task<IActionResult> PostTour([FromForm] CreateTourRequest request)
         {
+            Console.WriteLine($"File received: {request.Photo.FileName}");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -146,29 +152,23 @@ namespace BonVoyage_WebAPI.Controllers
 
         private async Task<string> SaveFileAsync(IFormFile photo)
         {
-            //путь к wwwroot проекта BonVoyage_TravelAgency
-            var uploadPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, "BonVoyage_TravelAgency/BonVoyage_TravelAgency/wwwroot/images/tours");                  
+            // путь к директории wwwroot другого проекта
+            var baseDirectory = Path.GetFullPath(Path.Combine(_environment.ContentRootPath, @"..\BonVoyage_TravelAgency\wwwroot\images\tours"));
 
-            // генерация уникального имени файла
             var fileName = Path.GetFileNameWithoutExtension(photo.FileName) + "_" + DateTime.Now.Ticks + Path.GetExtension(photo.FileName);
-            var filePath = Path.Combine(uploadPath, fileName);
+            var filePath = Path.Combine(baseDirectory, fileName);
+
+            Console.WriteLine($"Original format: {Path.GetExtension(photo.FileName)}");
+            Console.WriteLine($"Saving file to: {filePath}");
 
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
-                try
-                {
-                    await photo.CopyToAsync(fileStream);
-                    Console.WriteLine($"File saved: {filePath}"); 
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error saving file: {ex.Message}");
-                }
+                await photo.CopyToAsync(fileStream);
             }
 
-            // путь для сохранения в базу данных
+            //  путь для сохранения в базу данных
             return $"/images/tours/{fileName}";
-        }
+        }        
 
 
         // DELETE: api/Tours/5
