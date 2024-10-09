@@ -60,18 +60,15 @@
                             })}
                         </div>
                     </div>
-                    <div className={this.state.class1}>
-                        <button class="btn btn-info" style={{ color: "white", fontWeight: "bold" }} onClick={this.backToTours} >BACK TO TOURS</button>
+                    <div className={this.state.class1}>                        
                         <br />
-                        <br />
-                        <div class="row">
+                        <div>
                             {
                                 this.state.hotels.filter(hotel => hotel.tourId == this.state.id).map(filteredHotel => (
-                                    <HotelsInfo hotel={filteredHotel} />
+                                    <HotelsInfo hotel={filteredHotel}
+                                        click={this.backToTours}/>
                                 ))}
-                        </div>
-                        <button class="btn btn-info" style={{ color: "white", fontWeight: "bold" }} onClick={this.backToTours} >BACK TO TOURS</button>
-
+                        </div>               
                     </div>
                 </div>
             );

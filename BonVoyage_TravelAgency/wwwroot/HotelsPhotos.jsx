@@ -2,7 +2,9 @@
     
     render() {
         return (
-            <img src={this.props.photoUrl} class="card-img-top" alt="Image" />
+            <div class="hotelPhoto" >
+                <img src={this.props.photoUrl} class="img" alt="Image" />               
+            </div>
         );
     }
 
