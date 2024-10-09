@@ -7,6 +7,7 @@
         };
         this.backToTours = this.backToTours.bind(this);
         this.toggleCreateTour = this.toggleCreateTour.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     press = value => {
@@ -26,6 +27,59 @@
             showingCreateTour: !prevState.showingCreateTour,
         }));
     }
+
+    handleDelete(tourId) {
+        console.log("ID of the tour to be deleted:", tourId);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // отправляем запрос
+                fetch(`https://localhost:7299/api/Tours/${tourId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your tour has been deleted.',
+                                'success'
+                            );
+                            // обновляем состояние, удаляя тур из списка
+                            this.setState({
+                                tours: this.state.tours.filter(tour => tour.tourId !== tourId)
+                            });
+                        } else {
+                            Swal.fire(
+                                'Error!',
+                                'There was a problem deleting the tour.',
+                                'error'
+                            );
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting tour:', error);
+                        Swal.fire(
+                            'Error!',
+                            'There was a problem deleting the tour.',
+                            'error'
+                        );
+                    });
+            }
+        });
+    }
+
+
     render() {
         if (this.state.showingCreateTour) {
             console.log("Рендерим CreateTour");
@@ -55,12 +109,22 @@
                                         <ToursInfo tour={tour}
                                             getId={this.press} />
                                         <button class="btn btn-info" style={{ color: "white", fontWeight: "bold" }} onClick={() => this.press(tour.tourId)} > Tours to {tour.title} -&gt;</button>
+
+                                        <button
+                                            className="btn btn-danger"
+                                            style={{ color: "white", fontWeight: "bold" }}
+                                            onClick={() => this.handleDelete(tour.tourId)}
+                                        >
+                                            Delete this Tour
+                                           
+                                        </button>
                                     </div>
                                 </div>);
                             })}
                         </div>
                     </div>
-                    <div className={this.state.class1}>                        
+                    <div className={this.state.class1}>  
+                                                     
                         <br />
                         <div>
                             {
