@@ -40,9 +40,20 @@ namespace BonVoyage.DAL.Repositories
 
         public void Update(TourPhoto tourPhoto)
         {
-            db.Entry(tourPhoto).State = EntityState.Modified;
-        }
+            // проверяем, отслеживается ли уже сущность
+            var trackedEntity = db.TourPhotos.Local.FirstOrDefault(tp => tp.TourPhotoId == tourPhoto.TourPhotoId);
 
+            if (trackedEntity != null)
+            {
+                // если сущность уже отслеживается, обновляем её свойства вручную
+                db.Entry(trackedEntity).CurrentValues.SetValues(tourPhoto);
+            }
+            else
+            {
+                // если сущность не отслеживается, добавляем её в контекст
+                db.Entry(tourPhoto).State = EntityState.Modified;
+            }
+        }
         public async Task Delete(int id)
         {
             TourPhoto? tourPhoto = await db.TourPhotos.FindAsync(id);

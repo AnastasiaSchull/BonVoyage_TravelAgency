@@ -4,10 +4,14 @@
         this.state = {
             tours: this.props.data.tours, hotels: this.props.data.hotels, id: 0, class: "visible", class1: "nonVisible",
             showingCreateTour: false,
+            showingUpdateTour: false,
+            tourToEdit: null,
         };
         this.backToTours = this.backToTours.bind(this);
         this.toggleCreateTour = this.toggleCreateTour.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleSaveUpdatedTour = this.handleSaveUpdatedTour.bind(this);
     }
 
     press = value => {
@@ -25,6 +29,24 @@
         console.log("Toggling CreateTour");
         this.setState(prevState => ({
             showingCreateTour: !prevState.showingCreateTour,
+        }));
+    }
+
+    handleUpdate = (tour) => {
+        this.setState({
+            showingUpdateTour: true,
+            tourToEdit: tour // передаем данные о туре в состояние
+        });
+    }
+
+    handleSaveUpdatedTour = (updatedTour) => {
+
+        this.setState(prevState => ({
+            tours: prevState.tours.map(tour =>
+                tour.tourId === updatedTour.tourId ? { ...tour, ...updatedTour } : tour
+            ),
+            showingUpdateTour: false,  // скрываем форму обновления
+            tourToEdit: null           // очищаем выбранный тур для редактирования
         }));
     }
 
@@ -92,7 +114,21 @@
                     <CreateTour />
                 </div>
             );
-        } else {
+        }
+            // показываем форму обновления тура
+        else if (this.state.showingUpdateTour && this.state.tourToEdit) {
+            console.log("Рендерим UpdateTour");
+            return (
+                <div>
+                    <button className="btn btn-default" onClick={() => this.setState({ showingUpdateTour: false })}>
+                        Cancel Update
+                    </button>
+                    <UpdateTour tour={this.state.tourToEdit} onSave={this.handleSaveUpdatedTour} />
+                </div>
+            );
+        }
+
+        else {
             return (
                 <div>
                     <button className="btn btn-default" onClick={this.toggleCreateTour}>
@@ -111,12 +147,19 @@
                                         <button class="btn btn-info" style={{ color: "white", fontWeight: "bold" }} onClick={() => this.press(tour.tourId)} > Tours to {tour.title} -&gt;</button>
 
                                         <button
+                                            className="btn btn-warning"
+                                            style={{ color: "white", fontWeight: "bold" }}
+                                            onClick={() => this.handleUpdate(tour)}
+                                        >
+                                            Update this Tour
+                                        </button>
+
+                                        <button
                                             className="btn btn-danger"
                                             style={{ color: "white", fontWeight: "bold" }}
                                             onClick={() => this.handleDelete(tour.tourId)}
                                         >
-                                            Delete this Tour
-                                           
+                                            Delete this Tour                                           
                                         </button>
                                     </div>
                                 </div>);
