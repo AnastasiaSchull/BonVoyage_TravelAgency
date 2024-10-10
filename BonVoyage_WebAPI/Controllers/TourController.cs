@@ -78,39 +78,89 @@ namespace BonVoyage_WebAPI.Controllers
 
 
         // PUT: api/Tours/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTour(int id, TourDTO tour)
+        [HttpPut("{id}"), DisableRequestSizeLimit]
+        public async Task<IActionResult> PutTour(int id, [FromForm] UpdateTourRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != tour.TourId)
-            {
-                return BadRequest();
-            }
-
             try
             {
-                await tourService.UpdateTourAsync(tour);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TourExists(id))
+                Console.WriteLine($"Updating Tour with ID: {id}");
+                Console.WriteLine($"Title: {request.Title}, StartDate: {request.StartDate}, EndDate: {request.EndDate}");
+                if (request.Photo != null)
                 {
-                    return NotFound();
+                    Console.WriteLine($"Photo received: {request.Photo.FileName}");
                 }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return NoContent();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                // проверка, что id в запросе соответствует id в объекте тура
+                if (id != request.TourId)
+                {
+                    return BadRequest();
+                }
+
+                // объект TourDTO для обновления тура
+                var tour = new TourDTO
+                {
+                    TourId = request.TourId,
+                    Title = request.Title,
+                    Description = request.Description,
+                    Duration = request.Duration,
+                    Price = request.Price,
+                    Country = request.Country,
+                    Route = request.Route,
+                    StartDate = request.StartDate,
+                    EndDate = request.EndDate
+                };
+
+                // обновляем основные данные
+                await tourService.UpdateTourAsync(tour);
+
+                // используем путь к директории, как в SaveFileAsync                
+                var baseDirectory = Path.Combine(_environment.ContentRootPath, @"..\BonVoyage_TravelAgency\wwwroot");
+                
+                if (request.Photo != null)
+                {
+                    var existingPhoto = await tourPhotoService.GetTourPhotoByTourIdAsync(id);
+
+                    if (existingPhoto != null)
+                    {
+                         // строим путь к старому фото
+                        var oldPhotoPath = Path.Combine(baseDirectory, existingPhoto.PhotoUrl.TrimStart('/'));
+
+                        if (System.IO.File.Exists(oldPhotoPath))
+                        {
+                            System.IO.File.Delete(oldPhotoPath);
+                            Console.WriteLine($"Deleted old photo: {oldPhotoPath}");
+                        }
+
+                        var newPhotoPath = await SaveFileAsync(request.Photo);
+                        existingPhoto.PhotoUrl = newPhotoPath;
+                        await tourPhotoService.UpdateTourPhotoAsync(existingPhoto);
+                    }
+                    else
+                    {
+                        var newPhotoPath = await SaveFileAsync(request.Photo);
+                        var tourPhoto = new TourPhotoDTO
+                        {
+                            TourId = id,
+                            PhotoUrl = newPhotoPath
+                        };
+                        await tourPhotoService.CreateTourPhotoAsync(tourPhoto);
+                    }
+                }
+
+                return Ok(tour); 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error : {ex.Message}");
+                return StatusCode(500, "An error occurred while updating");
+            }
         }
-     
+
 
         [HttpPost, DisableRequestSizeLimit]
         public async Task<IActionResult> PostTour([FromForm] CreateTourRequest request)
