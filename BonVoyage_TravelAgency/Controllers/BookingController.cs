@@ -4,6 +4,7 @@ using BonVoyage.BLL.Interfaces;
 using BonVoyage.BLL.Infrastructure;
 using BonVoyage_TravelAgency.Models;
 
+
 namespace BonVoyage_TravelAgency.Controllers
 {
     public class BookingController : BaseController
@@ -48,6 +49,9 @@ namespace BonVoyage_TravelAgency.Controllers
 
         public async Task<IActionResult> Create(int id)
         {
+            if (HttpContext.Session.GetInt32("UserId") == null)
+                return RedirectToAction("Login", "Account");
+
             var users = await _userService.GetAllUsersAsync();
             var tour = await _tourService.GetTourByIdAsync(id);
             var tourPhoto = await _tourPhotoService.GetTourPhotoByTourIdAsync(tour.TourId);
@@ -67,12 +71,12 @@ namespace BonVoyage_TravelAgency.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(BookingDTO booking)
         {
-            if (ModelState.IsValid)
+           if (ModelState.IsValid)
             {
                 booking.BookingDate = DateTime.Now;
                 booking.Status = "Under consideration";
                 await bookingService.CreateBookingAsync(booking);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             return View(booking);
         }

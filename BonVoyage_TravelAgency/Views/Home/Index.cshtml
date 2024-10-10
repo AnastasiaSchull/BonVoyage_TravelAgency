@@ -26,12 +26,11 @@
                     }
                     <div class="card-body">
                         <h5 class="card-title">@tour.Title</h5>            
-                        @if (Context.Session.GetString("UserId") != null)
-                        {
+                        @* @if (Context.Session.GetString("UserId") != null) *@                        
                             <div>
                                 <a asp-action="Create" asp-controller="Booking" class=" link" asp-route-id="@tour.TourId">@View_Details</a>
                             </div>
-                        }
+                       
                     </div>
                 </div>
             </div>
