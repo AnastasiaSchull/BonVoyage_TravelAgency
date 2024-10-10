@@ -69,7 +69,7 @@ namespace BonVoyage.BLL.Services
         public async Task<IEnumerable<BookingDTO>> GetAllBookingsAsync()
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Booking, BookingDTO>()
-            .ForMember("Tour", opt => opt.MapFrom(c => c.Tour.Title)).ForMember("User", opt => opt.MapFrom(c => c.User.UserName)));
+            .ForMember("Tour", opt => opt.MapFrom(c => c.Tour.Title)).ForMember("User", opt => opt.MapFrom(c => c.User.UserSurname)).ForMember("UserMail", opt => opt.MapFrom(c => c.User.Email)));
             var mapper = new Mapper(config);
             return mapper.Map<IQueryable<Booking>, IEnumerable<BookingDTO>>(await Database.Bookings.GetAll());
         }

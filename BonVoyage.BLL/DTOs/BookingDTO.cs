@@ -10,6 +10,6 @@
         public string? Status { get; set; }
         public string? Tour { get; set; }
         public string? User { get; set; }
-
+        public string? UserMail { get; set; }
     }
 }

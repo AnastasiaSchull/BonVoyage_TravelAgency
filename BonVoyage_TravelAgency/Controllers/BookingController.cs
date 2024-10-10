@@ -3,6 +3,7 @@ using BonVoyage.BLL.DTOs;
 using BonVoyage.BLL.Interfaces;
 using BonVoyage.BLL.Infrastructure;
 using BonVoyage_TravelAgency.Models;
+using BonVoyage.BLL.Services;
 
 
 namespace BonVoyage_TravelAgency.Controllers
@@ -24,8 +25,8 @@ namespace BonVoyage_TravelAgency.Controllers
         // GET: Booking
         public async Task<IActionResult> Index()
         {
-            //var bookings = await bookingService.GetAllBookingsAsync();
-            return View(/*bookings*/);
+            var bookings = await bookingService.GetAllBookingsAsync();                                   
+                return View(bookings);
         }
         
         // GET: Booking/Details/5
@@ -110,31 +111,18 @@ namespace BonVoyage_TravelAgency.Controllers
             }
             return View(booking);
         }
-        // GET: Booking/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            try
-            {
-                if (id == null)
-                {
-                    return NotFound();
-                }
-                BookingDTO booking = await bookingService.GetBookingByIdAsync((int)id);
-                return View(booking);
-            }
-            catch (ValidationException ex)
-            {
-                return NotFound(ex.Message);
-            }
-        }
-
-        // POST: Booking/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        
+        [HttpPost]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var faq = await bookingService.GetBookingByIdAsync(id);
+            if (faq == null)
+            {
+                return Json(new { success = false, message = "Booking not found!" });
+            }
+
             await bookingService.DeleteBookingAsync(id);
-            return View("~/Views/Booking/Index.cshtml", await bookingService.GetAllBookingsAsync());
+            return Json(new { success = true, message = "Booking deleted successfully!" });
         }
     }
 }
