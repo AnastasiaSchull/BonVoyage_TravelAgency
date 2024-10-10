@@ -12,6 +12,7 @@
         this.handleDelete = this.handleDelete.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleSaveUpdatedTour = this.handleSaveUpdatedTour.bind(this);
+        this.handleSaveNewTour = this.handleSaveNewTour.bind(this);
     }
 
     press = value => {
@@ -24,13 +25,23 @@
         this.setState({ class: "nonVisible" ? "visible" : "nonVisible", class1: "visible" ? "nonVisible" : "visible" });
     }
 
-
     toggleCreateTour() {
-        console.log("Toggling CreateTour");
+        console.log("Toggling CreateTour. Current state:", this.state.showingCreateTour);
         this.setState(prevState => ({
             showingCreateTour: !prevState.showingCreateTour,
         }));
     }
+
+    handleSaveNewTour = (newTour) => {
+        console.log('New Tour Photo URL:', newTour.photoUrl); // проверка наличия URL фото
+        this.setState(prevState => ({
+            tours: [...prevState.tours, newTour], // добавляем новый тур в список          
+            showingCreateTour: false
+        }), () => {
+            console.log('Updated tours list:', this.state.tours); // проверим обновленное состояние
+        });
+    }
+
 
     handleUpdate = (tour) => {
         this.setState({
@@ -111,7 +122,7 @@
                     <button className="btn btn-default" onClick={this.toggleCreateTour}>
                         Cancel
                     </button>
-                    <CreateTour />
+                    <CreateTour onSave={(newTour) => this.handleSaveNewTour(newTour)} />
                 </div>
             );
         }
