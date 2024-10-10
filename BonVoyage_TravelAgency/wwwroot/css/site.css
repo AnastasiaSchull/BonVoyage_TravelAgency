@@ -328,3 +328,8 @@ table{
 button{
     margin-top: 10px;
 }
+.stars {
+    color: gold;
+    font-size: 2em;
+    display: inline-block; /* это чтобы размер блока подстраивался под контент */
+}
