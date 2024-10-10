@@ -60,6 +60,16 @@
                 <input asp-for="@user.Email" class="form-control" value="@user.Email" />
                 <span asp-validation-for="@user.Email" class="text-danger"></span>
             </div>
+            <label asp-for="@user.Address" class="control-label col-md-2">Addres:</label>
+            <div class="col-md-8">
+                <input asp-for="@user.Address" class="form-control" value="@user.Address" />
+                <span asp-validation-for="@user.Address" class="text-danger"></span>
+            </div>
+            <label asp-for="@user.Country" class="control-label col-md-2">Country:</label>
+            <div class="col-md-8">
+                <input asp-for="@user.Country" class="form-control" value="@user.Country" />
+                <span asp-validation-for="@user.Country" class="text-danger"></span>
+            </div>
             <br/>
              <input type="hidden" asp-for="TourId" value="@tour.TourId"/>
              <input type="hidden" asp-for="UserId" value="@user.UserId"/>
