@@ -5,4 +5,124 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>My bookings</h3>
+<h3>Tour bookings</h3>
+
+<br />
+
+<div class="text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.User)</th>
+                <th>@Html.DisplayNameFor(model => model.UserMail)</th>
+                <th>@Html.DisplayNameFor(model => model.Tour)</th>
+                <th>@Html.DisplayNameFor(model => model.BookingDate)</th>
+                <th>@Html.DisplayNameFor(model => model.NumberOfPeople)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserMail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tour)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookingDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumberOfPeople)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>    
+
+                        <td>                            
+                           <a asp-controller="Booking" asp-action="Edit" asp-route-id="@item.BookingId" class="link">Edit status |</a>
+                            <a href="#" onclick="confirmDelete(@item.BookingId)">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function () {
+            var errorMessage = '@TempData["ErrorMessage"]';
+            if (errorMessage) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: errorMessage
+                });
+            }
+
+            // Enabling tooltips for all elements with the .faq-question class
+            // $('.faq-question').tooltip({
+            //     title: "Click to toggle the answer",
+            //     placement: "top"
+            // });
+        });
+
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '@Url.Action("DeleteConfirmed", "Booking")',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (response) {
+                            if (response.success) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    response.message,
+                                    'success'
+                                ).then(() => {
+                                    location.reload();
+                                });
+                            } else {
+                                Swal.fire(
+                                    'Error!',
+                                    response.message,
+                                    'error'
+                                );
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            Swal.fire(
+                                'Error!',
+                                'An error occurred while deleting the Booking.',
+                                'error'
+                            );
+                        }
+                    });
+                }
+            });
+        }
+
+    </script>
+
+}

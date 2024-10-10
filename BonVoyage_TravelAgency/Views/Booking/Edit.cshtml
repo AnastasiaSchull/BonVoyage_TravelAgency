@@ -1,0 +1,25 @@
+﻿@model BonVoyage.BLL.DTOs.BookingDTO
+
+@{
+    ViewData["Title"] = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Editing status of booking</h3>
+
+<form asp-action="Edit" method="post" class="form-horizontal">
+    <div class="form-group col-md-8">
+        <input type="hidden" asp-for="BookingId" />
+        <input type="hidden" asp-for="UserId" />
+        <input type="hidden" asp-for="TourId" />
+        <input type="hidden" asp-for="BookingDate" />
+        <input type="hidden" asp-for="NumberOfPeople" />
+            <div class="col-md-8">
+                <input asp-for="Status" class="form-control" />
+            </div>
+        <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+    </div>       
+    </form>
+

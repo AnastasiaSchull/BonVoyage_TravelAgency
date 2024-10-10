@@ -316,3 +316,15 @@ span {
     height: 250px;    
 }
 
+th {
+    font-size: 18px;
+}
+
+table{
+    background-color: white;
+    color: dimgrey;
+}
+
+button{
+    margin-top: 10px;
+}
