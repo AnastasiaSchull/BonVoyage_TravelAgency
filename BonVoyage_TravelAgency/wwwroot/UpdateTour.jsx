@@ -1,7 +1,7 @@
 ﻿class UpdateTour extends React.Component {
     constructor(props) {
         super(props);
-      
+
         this.state = {
             tour: {
                 title: props.tour.title || '',
@@ -10,14 +10,14 @@
                 price: props.tour.price || '',
                 country: props.tour.country || '',
                 route: props.tour.route || '',
-                startDate: props.tour.startDate ? props.tour.startDate.split('T')[0] : '', // убираем время
-                endDate: props.tour.endDate ? props.tour.endDate.split('T')[0] : '',       
-                photoUrl: props.tour.photoUrl || ''
+                startDate: props.tour.startDate ? props.tour.startDate.split('T')[0] : '',
+                endDate: props.tour.endDate ? props.tour.endDate.split('T')[0] : '',
+                photoUrl: props.tour.photoUrl || '',
+                photoFile: null // поле для файла
             }
         };
     }
 
-    // componentDidUpdate отслеживает изменения пропсов и обновляет состояние, если фото изменилось
     componentDidUpdate(prevProps) {
         if (this.props.tour.photoUrl !== prevProps.tour.photoUrl) {
             this.setState({
@@ -32,10 +32,14 @@
     handleChange = (event) => {
         const { name, value, type, files } = event.target;
         if (type === "file") {
+            const file = files[0];
+            const photoUrl = URL.createObjectURL(file); // предпросмотр выбранного photo
+
             this.setState(prevState => ({
                 tour: {
                     ...prevState.tour,
-                    photoFile: files[0]
+                    photoFile: file, // сохраняем файл для отправки
+                    photoUrl: photoUrl // сохраняем URL для предварительного просмотра
                 }
             }));
         } else {
@@ -52,10 +56,6 @@
         event.preventDefault();
         const formData = new FormData();
 
-        // преобразуем дату в формат "yyyy-MM-dd" перед отправкой
-        const formattedStartDate = this.state.tour.startDate ? new Date(this.state.tour.startDate).toISOString().split('T')[0] : '';
-        const formattedEndDate = this.state.tour.endDate ? new Date(this.state.tour.endDate).toISOString().split('T')[0] : '';
-           
         formData.append('TourId', this.props.tour.tourId);
         formData.append('Title', this.state.tour.title);
         formData.append('Description', this.state.tour.description);
@@ -63,20 +63,18 @@
         formData.append('Price', this.state.tour.price);
         formData.append('Country', this.state.tour.country);
         formData.append('Route', this.state.tour.route);
-        formData.append('StartDate', formattedStartDate);
-        formData.append('EndDate', formattedEndDate);
+        formData.append('StartDate', this.state.tour.startDate);
+        formData.append('EndDate', this.state.tour.endDate);
 
-        // добавляем файл, если он был загружен
         if (this.state.tour.photoFile) {
-            formData.append('Photo', this.state.tour.photoFile);
+            formData.append('Photo', this.state.tour.photoFile); // добавляем файл, если он был загружен
         }
 
         try {
             const response = await fetch(`https://localhost:7299/api/Tours/${this.props.tour.tourId}`, {
-                method: 'PUT', // PUT для обновления
+                method: 'PUT',
                 body: formData
-                });
-            
+            });
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -84,12 +82,10 @@
 
             const result = await response.json();
             console.log('Success:', result);
-           
 
-            // вызываем метод, переданный из родительского компонента, для обновления состояния
-           this.props.onSave(result);
+            // обновляем родительский компонент с новыми данными тура
+            this.props.onSave(result);
 
-            
             Swal.fire({
                 title: 'Success!',
                 text: 'Tour has been successfully updated!',
@@ -100,7 +96,7 @@
             this.setState({
                 tour: {
                     ...this.state.tour,
-                    photoUrl: result.photoUrl // добавляем обновленный URL фото из ответа
+                    photoUrl: result.photoUrl // обновляем URL фото из ответа сервера
                 }
             });
         } catch (error) {
@@ -112,11 +108,11 @@
                 confirmButtonText: 'OK'
             });
         }
-       
     };
 
     render() {
         const { title, description, duration, price, country, route, startDate, endDate, photoUrl } = this.state.tour;
+
         return (
             <div className="form-container">
                 <div className="form-box">
@@ -158,6 +154,10 @@
                             Tour Photo:
                             <input type="file" name="photoUrl" onChange={this.handleChange} />
                         </label>
+
+                        {/* для отображения фото */}
+                        {photoUrl && <ToursPhotos photoUrl={photoUrl} />}
+
                         <button className="btn btn-default" type="submit">Update Tour</button>
                     </form>
                 </div>

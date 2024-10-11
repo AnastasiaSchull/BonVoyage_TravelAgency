@@ -1,5 +1,4 @@
-﻿
-class CreateTour extends React.Component {
+﻿class CreateTour extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,19 +11,23 @@ class CreateTour extends React.Component {
                 route: '',
                 startDate: '',
                 endDate: '',
-                photoUrl: ''
+                photoFile: null, // файл фотографии
+                photoUrl: '' // URL для предпросмотра
             }
         };
     }
 
-
     handleChange = (event) => {
         const { name, value, type, files } = event.target;
         if (type === "file") {
+            const file = files[0];
+            const photoUrl = URL.createObjectURL(file); // генерация URL для предварительного просмотра
+
             this.setState(prevState => ({
                 tour: {
                     ...prevState.tour,
-                    photoFile: files[0]
+                    photoFile: file, // сохраняем файл в состоянии
+                    photoUrl: photoUrl // сохраняем URL для предпросмотра
                 }
             }));
         } else {
@@ -62,6 +65,13 @@ class CreateTour extends React.Component {
 
             const result = await response.json();
             console.log('Success:', result);
+            console.log('Tour Created with Photo URL:', result.photoUrl); // проверка URL фото
+
+            if (this.props.onSave) {
+                this.props.onSave(result);  // вызов родительской функции для обновления туров
+            }
+
+            // сбрасываем состояние после успешного создания тура
             this.setState({
                 tour: {
                     title: '',
@@ -72,10 +82,11 @@ class CreateTour extends React.Component {
                     route: '',
                     startDate: '',
                     endDate: '',
-                    photoFile: null
+                    photoFile: null,
+                    photoUrl: '' // сбрасываем URL фотографии
                 }
             });
-            // SweetAlert для успешного создания тура
+
             Swal.fire({
                 title: 'Success!',
                 text: 'Tour has been successfully created!',
@@ -85,7 +96,6 @@ class CreateTour extends React.Component {
 
         } catch (error) {
             console.error('Error:', error);
-            // SweetAlert для ошибки при создании тура
             Swal.fire({
                 title: 'Error!',
                 text: 'Failed to create tour.',
@@ -97,10 +107,11 @@ class CreateTour extends React.Component {
 
     render() {
         const { title, description, duration, price, country, route, startDate, endDate, photoUrl } = this.state.tour;
+
         return (
             <div className="form-container">
                 <div className="form-box">
-                    <h3 >Create New Tour</h3>
+                    <h3>Create New Tour</h3>
                     <form onSubmit={this.handleSubmit}>
                         <label className="form-label">
                             Title:
@@ -145,8 +156,11 @@ class CreateTour extends React.Component {
                         </label>
                         <label className="form-label">
                             Tour Photo:
-                            <input type="file" name="photoUrl" onChange={this.handleChange} />
+                            <input type="file" name="photoFile" onChange={this.handleChange} />
                         </label>
+
+                        {photoUrl && <ToursPhotos photoUrl={photoUrl} />}
+
                         <button className="btn btn-default" type="submit">Create Tour</button>
                     </form>
                 </div>
@@ -154,9 +168,3 @@ class CreateTour extends React.Component {
         );
     }
 }
-
-
-
-
-
-

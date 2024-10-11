@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BonVoyage.BLL.DTOs;
 using BonVoyage.BLL.Interfaces;
-using Microsoft.EntityFrameworkCore;
 using BonVoyage_WebAPI.Models;
 
 
@@ -118,9 +117,12 @@ namespace BonVoyage_WebAPI.Controllers
                 // обновляем основные данные
                 await tourService.UpdateTourAsync(tour);
 
+                string? photoUrl = null;
+
                 // используем путь к директории, как в SaveFileAsync                
                 var baseDirectory = Path.Combine(_environment.ContentRootPath, @"..\BonVoyage_TravelAgency\wwwroot");
                 
+
                 if (request.Photo != null)
                 {
                     var existingPhoto = await tourPhotoService.GetTourPhotoByTourIdAsync(id);
@@ -139,20 +141,45 @@ namespace BonVoyage_WebAPI.Controllers
                         var newPhotoPath = await SaveFileAsync(request.Photo);
                         existingPhoto.PhotoUrl = newPhotoPath;
                         await tourPhotoService.UpdateTourPhotoAsync(existingPhoto);
+
+                        photoUrl = newPhotoPath; // обновляем значение photoUrl
                     }
                     else
-                    {
-                        var newPhotoPath = await SaveFileAsync(request.Photo);
+                    {                       
+                        photoUrl = await SaveFileAsync(request.Photo);
                         var tourPhoto = new TourPhotoDTO
                         {
-                            TourId = id,
-                            PhotoUrl = newPhotoPath
+                            TourId = id,                           
+                            PhotoUrl = photoUrl
                         };
                         await tourPhotoService.CreateTourPhotoAsync(tourPhoto);
+
                     }
                 }
+                else
+                {
+                    // если новое фото не загружено, сохраняем существующее
+                    var existingPhoto = await tourPhotoService.GetTourPhotoByTourIdAsync(id);
+                    if (existingPhoto != null)
+                    {
+                        photoUrl = existingPhoto.PhotoUrl;
+                    }
+                }
+                //return Ok(tour); 
+                return Ok(new
+                {
+                    tour.TourId,
+                    tour.Title,
+                    tour.Description,
+                    tour.Duration,
+                    tour.Price,
+                    tour.Country,
+                    tour.Route,
+                    tour.StartDate,
+                    tour.EndDate,
+                    PhotoUrl = photoUrl // возвращаем либо новый, либо существующий URL фото
+                });
 
-                return Ok(tour); 
             }
             catch (Exception ex)
             {
@@ -165,7 +192,7 @@ namespace BonVoyage_WebAPI.Controllers
         [HttpPost, DisableRequestSizeLimit]
         public async Task<IActionResult> PostTour([FromForm] CreateTourRequest request)
         {
-            Console.WriteLine($"File received: {request.Photo.FileName}");
+            Console.WriteLine($"File received: {request.Photo?.FileName}");
 
             if (!ModelState.IsValid)
             {
@@ -184,10 +211,15 @@ namespace BonVoyage_WebAPI.Controllers
                 EndDate = request.EndDate
             };
 
-            var createdTour = await tourService.CreateTourAsync(tour);  
+            var createdTour = await tourService.CreateTourAsync(tour);
+
+            string? photoPath = null;
+
             if (request.Photo != null)
             {
-                var photoPath = await SaveFileAsync(request.Photo);  
+                photoPath = await SaveFileAsync(request.Photo);
+
+                // создаем объект для связи фотографии с туром
                 var tourPhoto = new TourPhotoDTO
                 {
                     TourId = createdTour.TourId,
@@ -197,7 +229,23 @@ namespace BonVoyage_WebAPI.Controllers
                 await tourPhotoService.CreateTourPhotoAsync(tourPhoto);  
             }
 
-            return CreatedAtAction("GetTour", new { id = createdTour.TourId }, createdTour);
+            // добавляем URL фотографии в объект тура, чтобы он был в ответе
+            var tourResponse = new
+            {
+                tour.TourId,
+                tour.Title,
+                tour.Description,
+                tour.Duration,
+                tour.Price,
+                tour.Country,
+                tour.Route,
+                tour.StartDate,
+                tour.EndDate,
+                PhotoUrl = photoPath // добавляем URL фотографии
+            };
+
+            // возвращаем ответ с созданным туром и фото URL
+            return CreatedAtAction("GetTour", new { id = createdTour.TourId }, tourResponse);
         }
 
         private async Task<string> SaveFileAsync(IFormFile photo)
