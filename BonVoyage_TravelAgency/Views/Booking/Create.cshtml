@@ -26,7 +26,7 @@
                     <p class="card-text">@tour.Description</p>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Duration: @tour.Duration days</li>
-                        <li class="list-group-item">Price: $@tour.Price</li>
+                    <li class="list-group-item" value="@tour.Price" id="price">Price: $@tour.Price</li>
                         <li class="list-group-item">Country: @tour.Country</li>
                         <li class="list-group-item">Route: @tour.Route</li>
                     </ul>
@@ -35,6 +35,8 @@
                         <br />
                         <small class="text-muted">End Date: @tour.EndDate.ToShortDateString()</small>
                     </div>
+                    <br />
+                   <label id="labelForCost">TOTAl PRICE: $@tour.Price</label>
                 </div>
             </div>
         </div>
@@ -75,10 +77,10 @@
              <input type="hidden" asp-for="UserId" value="@user.UserId"/>
             <label asp-for="NumberOfPeople" class="control-label col-md-2">Number of persons:</label>
         <div class="col-md-8">
-                <input asp-for="NumberOfPeople" class="form-control" min="1" value="1" />
-                <span asp-validation-for="NumberOfPeople" id ="numberOfPeople" class="text-danger"></span>
+                <input asp-for="NumberOfPeople" id ="numberOfPeople" class="form-control" min="1" value="1" />
+                <span asp-validation-for="NumberOfPeople"  class="text-danger"></span>
         </div> </div>
-        <br />
+        <br />        
      <div style="background-color:white" class="col-md-6">
      <h4>Stages of booking a tour:</h4>
      <ol>
@@ -108,3 +110,12 @@
         </p>
     </form>
 </div>
+
+<script>    
+    var input = document.getElementById("numberOfPeople");
+    var label = document.getElementById("labelForCost");
+    var price = document.getElementById("price");
+    input.onchange = function () {                
+        label.textContent = 'TOTAl PRICE: $'+ price.value * input.value;
+    }
+</script>
