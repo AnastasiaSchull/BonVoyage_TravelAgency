@@ -117,9 +117,12 @@ namespace BonVoyage_WebAPI.Controllers
                 // обновляем основные данные
                 await tourService.UpdateTourAsync(tour);
 
+                string? photoUrl = null;
+
                 // используем путь к директории, как в SaveFileAsync                
                 var baseDirectory = Path.Combine(_environment.ContentRootPath, @"..\BonVoyage_TravelAgency\wwwroot");
                 
+
                 if (request.Photo != null)
                 {
                     var existingPhoto = await tourPhotoService.GetTourPhotoByTourIdAsync(id);
@@ -138,20 +141,45 @@ namespace BonVoyage_WebAPI.Controllers
                         var newPhotoPath = await SaveFileAsync(request.Photo);
                         existingPhoto.PhotoUrl = newPhotoPath;
                         await tourPhotoService.UpdateTourPhotoAsync(existingPhoto);
+
+                        photoUrl = newPhotoPath; // обновляем значение photoUrl
                     }
                     else
-                    {
-                        var newPhotoPath = await SaveFileAsync(request.Photo);
+                    {                       
+                        photoUrl = await SaveFileAsync(request.Photo);
                         var tourPhoto = new TourPhotoDTO
                         {
-                            TourId = id,
-                            PhotoUrl = newPhotoPath
+                            TourId = id,                           
+                            PhotoUrl = photoUrl
                         };
                         await tourPhotoService.CreateTourPhotoAsync(tourPhoto);
+
                     }
                 }
+                else
+                {
+                    // если новое фото не загружено, сохраняем существующее
+                    var existingPhoto = await tourPhotoService.GetTourPhotoByTourIdAsync(id);
+                    if (existingPhoto != null)
+                    {
+                        photoUrl = existingPhoto.PhotoUrl;
+                    }
+                }
+                //return Ok(tour); 
+                return Ok(new
+                {
+                    tour.TourId,
+                    tour.Title,
+                    tour.Description,
+                    tour.Duration,
+                    tour.Price,
+                    tour.Country,
+                    tour.Route,
+                    tour.StartDate,
+                    tour.EndDate,
+                    PhotoUrl = photoUrl // возвращаем либо новый, либо существующий URL фото
+                });
 
-                return Ok(tour); 
             }
             catch (Exception ex)
             {

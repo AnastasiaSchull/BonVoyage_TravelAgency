@@ -51,7 +51,7 @@
     }
 
     handleSaveUpdatedTour = (updatedTour) => {
-
+        console.log('updated Tour Photo URL:', updatedTour.photoUrl); 
         this.setState(prevState => ({
             tours: prevState.tours.map(tour =>
                 tour.tourId === updatedTour.tourId ? { ...tour, ...updatedTour } : tour
