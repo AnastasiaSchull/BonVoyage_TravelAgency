@@ -55,5 +55,44 @@ namespace BonVoyage_TravelAgency.Controllers
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
-	}
+        public async Task<IActionResult> Preferences()
+        {
+            var tours = await _tourService.GetAllToursAsync(); // получение туров для текущей страницы
+
+            var tourPhotos = await _tourPhotoService.GetAllTourPhotosAsync();
+
+            var viewModel = new ToursPhotosViewModel
+            {
+                Tours = tours,
+                TourPhotos = tourPhotos
+            };
+            return View(viewModel);            
+        }
+
+        public IActionResult CreatePreference(int? id)
+        {
+
+            if (id != null)
+            {
+                CookieOptions option = new CookieOptions();
+                option.Expires = DateTime.Now.AddDays(30); // срок хранения куки - 30 дней
+
+                if (Request.Cookies["preference"+id] == null)
+                    Response.Cookies.Append("preference"+id, id.ToString(), option); // создание куки
+
+                    return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index", "Home");
+        }
+        public IActionResult DeletePreference(int? id)
+        {
+            if (id != null)
+            {
+                Response.Cookies.Delete("preference"+id); // удаление куки
+
+                return RedirectToAction("Preferences", "Home");
+            }
+            return RedirectToAction("Preferences", "Home");
+        }
+    }
 }
