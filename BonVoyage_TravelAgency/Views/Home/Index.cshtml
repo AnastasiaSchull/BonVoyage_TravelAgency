@@ -26,11 +26,10 @@
                     }
                     <div class="card-body">
                         <h5 class="card-title">@tour.Title</h5>            
-                        @* @if (Context.Session.GetString("UserId") != null) *@                        
-                            <div>
-                                <a asp-action="Create" asp-controller="Booking" class=" link" asp-route-id="@tour.TourId">@View_Details</a>
-                            </div>
-                       
+                        <div>
+                            <a asp-action="Create" asp-controller="Booking" class=" link" asp-route-id="@tour.TourId">@View_Details&nbsp;&nbsp;&nbsp;</a>
+                            <a asp-action="CreatePreference" asp-controller="Home" class=" link colorOrange" asp-route-id="@tour.TourId">&nbsp;&nbsp;Add to Preferences</a>
+                        </div>                                            
                     </div>
                 </div>
             </div>

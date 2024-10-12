@@ -1,0 +1,57 @@
+﻿
+@model BonVoyage_TravelAgency.Models.ToursPhotosViewModel
+@using BonVoyage_TravelAgency.Resources
+@using static BonVoyage_TravelAgency.Resources.Resource
+
+@{
+    ViewData["Title"] = "CustomerPreference Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>My preferences</h3>
+
+
+<div class="container" id="toursContainer">
+    <div class="row">
+        @{var count = 0;}
+        @foreach (var tour in Model.Tours)
+        {            
+            @if (this.Context.Request.Cookies["preference"+tour.TourId] != null)                
+            {
+                count++;
+                var tourPhoto = Model.TourPhotos.FirstOrDefault(tp => tp.TourId == tour.TourId);
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        @if (tourPhoto != null)
+                        {
+                            <img src="@tourPhoto.PhotoUrl" class="card-img-top" alt="Image">
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@tour.Title</h5>
+                            <p class="card-text">@tour.Description</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Duration: @tour.Duration days</li>
+                                <li class="list-group-item" value="@tour.Price" id="price">Price: $@tour.Price</li>
+                                <li class="list-group-item">Country: @tour.Country</li>
+                                <li class="list-group-item">Route: @tour.Route</li>
+                            </ul>
+                            <div class="card-footer">
+                                <small class="text-muted">Start Date: @tour.StartDate.ToShortDateString()</small>
+                                <br />
+                                <small class="text-muted">End Date: @tour.EndDate.ToShortDateString()</small>
+                            </div>
+                            <br />
+                            <div>
+                                <a asp-action="DeletePreference" asp-controller="Home" class=" link" asp-route-id="@tour.TourId">Delete from Preferences&nbsp;&nbsp;&nbsp;</a>
+                                <a asp-action="Create" asp-controller="Booking" class=" link colorOrange" asp-route-id="@tour.TourId">&nbsp;&nbsp;Book</a>
+                            </div>
+                        </div>               
+                    </div>
+                </div>
+            }             
+        }  
+        @if (count == 0)
+        {
+            <p>You don't have any preferences yet...</p>
+        }
+    </div>
+</div>

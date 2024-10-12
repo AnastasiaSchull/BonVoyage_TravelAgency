@@ -27,15 +27,15 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>              
-
+                <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Home" asp-action="Preferences">My preferences</a>
+                
                 @if (Context.Session.GetString("UserName") == null)
                 {
-                    <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Register">@Registration</a>
+                    <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Register">@Registration</a>                    
                     <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Login">@Login</a>
                 }
                 else
-                {
-                    <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="CustomerPreference" asp-action="Index">@Preference</a>
+                {                                   
                     <span class="navbar-brand size20">Hello, @Context.Session.GetString("UserName")</span>
                     <a class="navbar-brand size20 colorWhite" href="@Url.Action("Profile", "Account")">Profile</a>
                     <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Logout">@Logout</a>
