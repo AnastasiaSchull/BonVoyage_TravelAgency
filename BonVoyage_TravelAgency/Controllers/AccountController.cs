@@ -93,6 +93,16 @@ namespace BonVoyage_TravelAgency.Controllers
         {
             if (ModelState.IsValid)
             {
+                // проверка для пользователя "admin"
+                if ((logon.Email == "admin" && logon.Password == "admin") ||
+                    (logon.Email == "Admin" && logon.Password == "admin"))
+                {
+                    HttpContext.Session.SetString("UserName", "Admin"); // сохраняем роль "Admin" в сессии
+                    Console.WriteLine("Logged in as Admin"); 
+                    return RedirectToAction("Index", "Home");
+                }
+
+               
                 var users = await _userService.GetAllUsersAsync();
                 if (!users.Any())
                 {

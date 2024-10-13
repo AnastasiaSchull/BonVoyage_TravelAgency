@@ -6,6 +6,7 @@
             showingCreateTour: false,
             showingUpdateTour: false,
             tourToEdit: null,
+            userName: window.userName || "",
         };
         this.backToTours = this.backToTours.bind(this);
         this.toggleCreateTour = this.toggleCreateTour.bind(this);
@@ -114,6 +115,10 @@
 
 
     render() {
+
+        const { userName } = this.state;
+        console.log("Current user:", userName);
+
         if (this.state.showingCreateTour) {
             console.log("Рендерим CreateTour");
             // только форма создания тура и btn отмены
@@ -142,9 +147,12 @@
         else {
             return (
                 <div>
-                    <button className="btn btn-default" onClick={this.toggleCreateTour}>
-                        Add New Tour
-                    </button>
+                    {/* кнопка добавления нового тура видна только админу */}
+                    {userName === "Admin" && (
+                        <button className="btn btn-default" onClick={this.toggleCreateTour}>
+                            Add New Tour
+                        </button>
+                    )}
                     <div className={this.state.class}>
 
                         <div class="row">
@@ -157,21 +165,25 @@
                                             getId={this.press} />
                                         <button class="btn btn-info" style={{ color: "white", fontWeight: "bold" }} onClick={() => this.press(tour.tourId)} > Tours to {tour.title} -&gt;</button>
 
-                                        <button
-                                            className="btn btn-warning"
-                                            style={{ color: "white", fontWeight: "bold" }}
-                                            onClick={() => this.handleUpdate(tour)}
-                                        >
-                                            Update this Tour
-                                        </button>
-
-                                        <button
-                                            className="btn btn-danger"
-                                            style={{ color: "white", fontWeight: "bold" }}
-                                            onClick={() => this.handleDelete(tour.tourId)}
-                                        >
-                                            Delete this Tour                                           
-                                        </button>
+                                        {/* кнопки редактирования и удаления только для админа */}
+                                        {userName === "Admin" && (
+                                            <>
+                                                <button
+                                                    className="btn btn-warning"
+                                                    style={{ color: "white", fontWeight: "bold" }}
+                                                    onClick={() => this.handleUpdate(tour)}
+                                                >
+                                                    Update this Tour
+                                                </button>
+                                                <button
+                                                    className="btn btn-danger"
+                                                    style={{ color: "white", fontWeight: "bold" }}
+                                                    onClick={() => this.handleDelete(tour.tourId)}
+                                                >
+                                                    Delete this Tour
+                                                </button>
+                                            </>
+                                        )}
                                     </div>
                                 </div>);
                             })}

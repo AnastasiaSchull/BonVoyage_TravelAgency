@@ -75,7 +75,7 @@
                             <a class="dropdown-item colorBlue" href="#">@Tours_to_Greece</a>
                             <a class="dropdown-item colorBlue" href="#">@Tours_to_Spain</a>
                             <a class="dropdown-item colorBlue" href="#">@Tours_to_Croitia</a>
-                            <a class="dropdown-item colorOrange" href="~/Index.html">@All_countries_of_the_world</a>
+                            <a href="~/Index.html?userName=@Context.Session.GetString("UserName")">All countries of the world</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -145,9 +145,12 @@
                         </div>
                     </li>  
                     <li class="nav-item dropdown">
+                        @if (Context.Session.GetString("UserName") == "Admin")
+                        {
                         <a class="nav-link dropdown-toggle colorBlue size20" href="https://localhost:7079/Booking/Index" id="navbarDropdown">
                             Bookings(for Admin)
-                        </a>                        
+                        </a>
+                        }
                     </li>
                 </ul>               
             </div>           

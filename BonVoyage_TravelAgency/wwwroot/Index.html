@@ -35,54 +35,60 @@
     <script type="text/babel">
 
 
-        function GetTours() {
+        const params = new URLSearchParams(window.location.search);
+        const userName = params.get('userName') || "Guest";
+        console.log("UserName на статической странице:", userName);
 
-            $.ajax({
-                url: 'https://localhost:7299/api/tours',
-                method: "GET",
-                contentType: "application/json",
-                success: function (tours) {
-                    let toursInfo = [];
 
-                    $.each(tours, function (index, tour) {
-                        toursInfo.push(tour);
-                    })
-                    console.log(toursInfo);
-                    $.ajax({
-                url: 'https://localhost:7299/api/hotels',
-                method: "GET",
-                contentType: "application/json",
-                success: function (hotels) {
-                    let hotelsInfo = [];
 
-                    $.each(hotels, function (index, hotel) {
-                        hotelsInfo.push(hotel);
-                    })
-                    console.log(hotelsInfo);
-                    const propsValues = {
-                        title: "All our tours",
-                        tours: toursInfo,
-                        hotels: hotelsInfo
+               function GetTours() {
 
-                    };
-                    console.log(document.getElementById("app"));
-                    ReactDOM.createRoot(document.getElementById("app")).render(
-                            <React.StrictMode>
-                                <Tours data={propsValues} />
-                            </React.StrictMode>
-                        );
-                },
-                error: function (x, y, z) {
-                    alert(x + '\n' + y + '\n' + z);
-                }
-        });
-            },
-            error: function (x, y, z) {
-                alert(x + '\n' + y + '\n' + z);
-            }
-        });
-        }
-        GetTours();
+                   $.ajax({
+                       url: 'https://localhost:7299/api/tours',
+                       method: "GET",
+                       contentType: "application/json",
+                       success: function (tours) {
+                           let toursInfo = [];
+
+                           $.each(tours, function (index, tour) {
+                               toursInfo.push(tour);
+                           })
+                           console.log(toursInfo);
+                           $.ajax({
+                       url: 'https://localhost:7299/api/hotels',
+                       method: "GET",
+                       contentType: "application/json",
+                       success: function (hotels) {
+                           let hotelsInfo = [];
+
+                           $.each(hotels, function (index, hotel) {
+                               hotelsInfo.push(hotel);
+                           })
+                           console.log(hotelsInfo);
+                           const propsValues = {
+                               title: "All our tours",
+                               tours: toursInfo,
+                               hotels: hotelsInfo
+
+                           };
+                           console.log(document.getElementById("app"));
+                           ReactDOM.createRoot(document.getElementById("app")).render(
+                                   <React.StrictMode>
+                                       <Tours data={propsValues} />
+                                   </React.StrictMode>
+                               );
+                       },
+                       error: function (x, y, z) {
+                           alert(x + '\n' + y + '\n' + z);
+                       }
+               });
+                   },
+                   error: function (x, y, z) {
+                       alert(x + '\n' + y + '\n' + z);
+                   }
+               });
+               }
+               GetTours();
     </script>
 </body>
 </html>
