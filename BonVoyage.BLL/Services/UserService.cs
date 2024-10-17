@@ -50,6 +50,13 @@ namespace BonVoyage.BLL.Services
             existingUser.Country = userDTO.Country;
             existingUser.Role = userDTO.Role;
 
+            if (!string.IsNullOrEmpty(userDTO.Password))
+            {
+                existingUser.Password = userDTO.Password;
+            }
+
+            Database.Users.Update(existingUser);
+
             await Database.Save();
         }
 

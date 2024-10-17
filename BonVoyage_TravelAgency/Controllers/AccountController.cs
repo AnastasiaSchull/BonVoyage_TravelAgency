@@ -175,28 +175,71 @@ namespace BonVoyage_TravelAgency.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Profile(UserDTO model)
+        private string HashPassword(string password, string salt)
         {
-            if (ModelState.IsValid)
+            // Об'єднуємо сіль і пароль
+            byte[] passwordBytes = Encoding.Unicode.GetBytes(salt + password);
+
+            // Хешуємо об'єднаний пароль
+            byte[] byteHash = SHA256.HashData(passwordBytes);
+
+            // Перетворюємо хеш в шістнадцятковий рядок
+            StringBuilder hash = new StringBuilder(byteHash.Length * 2);
+            for (int i = 0; i < byteHash.Length; i++)
+                hash.AppendFormat("{0:X2}", byteHash[i]);
+
+            return hash.ToString();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Profile(UserDTO model, string oldPassword, string newPassword)
+        {
+            if (model.UserId == 0)
             {
-                if (model.UserId == 0)
+                ModelState.AddModelError("", "User ID is required.");
+                return View(model);
+            }
+
+            var existingUser = await _userService.GetUserByIdAsync(model.UserId);
+            if (existingUser == null)
+            {
+                return NotFound();
+            }
+
+            if (model.UserName == null ||
+            model.UserSurname == null ||
+            model.Address == null ||
+            model.Country == null)
+            {
+                ModelState.AddModelError("FieldError", "Please provide at least one field to update.");
+                return View(model);
+            }
+
+            if (!string.IsNullOrEmpty(oldPassword) && !string.IsNullOrEmpty(newPassword))
+            {
+                string hashedOldPassword = HashPassword(oldPassword, existingUser.Salt);
+
+                if (existingUser.Password != hashedOldPassword)
                 {
-                    ModelState.AddModelError("", "User ID is required.");
+                    ModelState.AddModelError("PasswordError", "The old password is incorrect.");
                     return View(model);
                 }
 
-                var existingUser = await _userService.GetUserByIdAsync(model.UserId);
-                if (existingUser == null)
+                if (oldPassword == newPassword)
                 {
-                    return NotFound();
+                    ModelState.AddModelError("PasswordError", "The new password cannot be the same as the old password.");
+                    return View(model);
                 }
 
-                await _userService.UpdateUserAsync(model);
-                return RedirectToAction("Profile", new { id = model.UserId });
+                model.Password = HashPassword(newPassword, existingUser.Salt);
+
+                existingUser.Password = model.Password;
             }
 
-            return View(model);
+             await _userService.UpdateUserAsync(model);
+
+             TempData["SuccessMessage"] = "Your profile has been successfully updated.";
+             return RedirectToAction("Profile", new { id = model.UserId });
         }
     }
 }

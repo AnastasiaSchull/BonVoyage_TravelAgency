@@ -8,10 +8,24 @@
 <h2>Your Profile</h2>
 <hr />
 
-@if (ViewBag.Message != null)
+@if (TempData["SuccessMessage"] != null)
 {
     <div class="alert alert-success">
-        @ViewBag.Message
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (ViewData.ModelState["PasswordError"] != null)
+{
+    <div class="alert alert-danger">
+        @ViewData.ModelState["PasswordError"].Errors[0].ErrorMessage
+    </div>
+}
+
+@if (ViewData.ModelState["FieldError"] != null)
+{
+    <div class="alert alert-danger">
+        @ViewData.ModelState["FieldError"].Errors[0].ErrorMessage
     </div>
 }
 
@@ -50,6 +64,20 @@
         <div class="col-md-10">
             <input asp-for="Country" class="form-control" />
             <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+    </div>
+    <hr />
+    <h3>Change Password</h3>
+    <div class="form-group">
+        <label for="oldPassword" class="control-label col-md-2">Old Password</label>
+        <div class="col-md-10">
+            <input type="password" name="oldPassword" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="newPassword" class="control-label col-md-2">New Password</label>
+        <div class="col-md-10">
+            <input type="password" name="newPassword" class="form-control" />
         </div>
     </div>
     <div class="form-group">
