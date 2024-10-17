@@ -159,7 +159,8 @@
                             <input type="file" name="photoFile" onChange={this.handleChange} />
                         </label>
 
-                        {photoUrl && <ToursPhotos photoUrl={photoUrl} />}
+                        {/*{photoUrl && <ToursPhotos photoUrl={photoUrl} />}*/}
+                        {photoUrl && <img src={photoUrl} className="card-img-top no-hover-photo" alt="Image" />}
 
                         <button className="btn btn-default" type="submit">Create Tour</button>
                     </form>

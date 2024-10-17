@@ -156,7 +156,8 @@
                         </label>
 
                         {/* для отображения фото */}
-                        {photoUrl && <ToursPhotos photoUrl={photoUrl} />}
+                      
+                        {photoUrl && <img src={photoUrl} className="card-img-top no-hover-photo" alt="Image" />}
 
                         <button className="btn btn-default" type="submit">Update Tour</button>
                     </form>
