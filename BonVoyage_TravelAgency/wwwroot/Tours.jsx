@@ -146,7 +146,11 @@
 
         else {
             return (
-                <div>
+                <div>  
+                    <a href="/Home/Index" class="navbar-brand size30 colorOrange">
+                        BonVoyage TravelAgency
+                    </a>
+                    <br />
                     {/* кнопка добавления нового тура видна только админу */}
                     {userName === "Admin" && (
                         <button className="btn btn-default" onClick={this.toggleCreateTour}>

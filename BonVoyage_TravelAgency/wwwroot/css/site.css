@@ -99,7 +99,7 @@ a {
 }
 
 .size30 {
-    font-size: 30px;
+    font-size: 30px !important;
     font-weight: bold;
 }
 
@@ -110,6 +110,7 @@ a {
 .size18 {
     font-size: 18px;
 }
+
 
 a:hover {
     text-decoration: none;
@@ -332,4 +333,9 @@ button{
     color: gold;
     font-size: 2em;
     display: inline-block; /* это чтобы размер блока подстраивался под контент */
+}
+
+.no-hover-photo {
+    pointer-events: none !important;
+    transition: none !important;
 }
