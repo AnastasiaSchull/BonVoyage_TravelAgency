@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BonVoyage.BLL.DTOs.BookingDTO>
+﻿@model BonVoyage_TravelAgency.Models.BookingFilterModel
 
 @{
     ViewData["Title"] = "Bookings";
@@ -6,6 +6,19 @@
 }
 
 <h3>Tour bookings</h3>
+<br />
+
+<form method="get">
+    <div>
+        <label>User: </label>
+        <input asp-for="User" />
+
+        <label>Status: </label>
+        <input asp-for="Status" />
+        <button type="submit" style = "margin-top: 0px;" class="btn btn-default">Filter</button>
+       @*  <input type="submit" value="Filter" /> *@
+    </div>
+</form>
 
 <br />
 
@@ -13,19 +26,19 @@
     <table class="table">
         <thead>
             <tr>
-                <th>@Html.DisplayNameFor(model => model.User)</th>
-                <th>@Html.DisplayNameFor(model => model.UserMail)</th>
-                <th>@Html.DisplayNameFor(model => model.Tour)</th>
-                <th>@Html.DisplayNameFor(model => model.BookingDate)</th>
-                <th>@Html.DisplayNameFor(model => model.NumberOfPeople)</th>
-                <th>@Html.DisplayNameFor(model => model.Status)</th>
+                <th>User</th>
+                <th>User email</th>
+                <th>Tour</th>
+                <th>Booking date</th>
+                <th>Number of people</th>
+                <th>Status</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @if (Model != null)
+            @if (Model.Bookings != null) 
             {
-                @foreach (var item in Model)
+                @foreach (var item in Model.Bookings)
                 {
                     <tr>
                         <td>
@@ -53,7 +66,7 @@
                         </td>
                     </tr>
                 }
-            }
+            } 
         </tbody>
     </table>
 </div>
@@ -71,13 +84,7 @@
                     text: errorMessage
                 });
             }
-
-            // Enabling tooltips for all elements with the .faq-question class
-            // $('.faq-question').tooltip({
-            //     title: "Click to toggle the answer",
-            //     placement: "top"
-            // });
-        });
+       });
 
         function confirmDelete(id) {
             Swal.fire({
