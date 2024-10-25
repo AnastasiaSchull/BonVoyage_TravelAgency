@@ -11,7 +11,7 @@
 </style>
 <h3>Tour booking</h3>
 <div>
-            <div class="col-md-4" style="float: right">
+    <div class="col-md-4 form-horizontal" style="float: right; width:40%; margin-top:30px">
         @{
             var tour = Model.Tour; 
             var tourPhoto = Model.TourPhoto;
@@ -45,8 +45,8 @@
         var userId = Context.Session.GetInt32("UserId");
         var user = Model.Users.FirstOrDefault(u => u.UserId == userId); 
     }
-<form asp-action="Create" method="post" class="form-horizontal">
-    <div class="form-group col-md-8">
+<form asp-action="Create" method="post" >
+        <div class="form-group col-md-6 form-horizontal">
              <label asp-for="@user.UserName" class="control-label col-md-2">Name:</label>
             <div class="col-md-8">
                 <input asp-for="@user.UserName" class="form-control" value="@user.UserName" />
@@ -80,8 +80,8 @@
                 <input asp-for="NumberOfPeople" id ="numberOfPeople" class="form-control" min="1" value="1" />
                 <span asp-validation-for="NumberOfPeople"  class="text-danger"></span>
         </div> </div>
-        <br />        
-     <div style="background-color:white" class="col-md-6">
+        <br />
+        <div style="background-color:white" class="col-md-6  form-horizontal">
      <h4>Stages of booking a tour:</h4>
      <ol>
         <li>Entering customer and tourist data (passports can be entered later)</>
@@ -91,7 +91,7 @@
      </ol>
      </div>
         <br />
-        <div style="background-color:white" class="col-md-6">
+        <div style="background-color:white" class="col-md-6  form-horizontal">
         <h4>Payment:</h4>
             <ol>
                 <li>By bank card online</li>
