@@ -381,4 +381,10 @@
   <data name="Back" xml:space="preserve">
     <value>Повернутися</value>
   </data>
+  <data name="Tours_to_Japan" xml:space="preserve">
+    <value>Туди до Японii</value>
+  </data>
+  <data name="Tours_to_Switzerland" xml:space="preserve">
+    <value>Тури по Швейцарії</value>
+  </data>
 </root>

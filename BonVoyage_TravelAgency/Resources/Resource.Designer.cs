@@ -682,6 +682,15 @@ namespace BonVoyage_TravelAgency.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tours to Japan.
+        /// </summary>
+        public static string Tours_to_Japan {
+            get {
+                return ResourceManager.GetString("Tours_to_Japan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tours to Montenegro.
         /// </summary>
         public static string Tours_to_Montenegro {
@@ -696,6 +705,15 @@ namespace BonVoyage_TravelAgency.Resources {
         public static string Tours_to_Spain {
             get {
                 return ResourceManager.GetString("Tours_to_Spain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tours to Switzerland.
+        /// </summary>
+        public static string Tours_to_Switzerland {
+            get {
+                return ResourceManager.GetString("Tours_to_Switzerland", resourceCulture);
             }
         }
         
