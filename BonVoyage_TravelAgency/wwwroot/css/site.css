@@ -397,4 +397,11 @@ h4 {
     font-family: 'Calypso', Arial, sans-serif;
     color: blue;
     font-family: bold;
-} 
+}
+
+
+.custom-card img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
