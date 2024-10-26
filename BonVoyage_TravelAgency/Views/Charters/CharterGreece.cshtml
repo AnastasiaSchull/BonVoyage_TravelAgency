@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Charter Flights to Greece - BonVoyage TravelAgency</title>
+   
+    <style>    
+
+        .content {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        p {
+            color: #443781;
+            font-size: 18px;
+        }
+        label{
+            font-family: 'Calypso', Arial, sans-serif;
+            font-size: 19px;
+            font-family: bold;
+        }
+        .form-section {
+            background-color: #f8f8f8;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .form-group {
+            flex: 1; /* каждая группа занимает равное пространство */
+            min-width: 200px; 
+            margin: 10px; 
+        }
+       
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; 
+        } 
+        .form-group label {
+            display: block; 
+        }
+
+        .form-group select,
+        .form-group input[type="date"] {
+            width: 100%;
+            box-sizing: border-box; /* padding и border включены в общую ширину */              
+        }
+
+      
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Charter Flights to Greece</h1>
+        <p>Experience affordable and comfortable travel with our charter flights to Greece, serviced by top European quality standards. You can book these flights exclusively through tour operators and they are known for providing convenient options to explore Greece.</p>
+        <p>On this page, you can easily find the perfect flight option that suits your travel needs. Airlines operating charter flights to Greece include Rosa Vetrov (Windrose), MAY (UIA), SkyUp, Ellinair, and Bees Airline, offering departures from various countries such as Ukraine, Poland, Germany, and more. The cost of tickets varies depending on the season, time of booking, and departure country. Often, you can find cheaper tickets if you book a few days before departure.</p>
+        <div class="form-section form-horizontal ">
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="country">Country of Departure:</label>
+                
+                        <select id="country" name="country" onchange="updateCities()">
+                            <option value="ukraine">Ukraine</option>                    
+                            <option value="poland">Poland</option>
+                            <option value="germany">Germany</option>
+                            <option value="france">France</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="spain">Spain</option>
+                            <option value="italy">Italy</option>
+                            <option value="romania">Romania</option>
+                            <option value="usa">United States</option>
+                            <option value="japan">Japan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City of Departure:</label>
+                        <select id="city" name="city"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="destination">Destination City:</label>
+                        <select id="destination" name="destination">
+                            <option value="athens">Athens</option>
+                            <option value="thessaloniki">Thessaloniki</option>
+                            <option value="crete">Crete</option>
+                            <option value="larissa">Larissa</option>
+                            <option value="patras">Patras</option>
+                            <option value="kalamata">Kalamata</option>
+                            <option value="volos">Volos</option>
+                            <option value="corfu">Corfu</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Departure Date:</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+                    <input type="submit" value="Search Flights">
+                </div>
+            </form>
+        </div>
+
+
+        <h2>Available Charter Flights for 2024</h2>
+      
+    </div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCities();  // вызываем при загрузке, чтобы инициализировать список городов
+        });
+
+
+            function updateCities() {
+                var country = document.getElementById('country').value;
+                var citySelect = document.getElementById('city');
+                citySelect.innerHTML = '';
+
+                var citiesByCountry = {
+                    ukraine: ['Kyiv', 'Lviv', 'Odessa'],
+                    poland: ['Warsaw', 'Krakow', 'Gdansk'],
+                    germany: ['Berlin', 'Munich', 'Hamburg'],
+                    france: ['Paris', 'Lyon', 'Marseille'],
+                    uk: ['London', 'Manchester', 'Birmingham'],
+                    spain: ['Madrid', 'Barcelona', 'Valencia'],
+                    italy: ['Rome', 'Milan', 'Naples'],
+                    romania: ['Bucharest', 'Cluj-Napoca', 'Iasi'],
+                    usa: ['New York', 'Los Angeles', 'Chicago'],
+                    japan: ['Tokyo', 'Osaka', 'Kyoto']
+                };
+
+                if (citiesByCountry[country]) {
+                    citiesByCountry[country].forEach(function (city) {
+                        var option = new Option(city, city.toLowerCase());
+                        citySelect.add(option);
+                    });
+                }
+            }
+       
+        </script>
+  
+</body>
+</html>
