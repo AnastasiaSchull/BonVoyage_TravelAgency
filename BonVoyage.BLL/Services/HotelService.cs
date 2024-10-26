@@ -87,5 +87,14 @@ namespace BonVoyage.BLL.Services
             var mapper = new Mapper(config);
             return mapper.Map<IQueryable<Hotel>, IEnumerable<HotelDTO>>(await Database.Hotels.GetAll());
         }
+
+        //filtration hotels by tours 
+        public async Task<IEnumerable<HotelDTO>> GetFilteredHotelsByToursAsync(string filter)
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Hotel, HotelDTO>()).CreateMapper();
+            var filteredHotels = await Database.Hotels.Find(h => h.Country.Contains(filter));
+
+            return mapper.Map<IEnumerable<HotelDTO>>(filteredHotels);
+        }
     }
 }

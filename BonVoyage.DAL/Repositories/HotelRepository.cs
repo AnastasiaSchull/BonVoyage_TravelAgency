@@ -2,6 +2,7 @@
 using BonVoyage.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using BonVoyage.DAL.EF;
+using System.Linq.Expressions;
 
 
 namespace BonVoyage.DAL.Repositories
@@ -38,6 +39,10 @@ namespace BonVoyage.DAL.Repositories
             Hotel? hotel = await db.Hotels.FindAsync(id);
             if (hotel != null)
                 db.Hotels.Remove(hotel);
+        }
+        public async Task<IEnumerable<Hotel>> Find(Expression<Func<Hotel, bool>> predicate)
+        {
+            return await db.Hotels.Where(predicate).ToListAsync();
         }
     }
 }

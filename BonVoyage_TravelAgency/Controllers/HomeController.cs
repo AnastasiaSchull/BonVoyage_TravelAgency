@@ -10,11 +10,15 @@ namespace BonVoyage_TravelAgency.Controllers
 	{
         private readonly ITourService _tourService;
         private readonly ITourPhotoService _tourPhotoService;
+        private readonly IHotelService _hotelService;
+        private readonly IHotelPhotoService _hotelPhotoService;
 
-        public HomeController(ITourService tourService, ITourPhotoService tourPhotoService)
+        public HomeController(ITourService tourService, ITourPhotoService tourPhotoService, IHotelService hotelService, IHotelPhotoService hotelPhotoService)
         {
             _tourService = tourService;
             _tourPhotoService = tourPhotoService;
+            _hotelService = hotelService;
+            _hotelPhotoService = hotelPhotoService;
         }
        
    
@@ -107,6 +111,21 @@ namespace BonVoyage_TravelAgency.Controllers
             };
 
             return View("FilteredTours", viewModel);
+        }
+        public async Task<IActionResult> FilterHotelsByTours(string filter)
+        {
+            var filteredHotels = await _hotelService.GetFilteredHotelsByToursAsync(filter);
+            var hotelPhotos = await _hotelPhotoService.GetAllHotelPhotosAsync();
+            var tour = filter;
+
+            var viewModel = new HotelsPhotosViewModel
+            {
+                Hotels = filteredHotels,
+                HotelsPhotos = hotelPhotos,
+                Tour = tour
+            };
+
+            return View("FilteredHotelsByTours", viewModel);
         }
     }
 }

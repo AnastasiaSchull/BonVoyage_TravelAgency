@@ -9,5 +9,6 @@ namespace BonVoyage.BLL.Interfaces
         Task CreateHotelAsync(HotelDTO hotelDTO);
         Task UpdateHotelAsync(HotelDTO hotelDTO);
         Task DeleteHotelAsync(int id);
+        Task<IEnumerable<HotelDTO>> GetFilteredHotelsByToursAsync(string filter);
     }
 }
