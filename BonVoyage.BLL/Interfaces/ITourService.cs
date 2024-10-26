@@ -11,5 +11,6 @@ namespace BonVoyage.BLL.Interfaces
         Task UpdateTourAsync(TourDTO tourDTO);
         Task DeleteTourAsync(int id);
         Task<int> GetTotalToursCount();
+        Task<IEnumerable<TourDTO>> GetFilteredToursAsync(string filter);
     }
 }

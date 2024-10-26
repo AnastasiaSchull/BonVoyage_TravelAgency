@@ -164,7 +164,7 @@
 
                             {this.state.tours.map((tour) => {
                                 return (<div class="col-md-4">
-                                    <div class="card mb-4 shadow-sm">
+                                    <div className="card mb-4 shadow-sm custom-card">
                                         <ToursInfo tour={tour}
                                             getId={this.press} />
                                         <button class="btn btn-info" style={{ color: "white", fontWeight: "bold" }} onClick={() => this.press(tour.tourId)} > Tours to {tour.title} -&gt;</button>

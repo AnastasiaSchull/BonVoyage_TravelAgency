@@ -107,5 +107,16 @@ namespace BonVoyage.BLL.Services
         {
             return await Database.Tours.CountAsync();
         }
+
+
+        //для фильтрации туров по названию
+        public async Task<IEnumerable<TourDTO>> GetFilteredToursAsync(string filter)
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Tour, TourDTO>()).CreateMapper();
+            var filteredTours = await Database.Tours.Find(t => t.Title.Contains(filter));
+
+            return mapper.Map<IEnumerable<TourDTO>>(filteredTours);
+        }
+
     }
 }
