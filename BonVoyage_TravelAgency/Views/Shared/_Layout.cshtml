@@ -86,9 +86,9 @@
                             <a class="dropdown-item colorBlue" href="#">@Package_tours</a>
                             <a class="dropdown-item colorBlue" href="#">@Summer_tours</a>
                             <a class="dropdown-item colorBlue" href="#">@Winter_tours</a>
-                            <a class="dropdown-item colorBlue" href="#">@Spring_tours</a>
-                            <a class="dropdown-item colorBlue" href="#">@New_year_tours</a>
-                            <a href="@Url.Action("FilterTours", "Home", new { filter = "Ski" })" class="dropdown-item colorBlue">Ski tours</a>
+                            <a class="dropdown-item colorBlue" href="#">@Spring_tours</a>                     
+                            <a href="@Url.Action("FilterTours", "Home", new { filter = "Christmas" })" class="dropdown-item colorBlue">Christmas tours</a>
+                            <a href="@Url.Action("FilterTours", "Home", new { filter = "Ski" })" class="dropdown-item colorBlue">@Ski_tours</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -98,7 +98,7 @@
                         <div class="dropdown-menu size18" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item colorBlue" href="#"> @Charters_to_Turkey</a>
                             <a class="dropdown-item colorBlue" href="#"> @Charters_to_Egypt</a>
-                            <a class="dropdown-item colorBlue" href="#"> @Charters_to_Greece</a>
+                            <a class="dropdown-item colorBlue" asp-controller="Charters" asp-action="Greece">@Charters_to_Greece</a>
                             <a class="dropdown-item colorBlue" href="#"> @Charters_to_Montenegro</a>
                             <a class="dropdown-item colorBlue" href="#"> @Charters_to_Bulgaria</a>
                             <a class="dropdown-item colorBlue" href="#">@All_charter_flights</a>
