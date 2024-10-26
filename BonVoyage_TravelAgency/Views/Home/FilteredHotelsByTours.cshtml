@@ -1,0 +1,74 @@
+﻿@model BonVoyage_TravelAgency.Models.HotelsPhotosViewModel
+@using BonVoyage_TravelAgency.Resources
+@using static BonVoyage_TravelAgency.Resources.Resource
+
+@{
+    ViewData["Title"] = "Filtered Hotels By Tours";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tour = Model.Tour;
+}
+
+<h1 class="text-center">Tours to @tour</h1>
+
+@if (Model.Hotels != null && Model.Hotels.Any())
+{
+       <div>
+            @foreach (var hotel in Model.Hotels)
+            {
+                var hotelPhoto = Model.HotelsPhotos.FirstOrDefault(hp => hp.HotelId == hotel.HotelId);
+                <div class="hotel">
+                    @if (hotelPhoto != null)
+                    {
+                        <div class="hotelPhoto">
+                            <img src="@hotelPhoto.PhotoUrl" class="img" alt="Image">
+                        </div>
+                    }
+                <h4 class="card-title" style="display: inline-flex">@hotel.Name</h4>
+
+                @if (hotel.StarRating == 1)
+                {
+                    <div class="stars">★</div>
+                }
+                else if (hotel.StarRating == 2)
+                {
+                    <div class="stars">★★</div>
+                }
+                else if (hotel.StarRating == 3)
+                {
+                    <div class="stars">★★★</div>
+                }
+                else if (hotel.StarRating == 4)
+                {
+                    <div class="stars">★★★★</div>
+                }
+                else if (hotel.StarRating == 5)
+                {
+                    <div class="stars">★★★★★</div>
+                }
+                    <p class="card-text">@hotel.Description</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">PricePerNight: $@hotel.PricePerNight</li>
+                        <li class="list-group-item">Country: @hotel.Country</li>
+                        <li class="list-group-item">City: @hotel.City</li>
+                        <li class="list-group-item">Location: @hotel.Location</li>
+                    @if (hotel.HasSwimmingPool){
+                    <li class="list-group-item">Swimming pool: yes</li>
+                    }
+                    else{
+                    <li class="list-group-item">Swimming pool: no</li>
+                    }                                           
+                    </ul>
+                <div>
+                    <a asp-action="Create" asp-controller="Booking" class="link" asp-route-id="@hotel.HotelId">View Details</a>
+                </div>
+                </div>
+            }
+       </div>
+}
+else
+{
+    <div class="alert alert-info" role="alert">
+        No hotels match your filter criteria.
+    </div>
+}
+

@@ -58,8 +58,6 @@
                         </ul>
                     </form>
                 </div>
-
-
             </div>
         </nav>
         <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light bg-light">
@@ -70,13 +68,13 @@
                             @Countries
                         </a>
                         <div class="dropdown-menu size18" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item colorBlue" href="#">@Tours_to_Turkey</a>
-                            <a class="dropdown-item colorBlue" href="#">@Tours_to_Egypt</a>
-                            <a class="dropdown-item colorBlue" href="#">@Tours_to_Greece</a>
-                            <a class="dropdown-item colorBlue" href="#">@Tours_to_Spain</a>
-                            <a class="dropdown-item colorBlue" href="#">@Tours_to_Croitia</a>
-                            <a class="dropdown-item colorBlue" href="#">@Tours_to_Switzerland</a>
-                            <a class="dropdown-item colorBlue" href="#">@Tours_to_Japan</a>
+                            <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Turkey" })" class="dropdown-item colorBlue">@Tours_to_Turkey</a>
+                            <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Egypt" })" class="dropdown-item colorBlue">@Tours_to_Egypt</a>
+                            <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Greece" })" class="dropdown-item colorBlue">@Tours_to_Greece</a>
+                            <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Spain" })" class="dropdown-item colorBlue">@Tours_to_Spain</a>
+                            <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Italy" })" class="dropdown-item colorBlue">Tours to Italy</a>
+                            <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Switzerland" })" class="dropdown-item colorBlue">@Tours_to_Switzerland</a>
+                            <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Japan" })" class="dropdown-item colorBlue">@Tours_to_Japan</a>
                             <a class="dropdown-item colorOrange" href="~/Index.html?userName=@Context.Session.GetString("UserName")">All countries of the world</a>
                         </div>
                     </li>
