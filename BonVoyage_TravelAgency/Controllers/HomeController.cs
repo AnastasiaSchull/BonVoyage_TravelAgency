@@ -94,5 +94,19 @@ namespace BonVoyage_TravelAgency.Controllers
             }
             return RedirectToAction("Preferences", "Home");
         }
+
+        public async Task<IActionResult> FilterTours(string filter)
+        {
+            var filteredTours = await _tourService.GetFilteredToursAsync(filter);
+            var tourPhotos = await _tourPhotoService.GetAllTourPhotosAsync();
+
+            var viewModel = new ToursPhotosViewModel
+            {
+                Tours = filteredTours,
+                TourPhotos = tourPhotos
+            };
+
+            return View("FilteredTours", viewModel);
+        }
     }
 }

@@ -1,0 +1,44 @@
+﻿@model BonVoyage_TravelAgency.Models.ToursPhotosViewModel
+@using BonVoyage_TravelAgency.Resources
+@using static BonVoyage_TravelAgency.Resources.Resource
+
+@{
+    ViewData["Title"] = "Filtered Tours";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">FilteredTours</h1>
+
+@if (Model.Tours != null && Model.Tours.Any())
+{
+    <div class="container">
+        <div class="row">
+            @foreach (var tour in Model.Tours)
+            {
+                var tourPhoto = Model.TourPhotos.FirstOrDefault(tp => tp.TourId == tour.TourId);
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm custom-card">
+                        @if (tourPhoto != null)
+                        {
+                            <img src="@tourPhoto.PhotoUrl" class="card-img-top" alt="Image">
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@tour.Title</h5>
+                            <div>
+                                <a asp-action="Create" asp-controller="Booking" class="link" asp-route-id="@tour.TourId">View Details</a>
+                                <a asp-action="CreatePreference" asp-controller="Home" class="link colorOrange" asp-route-id="@tour.TourId">Add to Preferences</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-info" role="alert">
+        No tours match your filter criteria.
+    </div>
+}
+

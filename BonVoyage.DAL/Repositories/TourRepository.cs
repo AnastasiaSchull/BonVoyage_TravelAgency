@@ -2,6 +2,7 @@
 using BonVoyage.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using BonVoyage.DAL.EF;
+using System.Linq.Expressions;
 
 
 namespace BonVoyage.DAL.Repositories
@@ -43,6 +44,11 @@ namespace BonVoyage.DAL.Repositories
         public async Task<int> CountAsync()
         {
             return await db.Tours.CountAsync();
+        }
+
+        public async Task<IEnumerable<Tour>> Find(Expression<Func<Tour, bool>> predicate)
+        {
+            return await db.Tours.Where(predicate).ToListAsync();
         }
     }
 }
