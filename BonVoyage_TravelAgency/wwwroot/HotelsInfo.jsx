@@ -8,7 +8,7 @@
     }    
 
     linkToBooking(hotelId) {
-        let link = "#" /*'https://localhost:7079/Booking/Create/' + hotelId*/;
+        let link = 'https://localhost:7079/BookingHotel/Create/' + hotelId;
         return link;
     }
 
