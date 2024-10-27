@@ -8,6 +8,7 @@ namespace BonVoyage.DAL.EF
     public class BonVoyageContext : DbContext
     {
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<BookingHotel> BookingsHotels { get; set; }
         public DbSet<CustomerPreference> CustomerPreferences { get; set; }
         public DbSet<FAQ> FAQs { get; set; }
         public DbSet<Flight> Flights { get; set; }
@@ -23,9 +24,9 @@ namespace BonVoyage.DAL.EF
         public BonVoyageContext(DbContextOptions<BonVoyageContext> options)
                    : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
-        /*/ Класс необходим исключительно для миграций
+        // Класс необходим исключительно для миграций
         public class SampleContextFactory : IDesignTimeDbContextFactory<BonVoyageContext>
         {
             public BonVoyageContext CreateDbContext(string[] args)
@@ -43,7 +44,7 @@ namespace BonVoyage.DAL.EF
                 optionsBuilder.UseSqlServer(connectionString).UseLazyLoadingProxies(); 
                 return new BonVoyageContext(optionsBuilder.Options);
             }
-        }*/
+        }
 
 		 /* OnModelCreating method is necessary for configuring the mapping of decimal properties using Fluent API.
 		 By default, SQL Server uses decimal(18,0) for decimal properties, which truncates the fractional part.
