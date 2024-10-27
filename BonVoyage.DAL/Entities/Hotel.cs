@@ -21,6 +21,7 @@ namespace BonVoyage.DAL.Entities
         public string? Description { get; set; }
         public virtual ICollection<Review>? Reviews { get; set; }
 		public virtual ICollection<HotelPhoto>? HotelPhotos { get; set; }
+        public virtual ICollection<BookingHotel>? BookingsHotels { get; set; }
 
-	}
+    }
 }

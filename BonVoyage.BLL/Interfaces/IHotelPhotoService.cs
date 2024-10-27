@@ -6,7 +6,8 @@ namespace BonVoyage.BLL.Interfaces
     public interface IHotelPhotoService
     {
         Task<IEnumerable<HotelPhotoDTO>> GetAllHotelPhotosAsync();
-        Task<HotelPhotoDTO> GetHotelPhotoByIdAsync(int id);
+        //Task<HotelPhotoDTO> GetHotelPhotoByIdAsync(int id);
+        Task<HotelPhotoDTO> GetHotelPhotoByHotelIdAsync(int id);
         Task CreateHotelPhotoAsync(HotelPhotoDTO hotelPhotoDTO);
         Task UpdateHotelPhotoAsync(HotelPhotoDTO hotelPhotoDTO);
         Task DeleteHotelPhotoAsync(int id);

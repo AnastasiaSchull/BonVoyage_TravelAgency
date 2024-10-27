@@ -147,9 +147,14 @@
                     <li class="nav-item dropdown">
                         @if (Context.Session.GetString("UserName") == "Admin")
                         {
-                        <a class="nav-link dropdown-toggle colorBlue size20" href="https://localhost:7079/Booking/Index" id="navbarDropdown">
-                            Bookings(for Admin)
-                        </a>
+                            <a class="nav-link dropdown-toggle colorBlue size20" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             Bookings(For Admin)</a>
+                             <div class="dropdown-menu size18" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item colorBlue" href="https://localhost:7079/Booking/Index" id="navbarDropdown">
+                                    Bookings Promo Tours</a>
+                                <a class="dropdown-item colorBlue" href="https://localhost:7079/BookingHotel/Index" id="navbarDropdown">
+                                    Bookings Hotels</a>
+                             </div>
                         }
                     </li>
                 </ul>               

@@ -9,6 +9,7 @@ namespace BonVoyage.DAL.Repositories
     {
         private BonVoyageContext db;
         private BookingRepository bookingRepository;
+        private BookingHotelRepository bookingHotelRepository;
         private CustomerPreferenceRepository customerPreferenceRepository;
         private FAQRepository faqRepository;
         private FlightRepository flightRepository;
@@ -33,6 +34,16 @@ namespace BonVoyage.DAL.Repositories
                 if (bookingRepository == null)
                     bookingRepository = new BookingRepository(db);
                 return bookingRepository;
+            }
+        }
+
+        public IRepository<BookingHotel> BookingsHotels
+        {
+            get
+            {
+                if (bookingHotelRepository == null)
+                    bookingHotelRepository = new BookingHotelRepository(db);
+                return bookingHotelRepository;
             }
         }
         public IRepository<CustomerPreference> CustomerPreferences

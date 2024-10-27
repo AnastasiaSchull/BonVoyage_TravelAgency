@@ -17,6 +17,7 @@ namespace BonVoyage_TravelAgency
             builder.Services.AddBonVoyageContext(connection);
             builder.Services.AddUnitOfWorkService();
             builder.Services.AddTransient<IBookingService, BookingService>();
+            builder.Services.AddTransient<IBookingHotelService, BookingHotelService>();
             builder.Services.AddTransient<ICustomerPreferenceService, CustomerPreferenceService>();
             builder.Services.AddTransient<IHotelPhotoService, HotelPhotoService>();
             builder.Services.AddTransient<IHotelService, HotelService>();

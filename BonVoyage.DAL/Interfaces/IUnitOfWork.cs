@@ -6,6 +6,7 @@ namespace BonVoyage.DAL.Interfaces
     public interface IUnitOfWork
     {
         IRepository<Booking> Bookings { get; }
+        IRepository<BookingHotel> BookingsHotels { get; }
         IRepository<CustomerPreference> CustomerPreferences { get; }
         IRepository <FAQ> FAQs { get; }
         IRepository<Flight> Flights { get; }
