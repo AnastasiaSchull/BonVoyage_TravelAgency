@@ -44,10 +44,24 @@ namespace BonVoyage.BLL.Services
             await Database.Save();
         }
 
-        public async Task<HotelPhotoDTO> GetHotelPhotoByIdAsync(int id)
+        //public async Task<HotelPhotoDTO> GetHotelPhotoByIdAsync(int id)
+        //{
+        //    var hotelPhoto = await Database.HotelPhotos.Get(id);
+        //    if (hotelPhoto  == null)
+        //        throw new ValidationException("Wrong hotel photo!", "");
+        //    return new HotelPhotoDTO
+        //    {
+        //        HotelPhotoId = hotelPhoto.HotelPhotoId,
+        //        HotelId = hotelPhoto.HotelId,
+        //        PhotoUrl = hotelPhoto.PhotoUrl,
+        //        Hotel = hotelPhoto.Hotel?.Name
+        //    };
+        //}
+
+        public async Task<HotelPhotoDTO> GetHotelPhotoByHotelIdAsync(int hotelId)
         {
-            var hotelPhoto = await Database.HotelPhotos.Get(id);
-            if (hotelPhoto  == null)
+            var hotelPhoto = await Database.HotelPhotos.Get(hotelId);
+            if (hotelPhoto == null)
                 throw new ValidationException("Wrong hotel photo!", "");
             return new HotelPhotoDTO
             {
