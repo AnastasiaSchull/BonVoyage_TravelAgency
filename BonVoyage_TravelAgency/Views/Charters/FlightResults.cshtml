@@ -1,0 +1,51 @@
+﻿@model List<FlightViewModel>
+
+@{
+    ViewData["Title"] = "Flight Results";
+}
+
+<h1>Flight Results</h1>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Airline</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model)
+            {               
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => flight.Airline)</td>
+                    <td>@Html.DisplayFor(modelItem => flight.From)</td>
+                    <td>@Html.DisplayFor(modelItem => flight.To)</td>
+                    <td>@Html.DisplayFor(modelItem => flight.Departure)</td>
+                    <td>@Html.DisplayFor(modelItem => flight.Arrival)</td>
+                    <td>@Html.DisplayFor(modelItem => flight.Price)</td>
+                    <td>
+                        <form method="post" action="@Url.Action("BookFlight", "Charters")">
+                            <input type="hidden" name="From" value="@flight.From" />
+                            <input type="hidden" name="To" value="@flight.To" />
+                            <input type="hidden" name="Departure" value="@flight.Departure" />
+                            <input type="hidden" name="Arrival" value="@flight.Arrival" />
+                            <input type="hidden" name="Price" value="@flight.Price" />
+                            <input type="hidden" name="Airline" value="@flight.Airline" />
+                            <input type="submit" value="Book" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No flights found for the selected criteria.</p>
+}

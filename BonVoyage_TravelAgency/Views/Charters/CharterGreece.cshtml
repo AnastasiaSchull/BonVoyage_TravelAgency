@@ -15,6 +15,7 @@
             color: #443781;
             font-size: 18px;
         }
+
         label{
             font-family: 'Calypso', Arial, sans-serif;
             font-size: 19px;
@@ -56,12 +57,12 @@
         <p>Experience affordable and comfortable travel with our charter flights to Greece, serviced by top European quality standards. You can book these flights exclusively through tour operators and they are known for providing convenient options to explore Greece.</p>
         <p>On this page, you can easily find the perfect flight option that suits your travel needs. Airlines operating charter flights to Greece include Rosa Vetrov (Windrose), MAY (UIA), SkyUp, Ellinair, and Bees Airline, offering departures from various countries such as Ukraine, Poland, Germany, and more. The cost of tickets varies depending on the season, time of booking, and departure country. Often, you can find cheaper tickets if you book a few days before departure.</p>
         <div class="form-section form-horizontal ">
-            <form>
+           <form action="@Url.Action("SearchFlights", "Charters")" method="post">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="country">Country of Departure:</label>
                 
-                        <select id="country" name="country" onchange="updateCities()">
+                        <select id="country" name="CountryOfDeparture" onchange="updateCities()">
                             <option value="ukraine">Ukraine</option>                    
                             <option value="poland">Poland</option>
                             <option value="germany">Germany</option>
@@ -77,12 +78,12 @@
 
                     <div class="form-group">
                         <label for="city">City of Departure:</label>
-                        <select id="city" name="city"></select>
+                        <select id="city" name="CityOfDeparture"></select>
                     </div>
 
                     <div class="form-group">
                         <label for="destination">Destination City:</label>
-                        <select id="destination" name="destination">
+                        <select id="destination" name="DestinationCity">
                             <option value="athens">Athens</option>
                             <option value="thessaloniki">Thessaloniki</option>
                             <option value="crete">Crete</option>
@@ -95,8 +96,13 @@
                     </div>
                     <div class="form-group">
                         <label for="date">Departure Date:</label>
-                        <input type="date" id="date" name="date">
+                        <input type="date" id="date" name="DepartureDate">
                     </div>
+                    <div class="form-group">
+                        <label for="returnDate">Return Date:</label>
+                        <input type="date" id="returnDate" name="ReturnDate">
+                    </div>
+
                     <input type="submit" value="Search Flights">
                 </div>
             </form>

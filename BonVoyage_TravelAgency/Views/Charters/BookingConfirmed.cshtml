@@ -1,0 +1,18 @@
+﻿@model BonVoyage_TravelAgency.Models.BookingFlightViewModel
+
+<style>
+
+    p {
+        color: #443781;
+        font-size: 18px;
+    }
+</style>
+
+
+<h1>Booking Confirmed</h1>
+<hr>
+<div>
+    <p>Thank you, @Model.PassengerName. Your flight from @Model.From to @Model.To on @Model.Departure has been successfully booked.</p>
+   <br>
+    <p>Booking details have been sent to @Model.Email.</p>
+</div>
