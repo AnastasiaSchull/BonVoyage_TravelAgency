@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Charter Flights to Greece - BonVoyage TravelAgency</title>
-   
-    <style>    
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
+
+    <style>
+        #myMap {
+            height: 600px;
+            width: 100%;
+        }
 
         .content {
             max-width: 1200px;
@@ -110,7 +117,7 @@
 
 
         <h2>Available Charter Flights for 2024</h2>
-      
+        <div id="myMap"></div>
     </div>
         <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -143,7 +150,53 @@
                     });
                 }
             }
-       
+
+        //1 войдите в портал Azure
+        //2 создайте ресурс Azure Maps
+        //3 внутри аккаунта Azure Maps перейдите в раздел "Authentication" и скопируйте "Primary Key" или "Secondary Key"
+        //4 замените строку subscriptionKey: 'AZURE_MAPS_KEY'  на ваш личный ключ  ;)
+        var map = new atlas.Map("myMap", {
+            center: [21.8243, 39.0742],
+            zoom: 6,
+            authOptions: {
+                authType: 'subscriptionKey',
+                subscriptionKey: 'AZURE_MAPS_KEY'
+            }                     
+        });
+        map.events.add('ready', function () {
+            var dataSource = new atlas.source.DataSource();
+            map.sources.add(dataSource);
+            var cities = [
+                { name: "Athens", coordinates: [23.7275, 37.9838] },
+                { name: "Thessaloniki", coordinates: [22.9444, 40.6401] },
+                { name: "Crete", coordinates: [24.8093, 35.2401] },
+                { name: "Larissa", coordinates: [22.4203, 39.6395] },
+                { name: "Patras", coordinates: [21.7346, 38.2466] },
+                { name: "Kalamata", coordinates: [22.1092, 37.0389] },
+                { name: "Volos", coordinates: [22.9422, 39.3610] },
+                { name: "Corfu", coordinates: [19.9147, 39.6243] }
+            ];
+            cities.forEach(function (city) {
+                var point = new atlas.data.Point(city.coordinates);
+                var pointFeature = new atlas.data.Feature(point, {
+                    title: city.name,
+                    icon: "pin-round"
+                });
+                dataSource.add(pointFeature);
+            });
+            var symbolLayer = new atlas.layer.SymbolLayer(dataSource, null, {
+                iconOptions: {
+                    image: 'pin-red',
+                    anchor: 'center',
+                    allowOverlap: true
+                },
+                textOptions: {
+                    textField: ['get', 'title'],
+                    offset: [0, 1.2]
+                }
+            });
+            map.layers.add(symbolLayer);
+        });
         </script>
   
 </body>
