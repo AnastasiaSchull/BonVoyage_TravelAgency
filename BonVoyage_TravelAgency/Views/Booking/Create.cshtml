@@ -45,7 +45,7 @@
         var userId = Context.Session.GetInt32("UserId");
         var user = Model.Users.FirstOrDefault(u => u.UserId == userId); 
     }
-<form asp-action="Create" method="post" >
+<form asp-action="Create" method="post" onsubmit="sendForm(event)">
         <div class="form-group col-md-6 form-horizontal">
              <label asp-for="@user.UserName" class="control-label col-md-2">Name:</label>
             <div class="col-md-8">
@@ -73,8 +73,8 @@
                 <span asp-validation-for="@user.Country" class="text-danger"></span>
             </div>
             <br/>
-             <input type="hidden" asp-for="TourId" value="@tour.TourId"/>
-             <input type="hidden" asp-for="UserId" value="@user.UserId"/>
+             <input type="hidden" asp-for="TourId" id ="tourId" value="@tour.TourId"/>
+             <input type="hidden" asp-for="UserId" id="userId" value="@user.UserId"/>
             <label asp-for="NumberOfPeople" class="control-label col-md-2">Number of persons:</label>
         <div class="col-md-8">
                 <input asp-for="NumberOfPeople" id ="numberOfPeople" class="form-control" min="1" value="1" />
@@ -111,11 +111,61 @@
     </form>
 </div>
 
-<script>    
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
     var input = document.getElementById("numberOfPeople");
     var label = document.getElementById("labelForCost");
     var price = document.getElementById("price");
-    input.onchange = function () {                
-        label.textContent = 'TOTAl PRICE: $'+ price.value * input.value;
+    input.onchange = function () {
+        label.textContent = 'TOTAL PRICE: $' + price.value * input.value;
     }
-</script>
+
+    function sendForm(e) {
+        e.preventDefault();            
+        const data = {
+           TourId: $("#tourId").val(),
+           UserId: $("#userId").val(),
+           NumberOfPeople: $("#numberOfPeople").val()                
+        }       
+        console.log(data);
+        Swal.fire({
+            title: 'Are you sure you want to book?',
+            icon: 'question',
+            showCancelButton: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '@Url.Action("Create", "Booking")',
+                    type: 'POST',
+                        data: data,                        
+                        success: function (response) {
+                            if (response.success) {
+                                Swal.fire(
+                                    'Request sent!',
+                                    response.message,
+                                    'success'
+                                ).then(() => {
+                                    location.reload();
+                                });
+                            } else {
+                                Swal.fire(
+                                    'Error!',
+                                    response.message,
+                                    'error'
+                                );
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            Swal.fire(
+                                'Error!',
+                                'An error occurred while booking.',
+                                'error'
+                            );
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+}
