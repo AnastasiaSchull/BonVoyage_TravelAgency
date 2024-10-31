@@ -8,18 +8,18 @@
 
 <h2>@Login</h2>
 
-<form asp-action="Login" method="post" class="form-horizontal">
+<form asp-action="Login" method="post" class="form-horizontal" novalidate>
     <div class="form-group">
         <label asp-for="Email" class="control-label col-md-2">@Email</label>
         <div class="col-md-10">
-            <input asp-for="Email" class="form-control" />
+            <input asp-for="Email" class="form-control" id="email" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
         <label asp-for="Password" class="control-label col-md-2">@Password</label>
         <div class="col-md-10">
-            <input asp-for="Password" class="form-control" />
+            <input asp-for="Password" class="form-control" id="password" />
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
     </div>
@@ -28,4 +28,27 @@
             <button type="submit" class="btn btn-default">@Login</button>
         </div>
     </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
 </form>
+
+@section Scripts {
+    <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+            let email = document.querySelector("#email").value;
+            let password = document.querySelector("#password").value;
+
+            if (!email || !password) {
+                alert("All fields must be filled in.");
+                e.preventDefault();
+                return;
+            }
+
+            const emailPattern = @Html.Raw("/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/");
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                e.preventDefault();
+            }
+        });
+    </script>
+}

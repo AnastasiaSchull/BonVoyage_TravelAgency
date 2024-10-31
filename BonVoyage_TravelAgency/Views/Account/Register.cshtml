@@ -64,3 +64,36 @@
         </div>
     </div>
 </form>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+        let email = document.querySelector("[name='Email']").value;
+        let password = document.querySelector("[name='Password']").value;
+        let passwordConfirm = document.querySelector("[name='PasswordConfirm']").value;
+
+        if (!email || !password || !passwordConfirm) {
+            alert("All fields must be filled in.");
+            e.preventDefault();
+            return;
+        }
+
+        const emailPattern = @Html.Raw("/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/");
+        if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            e.preventDefault();
+            return;
+        }
+
+        const passwordPattern = @Html.Raw("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%*]).{8,}$/");
+        if (!passwordPattern.test(password)) {
+            alert("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character (!#$%*).");
+            e.preventDefault();
+            return;
+        }
+
+        if (password !== passwordConfirm) {
+            alert("Password confirmation does not match.");
+            e.preventDefault();
+        }
+    });
+</script>
