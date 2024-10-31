@@ -84,7 +84,7 @@ namespace BonVoyage_TravelAgency.Controllers
 
         // POST: BookingHotel/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(BookingHotelDTO bookingHotel)
         {
            if (ModelState.IsValid)
@@ -118,9 +118,9 @@ namespace BonVoyage_TravelAgency.Controllers
                 smtp.Credentials = new NetworkCredential("bon.voyage.step@gmail.com" /* логин */, "tuvuozlyjplgcqae" /* пароль */);
                 smtp.EnableSsl = true; // Указывает, использует ли SmtpClient протокол SSL для шифрования подключения.
                                        // Send отправляет указанное сообщение на сервер SMTP для доставки
-                smtp.Send(message);               
+                smtp.Send(message);
 
-                return RedirectToAction("Index", "Home");
+                return Json(new { success = true, message = "Booking request successfully sent!" });
             }
             return View(bookingHotel);
         }

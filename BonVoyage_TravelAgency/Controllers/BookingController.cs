@@ -84,10 +84,10 @@ namespace BonVoyage_TravelAgency.Controllers
 
         // POST: Booking/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(BookingDTO booking)
         {
-           if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 booking.BookingDate = DateTime.Now;
                 booking.Status = "Under consideration";
@@ -97,7 +97,7 @@ namespace BonVoyage_TravelAgency.Controllers
                 var tour = await _tourService.GetTourByIdAsync(booking.TourId);
                 var tourPhoto = await _tourPhotoService.GetTourPhotoByTourIdAsync(booking.TourId);
                 string path = tourPhoto.PhotoUrl;
-                var fullPath = _appEnvironment.WebRootPath + path;  
+                var fullPath = _appEnvironment.WebRootPath + path;
 
                 //MailMessage - представляет сообщение электронной почты, которое может быть отправлено с помощью класса SmtpClient.
                 MailMessage message = new MailMessage();
@@ -105,12 +105,12 @@ namespace BonVoyage_TravelAgency.Controllers
                 message.From = new MailAddress("bon.voyage.step@gmail.com"); // электронный адрес отправителя (login@gmail.com)
                 message.Subject = "Tour booking"; // тема письма
                 message.Body = "Dear, " + user.UserName + " your booking request for tour " + tour.Title + " will be processed as soon as possible!"; // содержимое письма
-                                             // кодировка, используемая для темы данного сообщения электронной почты
+                                                                                                                                                      // кодировка, используемая для темы данного сообщения электронной почты
                 message.SubjectEncoding = Encoding.UTF8;
                 // кодировка, используемая для кодирования текста письма
                 message.BodyEncoding = Encoding.UTF8;
                 message.Attachments.Add(new Attachment(fullPath)); // путь к прикрепленному файлу
-                                                                       // SmtpClient позволяет приложениям отправлять электронную почту с помощью протокола SMTP (Simple Mail Transfer Protocol)
+                                                                   // SmtpClient позволяет приложениям отправлять электронную почту с помощью протокола SMTP (Simple Mail Transfer Protocol)
                 int port = Convert.ToInt32(587);
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com" /* сервер SMTP */, port /* порт */); // например, smtp.gmail.com   порт 587
 
@@ -118,9 +118,10 @@ namespace BonVoyage_TravelAgency.Controllers
                 smtp.Credentials = new NetworkCredential("bon.voyage.step@gmail.com" /* логин */, "tuvuozlyjplgcqae" /* пароль */);
                 smtp.EnableSsl = true; // Указывает, использует ли SmtpClient протокол SSL для шифрования подключения.
                                        // Send отправляет указанное сообщение на сервер SMTP для доставки
-                smtp.Send(message);               
+                smtp.Send(message);
 
-                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Home");
+                return Json(new { success = true, message = "Booking request successfully sent!" });
             }
             return View(booking);
         }
@@ -150,7 +151,7 @@ namespace BonVoyage_TravelAgency.Controllers
             if (ModelState.IsValid)
             {
                 await bookingService.UpdateBookingAsync(booking);
-                
+
                 //var user = await _userService.GetUserByIdAsync(booking.UserId);
                 //var tour = await _tourService.GetTourByIdAsync(booking.TourId);
                 //var tourPhoto = await _tourPhotoService.GetTourPhotoByTourIdAsync(booking.TourId);
@@ -180,7 +181,8 @@ namespace BonVoyage_TravelAgency.Controllers
                 //smtp.EnableSsl = true; // Указывает, использует ли SmtpClient протокол SSL для шифрования подключения.
                 //                       // Send отправляет указанное сообщение на сервер SMTP для доставки
                 //smtp.Send(message);
-                return View("~/Views/Booking/Index.cshtml", await bookingService.GetAllBookingsAsync());
+                //return View("~/Views/Booking/Index.cshtml", await bookingService.GetAllBookingsAsync());
+                return RedirectToAction("Index", "Booking");
             }
             return View(booking);
         }
