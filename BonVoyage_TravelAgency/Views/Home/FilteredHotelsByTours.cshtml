@@ -56,11 +56,11 @@
                     }
                     else{
                     <li class="list-group-item">Swimming pool: no</li>
-                    }                                           
-                    </ul>
-                <div>
-                    <a asp-action="Create" asp-controller="BookingHotel" class=" link" asp-route-id="@hotel.HotelId">@Book</a>
-                </div>
+                    }
+                    <li class ="list-group-item">
+                    <a asp-action="Create" asp-controller="BookingHotel" class=" link" style="color: orange; font-weight: bold" asp-route-id="@hotel.HotelId">@Book</a>
+                </li>
+                </ul>
                 </div>
             }
        </div>
