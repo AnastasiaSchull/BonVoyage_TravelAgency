@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using BonVoyage.BLL.Services;
 using BonVoyage.BLL.Infrastructure;
+using System.Text.RegularExpressions;
 
 namespace BonVoyage_TravelAgency.Controllers
 {
@@ -36,6 +37,35 @@ namespace BonVoyage_TravelAgency.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel reg)
         {
+            if (string.IsNullOrEmpty(reg.Email) || string.IsNullOrEmpty(reg.Password) ||
+                string.IsNullOrEmpty(reg.PasswordConfirm) || string.IsNullOrEmpty(reg.UserName) ||
+                string.IsNullOrEmpty(reg.UserSurname) || string.IsNullOrEmpty(reg.Address) ||
+                string.IsNullOrEmpty(reg.Country))
+            {
+                ModelState.AddModelError("", "All fields must be filled in.");
+                return View(reg);
+            }
+
+            var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!Regex.IsMatch(reg.Email, emailPattern))
+            {
+                ModelState.AddModelError("Email", "Please enter a valid email address.");
+                return View(reg);
+            }
+
+            var passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%*]).{8,}$";
+            if (!Regex.IsMatch(reg.Password, passwordPattern))
+            {
+                ModelState.AddModelError("Password", "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character (!@#$%*).");
+                return View(reg);
+            }
+
+            if (reg.Password != reg.PasswordConfirm)
+            {
+                ModelState.AddModelError("PasswordConfirm", "Password confirmation does not match.");
+                return View(reg);
+            }
+
             if (ModelState.IsValid)
             {
                 var existingUsers = await _userService.GetAllUsersAsync();
