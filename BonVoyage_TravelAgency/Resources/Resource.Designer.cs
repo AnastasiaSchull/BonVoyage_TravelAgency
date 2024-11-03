@@ -241,7 +241,7 @@ namespace BonVoyage_TravelAgency.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About Us.
+        ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string Country {
             get {
