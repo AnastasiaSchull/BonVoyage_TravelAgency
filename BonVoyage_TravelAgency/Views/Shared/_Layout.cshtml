@@ -17,17 +17,21 @@
 </head>
 <body>
     <header>        
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom" style="background-color: #158af0">
+        <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light border-bottom" style="background-color: #158af0">
             <div class="container-fluid">
                 <div class="logo">
                     <a href="#"><img src="~/images/BON_VOYAGE_Paris-removebg-preview.png" alt="Logo"></a>
                     <a class="navbar-brand size30 colorOrange" asp-area="" asp-controller="Home" asp-action="Index">BonVoyage TravelAgency</a>
-                </div>                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>              
-                <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Home" asp-action="Preferences">My preferences</a>
+                </div>
+                <span class="nav-contaner">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>  
+            <span class="nav-middle">
+                        <span class="nav-drop-down"> Navigation Bar </span>
+                <span class="nav-hidden">
+                       
                 
                 @if (Context.Session.GetString("UserName") == null)
                 {
@@ -36,14 +40,20 @@
                 }
                 else
                 {                                   
-                    <span class="navbar-brand size20">Hello, @Context.Session.GetString("UserName")</span>
-                    <a class="navbar-brand size20 colorWhite" href="@Url.Action("Profile", "Account")">Profile</a>
-                    <a class="navbar-brand size20 colorWhite" href="@Url.Action("Index", "Booking")">Booking</a>
+                    <span class="navbar-brand size20">@Hello, @Context.Session.GetString("UserName")</span>
+                              
+                                @if (Context.Session.GetString("UserName") != "Admin"){
+                                    <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Profile">@Profile</a>
+                                   <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Home" asp-action="Preferences">@My_Favorites</a>
+                                   
+                                }
+                   @*  <a class="navbar-brand size20 colorWhite" href="@Url.Action("Profile", "Account")">@Profile</a> *@
+                  @*   <a class="navbar-brand size20 colorWhite" href="@Url.Action("Index", "Booking")">Booking</a> *@
                     <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Logout">@Logout</a>
                     <a href="/Chat/Index" class="btn size20 colorWhite">@Go_to_Chat_Room</a>
-                }          
-               
-                
+                }
+                </span>
+             </span>
                 <div class="language-selector">
                     <form action="@Url.Action("ChangeCulture", "Home")" method="post" id="language-form">
                         <input type="hidden" name="lang" id="selected-lang">
@@ -59,6 +69,7 @@
                         </ul>
                     </form>
                 </div>
+                </span>
             </div>
         </nav>
         <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light bg-light">
@@ -73,10 +84,10 @@
                             <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Egypt" })" class="dropdown-item colorBlue">@Tours_to_Egypt</a>
                             <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Greece" })" class="dropdown-item colorBlue">@Tours_to_Greece</a>
                             <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Spain" })" class="dropdown-item colorBlue">@Tours_to_Spain</a>
-                            <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Italy" })" class="dropdown-item colorBlue">Tours to Italy</a>
+                            <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Italy" })" class="dropdown-item colorBlue">@Tours_to_Italy</a>
                             <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Switzerland" })" class="dropdown-item colorBlue">@Tours_to_Switzerland</a>
                             <a href="@Url.Action("FilterHotelsByTours", "Home", new { filter = "Japan" })" class="dropdown-item colorBlue">@Tours_to_Japan</a>
-                            <a class="dropdown-item colorOrange" href="~/Index.html?userName=@Context.Session.GetString("UserName")">All countries of the world</a>
+                            <a class="dropdown-item colorOrange" href="~/Index.html?userName=@Context.Session.GetString("UserName")">@All_countries_of_the_world</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -88,7 +99,7 @@
                             <a class="dropdown-item colorBlue" href="#">@Summer_tours</a>
                             <a class="dropdown-item colorBlue" href="#">@Winter_tours</a>
                             <a class="dropdown-item colorBlue" href="#">@Spring_tours</a>                     
-                            <a href="@Url.Action("FilterTours", "Home", new { filter = "Christmas" })" class="dropdown-item colorBlue">Christmas tours</a>
+                            <a href="@Url.Action("FilterTours", "Home", new { filter = "Christmas" })" class="dropdown-item colorBlue">@Christmas_tours</a>
                             <a href="@Url.Action("FilterTours", "Home", new { filter = "Ski" })" class="dropdown-item colorBlue">@Ski_tours</a>
                         </div>
                     </li>
@@ -149,12 +160,12 @@
                         @if (Context.Session.GetString("UserName") == "Admin")
                         {
                             <a class="nav-link dropdown-toggle colorBlue size20" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             Bookings(For Admin)</a>
+                             @Bookings</a>
                              <div class="dropdown-menu size18" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item colorBlue" href="https://localhost:7079/Booking/Index" id="navbarDropdown">
-                                    Bookings Promo Tours</a>
+                                    @Bookings_Promo_Tours</a>
                                 <a class="dropdown-item colorBlue" href="https://localhost:7079/BookingHotel/Index" id="navbarDropdown">
-                                    Bookings Hotels</a>
+                                    @Bookings_Hotels</a>
                              </div>
                         }
                     </li>
@@ -162,7 +173,7 @@
             </div>           
         </nav>
     </header>
-    <div class="container">
+    <div class="container-lg ">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -170,16 +181,30 @@
 
     <footer class="border-top footer text-muted">
         <div class="containerPrivacy size18">
-            &copy; 2024 - BonVoyage_TravelAgency - <a asp-area="" asp-controller="Home" asp-action="Privacy">@Privacy </a> |
-            <a class="size18" asp-area="" asp-controller="FAQ" asp-action="Index"> @FAQ</a> |
-            <a class="size18" asp-area="" asp-controller="Home" asp-action="Contacts"> @Contacts</a> |
-            <a class="size18" asp-area="" asp-controller="Home" asp-action="AboutUs"> @About_Us</a>
+            <span class="spanfooter">
+                &copy; 2024 - BonVoyage_TravelAgency -  
+            </span>
+            <span>
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">@Privacy </a> |
+                <a class="size18" asp-area="" asp-controller="FAQ" asp-action="Index"> @FAQ</a> |
+                <a class="size18" asp-area="" asp-controller="Home" asp-action="Contacts"> @Contacts</a> |
+                <a class="size18" asp-area="" asp-controller="Home" asp-action="AboutUs"> @About_Us</a>
+            </span>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.6/dist/sweetalert2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // console.log("ready");
+            $('.nav-drop-down').on('click', function () {
+                $('.nav-hidden').toggleClass('active');
+            });
+
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

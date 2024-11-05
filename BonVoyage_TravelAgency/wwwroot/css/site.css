@@ -10,394 +10,484 @@ html {
     }
 }
 
+@media screen and (max-width: 950px) {
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+
+    body {
+        margin-bottom: 150px !important;
+    }
+
+    .containerPrivacy {
+        display: flex !important;
+        flex-direction: column !important;
+        flex-wrap: wrap !important;
+    }
+
+    footer {
+        overflow-x: hidden !important;
+        line-height: 35px !important;
+    }
+
+        footer span {
+            display: block;
+            padding: 5px;
+        }
+
+    .page-item:not(:last-child):not(:first-child) {
+        display: none;
+    }
+
+    .collapse:not(.show) {
+        display: none !important;
+    }
+
+    .active {
+        display: block !important;
+    }
+
+    .nav-hidden {
+        display: none;
+    }
+
+    .nav-contaner {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+        .nav-contaner button {
+            align-self: flex-start;
+        }
+
+    .nav-middle {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .nav-drop-down {
+        display: block !important;
+        font-size: 20px !important;
+        color: white !important;
+    }
+}
+
+
+.containerPrivacy span {
+    color: dimgray !important;
+    text-align: center;
+}
+
+.nav-drop-down {
+    display: none;
+}
+
+.nav-contaner {
+    margin-right: 30px;
+}
+
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
-    position: relative;
-    min-height: 100%;
+
+
+
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+
+.display-4 {
+    margin-top: 40px !important;
+    margin-bottom: 25px !important;
 }
 
-body {
-    margin-bottom: 60px;
-}
+    /* New styles */
+    @font-face {
+        font-family: 'Calypso';
+        src: url('/fonts/ofont.ru_Calypso.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
 
-/* New styles */
-@font-face {
-    font-family: 'Calypso';
-    src: url('/fonts/ofont.ru_Calypso.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-body {
-    background-image: url('/images/airplane.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
+    body {
+        background-image: url('/images/airplane.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
 
 h1, h2, h3 {
     font-family: 'Calypso', Arial, sans-serif;
     color: blue;
+    margin-top: 30px !important;
 }
 
-p {
-    font-size: 16px;
-    color: cadetblue;
-}
-
-.login-container {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: white;
-}
-
-.login-form {
-    display: flex;
-    align-items: center;
-}
-
-    .login-form input, .login-form button {
-        margin: 5px;
+    p {
         font-size: 16px;
-        border-radius: 10px;
-        border: 2px solid #258cfb;
+        color: cadetblue;
     }
 
-.container {
-    padding: 18px;
-    border-radius: 10px;
-    background: transparent;
-}
+    .login-container {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: white;
+    }
+
+
+    .login-form {
+        display: flex;
+        align-items: center;
+    }
+
+        .login-form input, .login-form button {
+            margin: 5px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 2px solid #258cfb;
+        }
+
+    .container {
+        padding: 18px;
+        border-radius: 10px;
+        background: transparent;
+    }
 
 .containerPrivacy {
     background: rgba(255, 255, 255, 0.3);
     padding: 0;
     border-radius: 10px;
+    text-align: center;
 }
 
-a {
-    text-decoration: none;
-    font-family: 'Calypso';
-}
-
-.colorBlue {
-    color: #2f00ff !important;
-}
-
-.colorWhite {
-    color: #ffffff !important;
-}
-
-.colorOrange {
-    color: #ffa726 !important;
-}
-
-.size30 {
-    font-size: 30px !important;
-    font-weight: bold;
-}
-
-.size20 {
-    font-size: 20px;
-}
-
-.size18 {
-    font-size: 18px;
-}
-
-
-a:hover {
-    text-decoration: none;
-    color: #32afaf !important;
-    font-family: 'Calypso';
-}
-
-.clickable-header {
-    cursor: pointer;
-    color: blue;
-    text-decoration: underline;
-}
-
-.tooltip-inner {
-    background-color: gainsboro;
-    color: darkblue;
-    border: 1px solid gray;
-    font-size: 18px;
-}
-
-.collapse p {
-    color: black;
-}
-
-.faq-actions a {
-    color: dimgray !important;
-}
-
-    .faq-actions a:hover {
-        color: #2f00ff !important;
-    }
-
-p a {
-    font-size: 18px !important;
-}
-
-    p a:hover {
-        font-size: 18px !important;
-    }
-
-.text-center a:hover {
-    color: #ff6a00 !important;
-}
-
-label {
-    color: #32afaf !important;
-    font-size: 18px !important;
-}
-
-.btn.btn-default {
-    background-color: #007bff !important;
-    color: white !important;
-    font-family: 'Calypso';
-}
-
-span {
-    font-family: 'Calypso';
-    color: #ffa726 !important;
-}
-
-.card-img-top {
-    transition: transform 0.3s ease;
-}
-
-    .card-img-top:hover {
-        transform: scale(1.1);
-    }
-
-.logo img {
-    height: 60px;
-    margin-bottom: 10px;
-}
-
-
-/* мультиязычный селектор */
-.language-selector:hover .lang-dropdown,
-.language-selector:focus-within .lang-dropdown {
-    display: block;
-}
-
-.language-selector .lang-btn:focus .arrow-down,
-.language-selector:hover .arrow-down {
-    transform: rotate(-135deg); /* поворачивает стрелку вверх, когда список открыт */
-}
-
-.lang-dropdown {
-    list-style-type: none;
-    display: none;
-    position: absolute;
-    background-color: gainsboro;
-    min-width: 30px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 4px; /* скругляет углы выпадающего списка */
-    margin: 0;
-    padding: 0;
-}
-
-
-    .lang-dropdown button {
-        color: black;
-        padding: 12px 16px;
+    a {
         text-decoration: none;
-        display: block;
-        background: none;
-        border: none;
-        text-align: left;
-        width: 100%;
-        font-size: 16px;
-        outline: none;
-        transition: background-color 0.3s, color 0.3s;
         font-family: 'Calypso';
     }
 
-        .lang-dropdown button:hover {
-            background-color: dodgerblue;
+    .colorBlue {
+        color: #2f00ff !important;
+    }
+
+    .colorWhite {
+        color: #ffffff !important;
+    }
+
+    .colorOrange {
+        color: #ffa726 !important;
+    }
+
+    .size30 {
+        font-size: 30px !important;
+        font-weight: bold;
+    }
+
+    .size20 {
+        font-size: 20px;
+    }
+
+    .size18 {
+        font-size: 18px;
+    }
+
+
+    a:hover {
+        text-decoration: none;
+        color: #32afaf !important;
+        font-family: 'Calypso';
+    }
+
+    .clickable-header {
+        cursor: pointer;
+        color: blue;
+        text-decoration: underline;
+    }
+
+    .tooltip-inner {
+        background-color: gainsboro;
+        color: darkblue;
+        border: 1px solid gray;
+        font-size: 18px;
+    }
+
+    .collapse p {
+        color: black;
+    }
+
+    .faq-actions a {
+        color: dimgray !important;
+    }
+
+        .faq-actions a:hover {
+            color: #2f00ff !important;
+        }
+
+    p a {
+        font-size: 18px !important;
+    }
+
+        p a:hover {
+            font-size: 18px !important;
+        }
+
+    .text-center a:hover {
+        color: #ff6a00 !important;
+    }
+
+    label {
+        color: #32afaf !important;
+        font-size: 18px !important;
+    }
+
+    .btn.btn-default {
+        background-color: #007bff !important;
+        color: white !important;
+        font-family: 'Calypso';
+    }
+
+    span {
+        font-family: 'Calypso';
+        color: #ffa726 !important;
+    }
+
+    .card-img-top {
+        transition: transform 0.3s ease;
+    }
+
+        .card-img-top:hover {
+            transform: scale(1.1);
+        }
+
+    .logo img {
+        height: 60px;
+        margin-bottom: 10px;
+    }
+
+
+    /* мультиязычный селектор */
+    .language-selector:hover .lang-dropdown,
+    .language-selector:focus-within .lang-dropdown {
+        display: block;
+    }
+
+    .language-selector .lang-btn:focus .arrow-down,
+    .language-selector:hover .arrow-down {
+        transform: rotate(-135deg); /* поворачивает стрелку вверх, когда список открыт */
+    }
+
+    .lang-dropdown {
+        list-style-type: none;
+        display: none;
+        position: absolute;
+        background-color: gainsboro;
+        min-width: 30px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 4px; /* скругляет углы выпадающего списка */
+        margin: 0;
+        padding: 0;
+    }
+
+
+        .lang-dropdown button {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            background: none;
+            border: none;
+            text-align: left;
+            width: 100%;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Calypso';
+        }
+
+            .lang-dropdown button:hover {
+                background-color: dodgerblue;
+                color: white;
+                cursor: pointer;
+            }
+
+    .language-selector {
+        position: relative;
+        display: inline-block;
+    }
+
+    .lang-btn {
+        background: transparent;
+        color: #a7a6be;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        font-size: 18px;
+        outline: none; /* убирает контур при фокусе */
+    }
+
+    .arrow-down {
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        margin-left: 5px;
+        transition: transform 0.3s; /* добавляет анимацию для стрелки */
+    }
+
+    .card-title {
+        font-family: 'Calypso' !important;
+    }
+
+
+    .form-container {
+        display: flex;
+        align-items: center;
+        min-height: 70vh;
+        width: 100vw;
+        padding-left: 20px;
+    }
+
+    .form-box {
+        width: 80%;
+        max-width: 900px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.45);
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 2px solid cadetblue;
+        border-left: 15px solid cadetblue;
+        border-right: 15px solid cadetblue;
+        margin-left: -20px;
+    }
+
+    .form-label {
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+    }
+
+        .form-label input,
+        .form-label textarea {
+            margin-left: auto;
+            width: calc(100% - 170px); /* ширина поля, с учетом отступа и текста лейбла */
+        }
+
+        .form-label span {
+            min-width: 60px;
+        }
+
+    .hotelPhoto {
+        width: 250px;
+        height: 250px;
+        float: left;
+        margin: 15px;
+        box-shadow: 5px 5px 3px white;
+    }
+
+    .hotel {
+        background-color: whitesmoke;
+        margin-bottom: 15px;
+        padding: 15px;
+    }
+
+    .img {
+        width: 250px;
+        height: 250px;
+    }
+
+    th {
+        font-size: 18px;
+    }
+
+    table {
+        background-color: white;
+        color: dimgrey;
+    }
+
+    button {
+        margin-top: 10px;
+    }
+
+    .stars {
+        color: gold;
+        font-size: 2em;
+        display: inline-block; /* это чтобы размер блока подстраивался под контент */
+    }
+
+    .no-hover-photo {
+        pointer-events: none !important;
+        transition: none !important;
+    }
+
+    /* стили для отображения информации о бронированиях */
+    .table {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+        .table td {
+            font-size: 18px;
+            color: #443781;
+            padding: 12px 15px;
+        }
+
+        .table th {
+            background-color: cadetblue;
+            opacity: 0.8;
             color: white;
+            font-family: 'Calypso', Arial, sans-serif;
+            font-size: 19px;
+            font-family: bold;
+            padding: 12px 15px;
+        }
+
+        .table tbody tr:hover {
+            background-color: #ffffff;
             cursor: pointer;
         }
 
-.language-selector {
-    position: relative;
-    display: inline-block;
-}
+        .table tbody td {
+            border-bottom: 1px solid #dee2e6;
+        }
 
-.lang-btn {
-    background: transparent;
-    color: #a7a6be;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    padding: 5px 10px;
-    font-size: 18px;
-    outline: none; /* убирает контур при фокусе */
-}
-
-.arrow-down {
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 3px;
-    transform: rotate(45deg);
-    margin-left: 5px;
-    transition: transform 0.3s; /* добавляет анимацию для стрелки */
-}
-
-.card-title {
-    font-family: 'Calypso' !important;
-}
-
-
-.form-container {
-    display: flex;
-    align-items: center;
-    min-height: 70vh;
-    width: 100vw;
-    padding-left: 20px;
-}
-
-.form-box {
-    width: 80%;
-    max-width: 900px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.45);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 2px solid cadetblue;
-    border-left: 15px solid cadetblue;
-    border-right: 15px solid cadetblue;
-    margin-left: -20px;
-}
-
-.form-label {
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-}
-
-    .form-label input,
-    .form-label textarea {
-        margin-left: auto;
-        width: calc(100% - 170px); /* ширина поля, с учетом отступа и текста лейбла */
+    .table-container {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 9px rgba(20, 59, 170, 0.3);
+        padding: 18px;
+        border-radius: 10px;
+        background: transparent;
     }
 
-    .form-label span {
-        min-width: 60px;
+    .form-horizontal {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 9px rgba(20, 59, 170, 0.3);
+        border: 1px solid #dee2e6;
+        font-size: larger;
     }
-.hotelPhoto {
-    width: 250px;
-    height: 250px;
-    float: left;
-    margin: 15px;
-    
-    box-shadow: 5px 5px 3px white;   
-}
-.hotel {
-    background-color: whitesmoke;
-    margin-bottom: 15px;
-    padding: 15px;        
-}
-
-.img {
-    width: 250px;
-    height: 250px;    
-}
-
-th {
-    font-size: 18px;
-}
-
-table{
-    background-color: white;
-    color: dimgrey;
-}
-
-button{
-    margin-top: 10px;
-}
-.stars {
-    color: gold;
-    font-size: 2em;
-    display: inline-block; /* это чтобы размер блока подстраивался под контент */
-}
-
-.no-hover-photo {
-    pointer-events: none !important;
-    transition: none !important;
-}
-
-/* стили для отображения информации о бронированиях */
-.table {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.table td {
-    font-size: 18px;
-    color: #443781;
-    padding: 12px 15px;
-}
-
-.table th {
-    background-color: cadetblue;
-    opacity: 0.8;
-    color: white;
-    font-family: 'Calypso', Arial, sans-serif;
-    font-size: 19px;
-    font-family: bold;
-    padding: 12px 15px;
-}
-
-.table tbody tr:hover {
-    background-color: #ffffff;
-    cursor: pointer;
-}
-
-.table tbody td {
-    border-bottom: 1px solid #dee2e6;
-}
-
-.table-container {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    box-shadow: 0 4px 9px rgba(20, 59, 170, 0.3);
-    padding: 18px;
-    border-radius: 10px;
-    background: transparent;
-}
-
-.form-horizontal {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 9px rgba(20, 59, 170, 0.3);
-    border: 1px solid #dee2e6;
-    font-size: larger;
-}
 
 
-h4 {
-    font-family: 'Calypso', Arial, sans-serif;
-    color: blue;
-    font-family: bold;
-}
+    h4 {
+        font-family: 'Calypso', Arial, sans-serif;
+        color: blue;
+        font-family: bold;
+    }
 
 
 .custom-card img {
@@ -406,3 +496,5 @@ h4 {
     object-fit: cover;
     /*  лишние части изображения будут обрезаны */
 }
+
+
