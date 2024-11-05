@@ -1,11 +1,13 @@
-﻿@model BonVoyage.BLL.DTOs.UserDTO
+﻿@model BonVoyage_TravelAgency.Models.UserProfileViewModel
+
 
 @{
     ViewData["Title"] = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Your Profile</h2>
+<h2 style="text-align: center !important;">@Model.User.UserName's Profile</h2>
+
 <hr />
 
 @if (TempData["SuccessMessage"] != null)
@@ -30,40 +32,40 @@
 }
 
 <form asp-action="Profile" method="post" class="form-horizontal">
-    <input type="hidden" asp-for="UserId" />
+    <input type="hidden" asp-for="User.UserId" />
     <div class="form-group">
-        <label asp-for="UserName" class="control-label col-md-2">Name</label>
+        <label asp-for="User.UserName" class="control-label col-md-2">Name</label>
         <div class="col-md-10">
-            <input asp-for="UserName" class="form-control" />
-            <span asp-validation-for="UserName" class="text-danger"></span>
+            <input asp-for="User.UserName" class="form-control" />
+            <span asp-validation-for="User.UserName" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="UserSurname" class="control-label col-md-2">Surname</label>
+        <label asp-for="User.UserSurname" class="control-label col-md-2">Surname</label>
         <div class="col-md-10">
-            <input asp-for="UserSurname" class="form-control" />
-            <span asp-validation-for="UserSurname" class="text-danger"></span>
+            <input asp-for="User.UserSurname" class="form-control" />
+            <span asp-validation-for="User.UserSurname" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Email" class="control-label col-md-2">Email</label>
+        <label asp-for="User.Email" class="control-label col-md-2">Email</label>
         <div class="col-md-10">
-            <input asp-for="Email" class="form-control" readonly />
-            <span asp-validation-for="Email" class="text-danger"></span>
+            <input asp-for="User.Email" class="form-control" readonly />
+            <span asp-validation-for="User.Email" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Address" class="control-label col-md-2">Address</label>
+        <label asp-for="User.Address" class="control-label col-md-2">Address</label>
         <div class="col-md-10">
-            <input asp-for="Address" class="form-control" />
-            <span asp-validation-for="Address" class="text-danger"></span>
+            <input asp-for="User.Address" class="form-control" />
+            <span asp-validation-for="User.Address" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Country" class="control-label col-md-2">Country</label>
+        <label asp-for="User.Country" class="control-label col-md-2">Country</label>
         <div class="col-md-10">
-            <input asp-for="Country" class="form-control" />
-            <span asp-validation-for="Country" class="text-danger"></span>
+            <input asp-for="User.Country" class="form-control" />
+            <span asp-validation-for="User.Country" class="text-danger"></span>
         </div>
     </div>
     <hr />
@@ -86,3 +88,52 @@
         </div>
     </div>
 </form>
+
+<hr />
+
+
+<div class="table-container text-center">
+    <h2>Your Bookings</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>User email</th>
+                <th>Tour</th>
+                <th>Booking date</th>
+                <th>Number of people</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Bookings != null)
+            {
+                @foreach (var item in Model.Bookings)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserMail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tour)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookingDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumberOfPeople)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                      
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
