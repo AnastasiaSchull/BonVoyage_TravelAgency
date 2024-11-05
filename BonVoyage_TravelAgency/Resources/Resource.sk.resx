@@ -300,8 +300,8 @@
   <data name="Register" xml:space="preserve">
     <value>Registrovať sa</value>
   </data>
-  <data name="Preference" xml:space="preserve">
-    <value>Preferencie</value>
+  <data name="Favorites" xml:space="preserve">
+    <value>Obľúbené</value>
   </data>
   <data name="Chat_room" xml:space="preserve">
     <value>Miestnosť na chat</value>
@@ -386,5 +386,32 @@
   </data>
   <data name="Tours_to_Switzerland" xml:space="preserve">
     <value>Zájazdy do Švajčiarska</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="Bookings" xml:space="preserve">
+    <value>Rezervácie</value>
+  </data>
+  <data name="Christmas tours" xml:space="preserve">
+    <value>Vianočné zájazdy</value>
+  </data>
+  <data name="My_Favorites" xml:space="preserve">
+    <value>Moje Obľúbené</value>
+  </data>
+  <data name="Tours_to_Italy" xml:space="preserve">
+    <value>Zájazdy do Talianska</value>
+  </data>
+  <data name="Add_to_Favorites" xml:space="preserve">
+    <value>Pridať do obľúbených</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Ahoj</value>
+  </data>
+  <data name="Bookings_Promo_Tours" xml:space="preserve">
+    <value>Rezervačné Promo Zájazdy</value>
+  </data>
+  <data name="Bookings_Hotels" xml:space="preserve">
+    <value> Rezervácie Hotely</value>
   </data>
 </root>

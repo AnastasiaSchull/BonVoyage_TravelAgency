@@ -17,10 +17,12 @@ namespace BonVoyage_TravelAgency.Controllers
     public class AccountController : BaseController
     {
         private readonly IUserService _userService;
+        private readonly IBookingService _bookingService;
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, IBookingService bookingService)
         {
             _userService = userService;
+            _bookingService = bookingService;
         }
 
         public IActionResult Index()
@@ -196,8 +198,25 @@ namespace BonVoyage_TravelAgency.Controllers
                 {
                     return NotFound();
                 }
+                // получаем данные пользователя
                 UserDTO user = await _userService.GetUserByIdAsync((int)id);
-                return View(user);
+                Console.WriteLine($"Loading bookings for user ID: {user.UserId}");
+                
+                // загружаем все бронирования и фильтруем для данного пользователя
+                var allBookings = await _bookingService.GetAllBookingsAsync();
+                var userBookings = allBookings.Where(b => b.UserId == user.UserId).ToList();
+                Console.WriteLine($"Loaded {userBookings.Count} bookings for user {user.UserName}");
+
+                // создаем модель представления с отфильтрованными данными
+                UserProfileViewModel model = new UserProfileViewModel
+                {
+                    User = user,
+                    Bookings = userBookings
+                };
+
+                return View(model);
+            
+                //return View(user);
             }
             catch (ValidationException ex)
             {
@@ -222,24 +241,24 @@ namespace BonVoyage_TravelAgency.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Profile(UserDTO model, string oldPassword, string newPassword)
+        public async Task<IActionResult> Profile(UserProfileViewModel model, string oldPassword, string newPassword)
         {
-            if (model.UserId == 0)
+            if (model.User.UserId == 0)
             {
                 ModelState.AddModelError("", "User ID is required.");
                 return View(model);
             }
 
-            var existingUser = await _userService.GetUserByIdAsync(model.UserId);
+            var existingUser = await _userService.GetUserByIdAsync(model.User.UserId);
             if (existingUser == null)
             {
                 return NotFound();
             }
 
-            if (model.UserName == null ||
-            model.UserSurname == null ||
-            model.Address == null ||
-            model.Country == null)
+            if (model.User.UserName == null ||
+            model.User.UserSurname == null ||
+            model.User.Address == null ||
+            model.User.Country == null)
             {
                 ModelState.AddModelError("FieldError", "Please provide at least one field to update.");
                 return View(model);
@@ -261,15 +280,16 @@ namespace BonVoyage_TravelAgency.Controllers
                     return View(model);
                 }
 
-                model.Password = HashPassword(newPassword, existingUser.Salt);
+                model.User.Password = HashPassword(newPassword, existingUser.Salt);
 
-                existingUser.Password = model.Password;
+                existingUser.Password = model.User.Password;
             }
 
-             await _userService.UpdateUserAsync(model);
+             await _userService.UpdateUserAsync(model.User);
 
-             TempData["SuccessMessage"] = "Your profile has been successfully updated.";
-             return RedirectToAction("Profile", new { id = model.UserId });
+
+            TempData["SuccessMessage"] = "Your profile has been successfully updated.";
+             return RedirectToAction("Profile", new { id = model.User.UserId });
         }
     }
 }

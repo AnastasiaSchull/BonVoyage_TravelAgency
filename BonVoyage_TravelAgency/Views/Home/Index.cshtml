@@ -12,7 +12,7 @@
     <h3 id="toggleTours" class="clickable-header">@Discover_our_discounted_tours_and_best_deals:</h3>
 </div>
 
-<div class="container" id="toursContainer" style="display: none;">
+<div class="container-lg " id="toursContainer" style="display: none;">
     <div class="row">
       
         @foreach (var tour in Model.Tours)
@@ -27,8 +27,8 @@
                     <div class="card-body">
                         <h5 class="card-title">@tour.Title</h5>            
                         <div>
-                            <a asp-action="Create" asp-controller="Booking" class=" link" asp-route-id="@tour.TourId">@View_Details&nbsp;&nbsp;&nbsp;</a>
-                            <a asp-action="CreatePreference" asp-controller="Home" class=" link colorOrange" asp-route-id="@tour.TourId">&nbsp;&nbsp;Add to Preferences</a>
+                            <a asp-action="Create" asp-controller="Booking" class=" link" asp-route-id="@tour.TourId">@View_Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                            <a asp-action="CreatePreference" asp-controller="Home" class="link colorOrange" asp-route-id="@tour.TourId">@Add_to_Favorites</a>
                         </div>                                            
                     </div>
                 </div>
@@ -42,11 +42,11 @@
                 </li>
                 @for (int i = 1; i <= Model.PageViewModel.TotalPages; i++)
                 {
-                    <li class="page-item @(i == Model.PageViewModel.PageNumber ? "active" : "")">
+                    <li class="page-item  @(i == Model.PageViewModel.PageNumber ? "active" : "")">
                         <a class="page-link" href="@Url.Action("Index", new { pageNumber = i })">@i</a>
                     </li>
                 }
-                <li class="page-item @(Model.PageViewModel.HasNextPage ? "" : "disabled")">
+                <li class="page-item  @(Model.PageViewModel.HasNextPage ? "" : "disabled")">
                     <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageViewModel.PageNumber + 1 })">@Next</a>
                 </li>
             </ul>
