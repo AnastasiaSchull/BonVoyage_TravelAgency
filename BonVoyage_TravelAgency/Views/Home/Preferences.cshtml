@@ -1,13 +1,12 @@
-﻿
-@model BonVoyage_TravelAgency.Models.ToursPhotosViewModel
+﻿@model BonVoyage_TravelAgency.Models.ToursPhotosViewModel
 @using BonVoyage_TravelAgency.Resources
 @using static BonVoyage_TravelAgency.Resources.Resource
 
 @{
-    ViewData["Title"] = "CustomerPreference Page";
+    ViewData["Title"] = "CustomerFavorites Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h3>My preferences</h3>
+<h3>@My_Favorites</h3>
 
 
 <div class="container" id="toursContainer">
@@ -41,7 +40,7 @@
                             </div>
                             <br />
                             <div>
-                                <a asp-action="DeletePreference" asp-controller="Home" class=" link" asp-route-id="@tour.TourId">Delete from Preferences&nbsp;&nbsp;&nbsp;</a>
+                                <a asp-action="DeletePreference" asp-controller="Home" class=" link" asp-route-id="@tour.TourId">Delete from Favorites&nbsp;&nbsp;&nbsp;</a>
                                 <a asp-action="Create" asp-controller="Booking" class=" link colorOrange" asp-route-id="@tour.TourId">&nbsp;&nbsp;Book</a>
                             </div>
                         </div>               

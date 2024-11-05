@@ -9,6 +9,9 @@
 //------------------------------------------------------------------------------
 
 namespace BonVoyage_TravelAgency.Resources {
+    using BonVoyage.DAL.Entities;
+    using Humanizer;
+    using Microsoft.Identity.Client;
     using System;
     
     
@@ -86,7 +89,7 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("About_Us", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
@@ -95,7 +98,18 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("Address", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Add to Favorites.
+        /// </summary>
+        public static string Add_to_Favorites
+        {
+            get
+            {
+                return ResourceManager.GetString("Add_to_Favorites", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to All charter flights.
         /// </summary>
@@ -149,7 +163,40 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("Book", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to  Bookings.
+        /// </summary>
+        public static string Bookings
+        {
+            get
+            {
+                return ResourceManager.GetString("Bookings", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to  Bookings Hotels.
+        /// </summary>
+        public static string Bookings_Hotels
+        {
+            get
+            {
+                return ResourceManager.GetString("Bookings_Hotels", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to  Bookings Promo Tours.
+        /// </summary>
+        public static string Bookings_Promo_Tours
+        {
+            get
+            {
+                return ResourceManager.GetString("Bookings_Promo_Tours", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Charters.
         /// </summary>
@@ -210,6 +257,17 @@ namespace BonVoyage_TravelAgency.Resources {
         public static string Chat_room {
             get {
                 return ResourceManager.GetString("Chat_room", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Christmas tours.
+        /// </summary>
+        public static string Christmas_tours
+        {
+            get
+            {
+                return ResourceManager.GetString("Christmas_tours", resourceCulture);
             }
         }
         
@@ -302,7 +360,19 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("Guide", resourceCulture);
             }
         }
-        
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to Hello.
+        /// </summary>
+        public static string Hello
+        {
+            get
+            {
+                return ResourceManager.GetString("Hello", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
@@ -329,7 +399,7 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("How_to_pay_for_the_tour", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Last Minute Tours.
         /// </summary>
@@ -383,7 +453,18 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("My_contacts", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to My Favorites.
+        /// </summary>
+        public static string My_Favorites
+        {
+            get
+            {
+                return ResourceManager.GetString("My_Favorites", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
@@ -464,13 +545,24 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("Payment", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Preference.
+        ///   Looks up a localized string similar to  Profile.
         /// </summary>
-        public static string Preference {
+        public static string Profile
+        {
+            get
+            {
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Favorites.
+        /// </summary>
+        public static string Favorites
+        {
             get {
-                return ResourceManager.GetString("Preference", resourceCulture);
+                return ResourceManager.GetString("Favorites", resourceCulture);
             }
         }
         
@@ -680,7 +772,20 @@ namespace BonVoyage_TravelAgency.Resources {
                 return ResourceManager.GetString("Tours_to_Greece", resourceCulture);
             }
         }
-        
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tours en Italie.
+        /// </summary>
+        public static string Tours_to_Italy
+        {
+            get
+            {
+                return ResourceManager.GetString("Tours_to_Italy", resourceCulture);
+            }
+        }
+
+
         /// <summary>
         ///   Looks up a localized string similar to Tours to Japan.
         /// </summary>

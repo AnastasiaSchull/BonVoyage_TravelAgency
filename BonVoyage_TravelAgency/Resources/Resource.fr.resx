@@ -300,8 +300,8 @@
   <data name="Register" xml:space="preserve">
     <value>S'inscrire</value>
   </data>
-  <data name="Preference" xml:space="preserve">
-    <value>Préférences</value>
+  <data name="Favorites" xml:space="preserve">
+    <value>Favoris</value>
   </data>
   <data name="Chat_room" xml:space="preserve">
     <value>Salle de chat</value>
@@ -386,5 +386,32 @@
   </data>
   <data name="Tours_to_Switzerland" xml:space="preserve">
     <value>Tours en Suisse</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="Bookings" xml:space="preserve">
+    <value>Réservations</value>
+  </data>
+  <data name="Christmas tours" xml:space="preserve">
+    <value>Tours de Noël</value>
+  </data>
+  <data name="My_Favorites" xml:space="preserve">
+    <value>Mes Favoris</value>
+  </data>
+  <data name="Tours_to_Italy" xml:space="preserve">
+    <value>Tours en Italie</value>
+  </data>
+  <data name="Add_to_Favorites" xml:space="preserve">
+    <value>Ajouter aux Favoris</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Salut</value>
+  </data>
+  <data name="Bookings_Promo_Tours" xml:space="preserve">
+    <value>Tours Promotionnels de Réservations</value>
+  </data>
+  <data name="Bookings_Hotels" xml:space="preserve">
+    <value>Réservations d'Hôtels</value>
   </data>
 </root>
