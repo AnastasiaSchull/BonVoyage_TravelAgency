@@ -31,7 +31,7 @@
             <span class="nav-middle">
                         <span class="nav-drop-down"> Navigation Bar </span>
                 <span class="nav-hidden">
-                       
+                            <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Home" asp-action="Preferences">@My_Favorites</a>
                 
                 @if (Context.Session.GetString("UserName") == null)
                 {
@@ -44,7 +44,7 @@
                               
                                 @if (Context.Session.GetString("UserName") != "Admin"){
                                     <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Account" asp-action="Profile">@Profile</a>
-                                   <a class="navbar-brand size20 colorWhite" asp-area="" asp-controller="Home" asp-action="Preferences">@My_Favorites</a>
+                                 
                                    
                                 }
                    @*  <a class="navbar-brand size20 colorWhite" href="@Url.Action("Profile", "Account")">@Profile</a> *@
